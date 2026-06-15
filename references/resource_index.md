@@ -126,6 +126,20 @@ Planet pair aspect modules describe exact combinations.
 - `references/aspects/by_planet_pair/mars_square_moon.md`
 - `references/aspects/by_planet_pair/mars_opposition_moon.md`
 
+### Planet Conditions
+
+Use these when a supplied planet condition includes dignity, debility, or minor
+essential dignity. Pair exact modules with `references/traditions/classical/dignities.md`
+for classical or blended readings that need broader doctrine.
+
+- `references/placements/planet_condition/domicile.md`
+- `references/placements/planet_condition/exaltation.md`
+- `references/placements/planet_condition/detriment.md`
+- `references/placements/planet_condition/fall.md`
+- `references/placements/planet_condition/triplicity.md`
+- `references/placements/planet_condition/term.md`
+- `references/placements/planet_condition/face.md`
+
 ### Templates
 
 Use templates when creating new composable interpretation modules.
@@ -183,11 +197,12 @@ Use for house ruler placement and rulership-based synthesis.
 
 ### Conditions
 
-Use for dignity, debility, sect, reception, angularity, retrograde condition, combustion, visibility, bonification, maltreatment, and related condition modifiers.
+Use for dignity, debility, sect, reception, angularity, retrograde condition, combustion, visibility, bonification, maltreatment, and related condition modifiers. Retrieve exact modules when a condition is explicitly supplied; do not derive dignity tables or minor dignities from missing data.
 
 - Directory: `references/placements/planet_condition/`
 - Pattern: `references/placements/planet_condition/{condition}.md`
 - Examples: `references/placements/planet_condition/fall.md`, `references/placements/planet_condition/sect.md`, `references/placements/planet_condition/retrograde.md`
+- Implemented dignity and debility names: `domicile`, `exaltation`, `detriment`, `fall`, `triplicity`, `term`, `face`
 - Naming: lowercase snake_case condition name.
 
 ### Aspects
