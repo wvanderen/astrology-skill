@@ -1,0 +1,118 @@
+# Transit Readings
+
+Transit readings compare current or future sky movement with the natal chart to
+identify timing windows, pressure points, developmental themes, and symbolic
+triggers. They do not replace natal interpretation: the natal chart describes
+the underlying promise, capacity, and topic structure; transits describe when
+those themes may be activated, intensified, revised, or brought into conscious
+focus.
+
+## Baseline factors
+
+- Natal promise for the topic: house, ruler, planet condition, aspects, sect,
+  dignity, and repeated natal testimony relevant to the user's question.
+- Transiting outer planets to natal planets, angles, chart ruler, luminaries,
+  and topic rulers.
+- Lunations, eclipses, and syzygies contacting natal planets, angles, or topic
+  houses when supplied.
+- Station points and retrograde/direct passages, especially when they occur
+  near natal planets, angles, or sensitive degrees.
+- Angular contacts: transits to the Ascendant, Descendant, MC, IC, angular
+  rulers, or planets moving through angular houses when birth time is reliable.
+- Exact aspects and tight applying/separating contacts when orb data is
+  supplied.
+- Repeated triggers to the same natal planet, house, axis, or ruler across
+  multiple timing factors.
+
+## Natal promise before timing
+
+- First establish what the natal chart can reasonably support. A transit can
+  awaken, stress, clarify, delay, accelerate, or externalize a natal theme, but
+  it should not be read as creating a life topic from nothing.
+- Treat the natal house and ruler as the topic container, then read the transit
+  as the timing trigger. For example, a transit to the 10th ruler is more about
+  career, visibility, authority, or direction when the natal chart already
+  links that ruler to those topics.
+- Weigh the natal condition of the contacted planet. Transits to well-supported
+  natal factors may describe opportunity, integration, or increased capacity;
+  transits to stressed or conflicted factors may describe pressure, repair,
+  choice points, or the need for support.
+- If the natal data is incomplete, state which timing claims are limited. Do
+  not make firm house, angle, or angularity claims when the birth time is
+  missing, approximate, rounded, or uncertain.
+
+## Timing priorities
+
+- Prioritize transiting Saturn, Uranus, Neptune, and Pluto for longer arcs,
+  structural change, maturation, disruption, dissolution, renewal, and
+  sustained developmental pressure.
+- Use Jupiter and Saturn for medium-term opportunities, limits, commitments,
+  consequences, growth cycles, and practical timing when they contact natal
+  planets, angles, or topic rulers.
+- Use Mars, Venus, Mercury, the Sun, and the Moon as short-term activators,
+  especially when they perfect a larger outer-planet configuration, cross an
+  angle, trigger an eclipse degree, or make an exact aspect to a natal factor.
+- Treat lunations and eclipses as emphasis points or symbolic peaks, not as
+  automatic events. They matter most when they closely contact natal planets,
+  angles, the chart ruler, luminaries, or the ruler of the question's house.
+- Treat station points as high-emphasis degrees. A station near a natal planet,
+  angle, chart ruler, luminary, or topic ruler can extend the timing window and
+  intensify the symbolism.
+- Exact aspects outrank loose contacts. When orb data is supplied, name whether
+  a transit is applying, exact, separating, repeated by retrograde motion, or
+  part of a longer sequence.
+- Repetition increases relevance: the same natal factor activated by an outer
+  planet, lunation, station, angular transit, and exact aspect is more important
+  than an isolated minor contact.
+
+## Data quality limits
+
+- If no transit date or date range is supplied, avoid timing claims and describe
+  the kind of information needed to assess a transit window.
+- If birth time is uncertain, avoid confident statements about transits to
+  angles, angular houses, house cusps, or Moon degree when the Moon's exact
+  position may shift materially.
+- If house system is unspecified, use the supplied chart houses but do not
+  treat house placement as method-neutral. Prefer planet-to-planet contacts and
+  repeated natal testimony when house placement is unstable.
+- If exact degrees, orbs, and aspect phases are not supplied, use broad transit
+  themes only and avoid ranking loose contacts as if they were exact.
+
+## Avoiding event certainty
+
+- Frame transits as timing windows, symbolic weather, activation patterns, and
+  areas of attention rather than guaranteed external events.
+- Do not predict pregnancy, death, illness, accidents, legal outcomes,
+  investments, job loss, relationship endings, or other high-stakes outcomes as
+  transit-derived certainty.
+- Prefer language such as "this may coincide with," "this can correlate with,"
+  "one possible expression is," "watch for themes around," and "this is better
+  treated as a reflective timing window than a fixed outcome."
+- When a transit appears intense, describe constructive responses, practical
+  preparation, support-seeking, and choice points. Avoid fear-based language,
+  fatalism, and claims that a transit is inherently bad, dangerous, cursed, or
+  unavoidable.
+- If the user asks whether a specific event will happen, answer with conditional
+  symbolic framing and practical uncertainty. Name the relevant transit factors,
+  then separate what the astrology can suggest from what it cannot know.
+
+## Retrieval guidance
+
+- Always retrieve this transit module for `reading_type: transit`, then retrieve
+  foundations, the requested tradition module, the natal module, and natal
+  resources for the contacted planets, houses, rulers, and aspects.
+- Retrieve natal topic factors before transit factors: the relevant house,
+  house ruler, planets in the house, chart ruler, luminaries, angular planets,
+  and exact natal aspects tied to the user's question.
+- For transit synthesis, prioritize exact outer-planet contacts, lunations or
+  eclipses on natal factors, station points, angular contacts, and repeated
+  triggers to the same natal planet, house, axis, or ruler.
+- When exact transit modules are missing, fall back to the broader transiting
+  planet, natal planet, aspect type, house, tradition, and synthesis resources.
+- For short-term date questions, retrieve the larger active transit pattern
+  first, then use inner-planet or lunar contacts as activators only when they
+  connect to that larger pattern or the user's stated topic.
+- For birth-time-sensitive transit questions, first check whether Ascendant, MC,
+  house cusps, Moon degree, and angularity are reliable. If not, retrieve
+  non-house-dependent contacts first and state the confidence limit in the
+  reading plan.

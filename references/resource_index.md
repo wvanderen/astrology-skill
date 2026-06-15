@@ -29,6 +29,7 @@ Use these when `tradition_mode` is `classical`, `modern`, or `blended`.
 Use the module matching the requested `reading_type` when it exists.
 
 - `references/reading_types/natal.md`
+- `references/reading_types/transit.md`
 
 ### Templates
 
@@ -136,6 +137,7 @@ Reading type modules define retrieval priorities, uncertainty rules, and synthes
 - Directory: `references/reading_types/`
 - Pattern: `references/reading_types/{reading_type}.md`
 - Implemented: `references/reading_types/natal.md`
+- Implemented: `references/reading_types/transit.md`
 - Planned names: `transit.md`, `synastry.md`, `solar_return.md`, `annual_profection.md`, `horary.md`, `electional.md`
 - Naming: lowercase snake_case reading type.
 
