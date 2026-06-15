@@ -44,6 +44,7 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
    - Load `references/reading_types/{reading_type}.md` when it exists.
    - Load tradition-specific references when the user requests classical, modern, or blended interpretation.
    - For classical or blended interpretation, prefer focused modules such as `references/traditions/classical/dignities.md`, `references/traditions/classical/sect.md`, and `references/traditions/classical/bonification_maltreatment.md` when they match supplied factors; use `references/traditions/classical.md` as the broad fallback.
+   - For modern or blended interpretation, prefer focused modules such as `references/traditions/modern/psychological_framing.md`, `references/traditions/modern/outer_planets.md`, and `references/traditions/modern/archetypal_language.md` when they match supplied factors, tone, or the user's question; use `references/traditions/modern.md` as the broad fallback.
    - Load placement, aspect, rulership, condition, or topic references when they exist and match the chart factors.
 5. Rank the chart factors by relevance and weight.
 6. Synthesize across factors instead of listing cookbook meanings.
