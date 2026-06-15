@@ -45,6 +45,24 @@ Planet core modules define baseline function, motivations, topics, and interpret
 - `references/planets/neptune.md`
 - `references/planets/pluto.md`
 
+### Signs
+
+Sign modules define style, temperament, modality, element, ruler, polarity, and
+interpretive cautions.
+
+- `references/signs/aries.md`
+- `references/signs/taurus.md`
+- `references/signs/gemini.md`
+- `references/signs/cancer.md`
+- `references/signs/leo.md`
+- `references/signs/virgo.md`
+- `references/signs/libra.md`
+- `references/signs/scorpio.md`
+- `references/signs/sagittarius.md`
+- `references/signs/capricorn.md`
+- `references/signs/aquarius.md`
+- `references/signs/pisces.md`
+
 ### Reading types
 
 Use the module matching the requested `reading_type` when it exists.
@@ -82,7 +100,7 @@ Sign modules define style, temperament, modality, element, and expression.
 - Directory: `references/signs/`
 - Pattern: `references/signs/{sign}.md`
 - Example: `references/signs/cancer.md`
-- Planned names: `aries.md`, `taurus.md`, `gemini.md`, `cancer.md`, `leo.md`, `virgo.md`, `libra.md`, `scorpio.md`, `sagittarius.md`, `capricorn.md`, `aquarius.md`, `pisces.md`
+- Planned names: none
 
 ### Houses
 
