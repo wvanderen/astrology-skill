@@ -41,6 +41,9 @@ Planet core modules define baseline function, motivations, topics, and interpret
 - `references/planets/mars.md`
 - `references/planets/jupiter.md`
 - `references/planets/saturn.md`
+- `references/planets/uranus.md`
+- `references/planets/neptune.md`
+- `references/planets/pluto.md`
 
 ### Reading types
 
@@ -70,7 +73,7 @@ Planet core modules define baseline function, motivations, topics, and interpret
 - Directory: `references/planets/`
 - Pattern: `references/planets/{planet}.md`
 - Example: `references/planets/mars.md`
-- Planned names: `uranus.md`, `neptune.md`, `pluto.md`
+- Planned names: none
 
 ### Signs
 
