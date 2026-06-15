@@ -104,7 +104,27 @@ Aspect type modules describe the aspect's general interpretive mechanics.
 
 Planet pair aspect modules describe exact combinations.
 
+- `references/aspects/by_planet_pair/sun_conjunction_moon.md`
+- `references/aspects/by_planet_pair/sun_square_moon.md`
+- `references/aspects/by_planet_pair/sun_opposition_moon.md`
+- `references/aspects/by_planet_pair/moon_conjunction_saturn.md`
+- `references/aspects/by_planet_pair/moon_square_saturn.md`
+- `references/aspects/by_planet_pair/moon_opposition_saturn.md`
+- `references/aspects/by_planet_pair/venus_conjunction_mars.md`
+- `references/aspects/by_planet_pair/venus_square_mars.md`
+- `references/aspects/by_planet_pair/venus_opposition_mars.md`
+- `references/aspects/by_planet_pair/mars_conjunction_saturn.md`
+- `references/aspects/by_planet_pair/mars_square_saturn.md`
+- `references/aspects/by_planet_pair/mars_opposition_saturn.md`
+- `references/aspects/by_planet_pair/mercury_conjunction_jupiter.md`
+- `references/aspects/by_planet_pair/mercury_square_jupiter.md`
+- `references/aspects/by_planet_pair/mercury_opposition_jupiter.md`
+- `references/aspects/by_planet_pair/venus_conjunction_saturn.md`
+- `references/aspects/by_planet_pair/venus_square_saturn.md`
+- `references/aspects/by_planet_pair/venus_opposition_saturn.md`
+- `references/aspects/by_planet_pair/mars_conjunction_moon.md`
 - `references/aspects/by_planet_pair/mars_square_moon.md`
+- `references/aspects/by_planet_pair/mars_opposition_moon.md`
 
 ### Templates
 
