@@ -43,6 +43,7 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
    - Always load `references/foundations/ethics_and_scope.md`.
    - Load `references/reading_types/{reading_type}.md` when it exists.
    - Load tradition-specific references when the user requests classical, modern, or blended interpretation.
+   - For classical or blended interpretation, prefer focused modules such as `references/traditions/classical/dignities.md`, `references/traditions/classical/sect.md`, and `references/traditions/classical/bonification_maltreatment.md` when they match supplied factors; use `references/traditions/classical.md` as the broad fallback.
    - Load placement, aspect, rulership, condition, or topic references when they exist and match the chart factors.
 5. Rank the chart factors by relevance and weight.
 6. Synthesize across factors instead of listing cookbook meanings.
@@ -63,6 +64,7 @@ Prefer exact, composable modules over broad summaries:
 - Aspect type: `references/aspects/{aspect_type}.md`
 - Planet pair aspect: `references/aspects/by_planet_pair/{planet1}_{aspect}_{planet2}.md`
 - Topic synthesis: `references/synthesis_patterns/{topic}.md`
+- Focused tradition topic: `references/traditions/{tradition}/{topic}.md`
 
 When an exact module does not exist, use the closest available broader module and make the limitation explicit in the reading plan.
 

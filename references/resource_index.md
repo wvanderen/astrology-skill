@@ -22,6 +22,9 @@ Foundational references are always loaded before synthesis.
 Use these when `tradition_mode` is `classical`, `modern`, or `blended`.
 
 - `references/traditions/classical.md`
+- `references/traditions/classical/dignities.md`
+- `references/traditions/classical/sect.md`
+- `references/traditions/classical/bonification_maltreatment.md`
 - `references/traditions/modern.md`
 
 ### Reading types
@@ -130,8 +133,9 @@ Tradition modules describe method-specific rules and language.
 
 - Current broad pattern: `references/traditions/{tradition}.md`
 - Current examples: `references/traditions/classical.md`, `references/traditions/modern.md`
-- Planned focused pattern: `references/traditions/{tradition}/{topic}.md`
-- Planned examples: `references/traditions/classical/dignities.md`, `references/traditions/classical/sect.md`, `references/traditions/classical/bonification_maltreatment.md`, `references/traditions/modern/psychological_framing.md`, `references/traditions/modern/outer_planets.md`, `references/traditions/modern/archetypal_language.md`
+- Focused pattern: `references/traditions/{tradition}/{topic}.md`
+- Implemented focused examples: `references/traditions/classical/dignities.md`, `references/traditions/classical/sect.md`, `references/traditions/classical/bonification_maltreatment.md`
+- Planned focused examples: `references/traditions/modern/psychological_framing.md`, `references/traditions/modern/outer_planets.md`, `references/traditions/modern/archetypal_language.md`
 - Naming: lowercase tradition directory, lowercase snake_case topic file.
 
 ### Reading types
