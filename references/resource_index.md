@@ -63,6 +63,24 @@ interpretive cautions.
 - `references/signs/aquarius.md`
 - `references/signs/pisces.md`
 
+### Houses
+
+House modules define topics, angularity, life areas, rulership interaction, and
+interpretive scope.
+
+- `references/houses/1st.md`
+- `references/houses/2nd.md`
+- `references/houses/3rd.md`
+- `references/houses/4th.md`
+- `references/houses/5th.md`
+- `references/houses/6th.md`
+- `references/houses/7th.md`
+- `references/houses/8th.md`
+- `references/houses/9th.md`
+- `references/houses/10th.md`
+- `references/houses/11th.md`
+- `references/houses/12th.md`
+
 ### Reading types
 
 Use the module matching the requested `reading_type` when it exists.
@@ -101,15 +119,6 @@ Sign modules define style, temperament, modality, element, and expression.
 - Pattern: `references/signs/{sign}.md`
 - Example: `references/signs/cancer.md`
 - Planned names: none
-
-### Houses
-
-House modules define topics, angularity, life areas, and interpretive scope.
-
-- Directory: `references/houses/`
-- Pattern: `references/houses/{house}.md`
-- Example: `references/houses/10th.md`
-- Planned names: `1st.md`, `2nd.md`, `3rd.md`, `4th.md`, `5th.md`, `6th.md`, `7th.md`, `8th.md`, `9th.md`, `10th.md`, `11th.md`, `12th.md`
 
 ### Planet in sign placements
 
