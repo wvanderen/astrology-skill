@@ -92,6 +92,20 @@ Use the module matching the requested `reading_type` when it exists.
 - `references/reading_types/synastry.md`
 - `references/reading_types/transit.md`
 
+### Aspects
+
+Aspect type modules describe the aspect's general interpretive mechanics.
+
+- `references/aspects/conjunction.md`
+- `references/aspects/opposition.md`
+- `references/aspects/square.md`
+- `references/aspects/trine.md`
+- `references/aspects/sextile.md`
+
+Planet pair aspect modules describe exact combinations.
+
+- `references/aspects/by_planet_pair/mars_square_moon.md`
+
 ### Templates
 
 Use templates when creating new composable interpretation modules.
@@ -163,7 +177,7 @@ Aspect type modules describe the aspect's general interpretive mechanics.
 - Directory: `references/aspects/`
 - Pattern: `references/aspects/{aspect_type}.md`
 - Examples: `references/aspects/conjunction.md`, `references/aspects/square.md`
-- Planned aspect type names: `conjunction.md`, `sextile.md`, `square.md`, `trine.md`, `opposition.md`
+- Planned aspect type names: none
 
 Planet pair aspect modules describe exact combinations.
 
