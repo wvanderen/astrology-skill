@@ -139,6 +139,12 @@ for classical or blended readings that need broader doctrine.
 - `references/placements/planet_condition/triplicity.md`
 - `references/placements/planet_condition/term.md`
 - `references/placements/planet_condition/face.md`
+- `references/placements/planet_condition/sect.md`
+- `references/placements/planet_condition/angularity.md`
+- `references/placements/planet_condition/retrograde.md`
+- `references/placements/planet_condition/combustion.md`
+- `references/placements/planet_condition/cazimi.md`
+- `references/placements/planet_condition/under_beams.md`
 
 ### Templates
 
@@ -203,6 +209,7 @@ Use for dignity, debility, sect, reception, angularity, retrograde condition, co
 - Pattern: `references/placements/planet_condition/{condition}.md`
 - Examples: `references/placements/planet_condition/fall.md`, `references/placements/planet_condition/sect.md`, `references/placements/planet_condition/retrograde.md`
 - Implemented dignity and debility names: `domicile`, `exaltation`, `detriment`, `fall`, `triplicity`, `term`, `face`
+- Implemented condition names: `sect`, `angularity`, `retrograde`, `combustion`, `cazimi`, `under_beams`
 - Naming: lowercase snake_case condition name.
 
 ### Aspects
