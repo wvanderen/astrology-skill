@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Astrology Skill Reading Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reading_type",
+    "focus",
+    "primary_factors",
+    "resources_to_load",
+    "weighting_notes",
+    "synthesis_warnings"
+  ],
+  "properties": {
+    "reading_type": {
+      "type": "string"
+    },
+    "tradition_mode": {
+      "type": "string"
+    },
+    "tone": {
+      "type": "string"
+    },
+    "focus": {
+      "type": "string"
+    },
+    "primary_factors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "secondary_factors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "resources_to_load": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "missing_resources": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "weighting_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "synthesis_warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

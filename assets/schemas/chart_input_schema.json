@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Astrology Skill Chart Input",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["reading_type", "chart_data"],
+  "properties": {
+    "reading_type": {
+      "type": "string",
+      "enum": [
+        "natal",
+        "transit",
+        "synastry",
+        "solar_return",
+        "annual_profection",
+        "horary",
+        "electional"
+      ]
+    },
+    "tradition_mode": {
+      "type": "string",
+      "enum": ["classical", "modern", "blended"],
+      "default": "blended"
+    },
+    "tone": {
+      "type": "string",
+      "enum": ["practical", "poetic", "psychological", "technical", "beginner-friendly"],
+      "default": "practical"
+    },
+    "user_question": {
+      "type": "string"
+    },
+    "chart_data": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "source_notes": {
+          "type": "string"
+        },
+        "birth_time_confidence": {
+          "type": "string"
+        },
+        "house_system": {
+          "type": "string"
+        },
+        "ascendant": {
+          "type": "string"
+        },
+        "midheaven": {
+          "type": "string"
+        },
+        "sect": {
+          "type": "string",
+          "enum": ["day", "night", "unknown"]
+        },
+        "placements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["body"],
+            "properties": {
+              "body": { "type": "string" },
+              "sign": { "type": "string" },
+              "degree": { "type": "number" },
+              "house": { "type": ["integer", "string"] },
+              "motion": { "type": "string" },
+              "condition": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "dignity": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "rules_houses": {
+                "type": "array",
+                "items": { "type": ["integer", "string"] }
+              }
+            }
+          }
+        },
+        "aspects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["body_a", "aspect", "body_b"],
+            "properties": {
+              "body_a": { "type": "string" },
+              "aspect": { "type": "string" },
+              "body_b": { "type": "string" },
+              "orb_degrees": { "type": "number" },
+              "applying": { "type": "boolean" }
+            }
+          }
+        },
+        "lots": {
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "timing_factors": {
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": true }
+        }
+      }
+    }
+  }
+}

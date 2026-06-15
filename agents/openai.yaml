@@ -1,0 +1,4 @@
+interface:
+  display_name: "Astrology Reading"
+  short_description: "Retrieval-first astrology reading workflow"
+  default_prompt: "Use $astrology-skill to interpret this already-calculated chart from structured placements and aspects."
