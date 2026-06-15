@@ -30,6 +30,18 @@ Use these when `tradition_mode` is `classical`, `modern`, or `blended`.
 - `references/traditions/modern/outer_planets.md`
 - `references/traditions/modern/archetypal_language.md`
 
+### Planets
+
+Planet core modules define baseline function, motivations, topics, and interpretive cautions.
+
+- `references/planets/sun.md`
+- `references/planets/moon.md`
+- `references/planets/mercury.md`
+- `references/planets/venus.md`
+- `references/planets/mars.md`
+- `references/planets/jupiter.md`
+- `references/planets/saturn.md`
+
 ### Reading types
 
 Use the module matching the requested `reading_type` when it exists.
@@ -58,7 +70,7 @@ Planet core modules define baseline function, motivations, topics, and interpret
 - Directory: `references/planets/`
 - Pattern: `references/planets/{planet}.md`
 - Example: `references/planets/mars.md`
-- Planned names: `sun.md`, `moon.md`, `mercury.md`, `venus.md`, `mars.md`, `jupiter.md`, `saturn.md`, `uranus.md`, `neptune.md`, `pluto.md`
+- Planned names: `uranus.md`, `neptune.md`, `pluto.md`
 
 ### Signs
 
