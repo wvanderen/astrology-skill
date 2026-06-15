@@ -5,7 +5,7 @@ description: Retrieval-first astrological interpretation for already-calculated 
 
 # Astrology Skill
 
-Use this skill to interpret astrological data that has already been calculated. Do not calculate charts, houses, dignities, lots, aspects, sect, timing periods, or birth data from scratch unless the user explicitly supplies enough data and asks only for a light inference.
+Use this skill to interpret astrological data that has already been calculated. This skill does not calculate charts, rectify birth times, derive house cusps, determine house systems, compute aspects, assign dignities, calculate lots, infer sect, generate timing factors, or fill in missing birth data.
 
 ## Core Rule
 
@@ -21,7 +21,14 @@ Expect any mix of:
 - `chart_data`: ascendant, MC, sect, house system, placements, houses, aspects, dignities, lots, rulerships, timing factors, and source notes
 - `user_question`: the user's explicit focus
 
-If data is missing, interpret only what is provided. State what cannot be assessed. Do not invent missing placements, birth times, house systems, dignities, aspects, or timing factors.
+If chart data is incomplete, interpret only the factors that are explicitly provided and state which judgments cannot be made from the source data. Do not invent, assume, derive, or "fill in" missing placements, house systems, houses, aspects, dignities, debilities, lots, birth times, sect, rulership conditions, profections, directions, transits, returns, horary significators, electional constraints, or other timing factors.
+
+When a requested reading depends on missing data:
+
+- Ask for the missing chart data if it is essential to the user's question.
+- Offer a narrower reading from the available factors when useful.
+- Label any partial interpretation as provisional.
+- Preserve uncertainty in the final reading with scope language such as "from the supplied placements," "if this aspect is confirmed," or "house-based topics cannot be assessed without houses."
 
 Use `assets/schemas/chart_input_schema.json` as the preferred structured input shape when a user asks how to provide data.
 
@@ -29,7 +36,7 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
 
 1. Parse the supplied chart data and reading request.
 2. Identify the reading type, tradition mode, tone, and explicit user focus.
-3. Build an internal reading plan using `assets/schemas/reading_plan_schema.json`.
+3. Build an internal reading plan using `assets/schemas/reading_plan_schema.json` before drafting the reading. Include the focus, primary factors, resources to load, weighting notes, missing resources, and synthesis warnings.
 4. Select the minimum necessary references:
    - Always load `references/foundations/interpretive_principles.md`.
    - Always load `references/foundations/synthesis_rules.md`.
