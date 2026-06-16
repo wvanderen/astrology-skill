@@ -17,6 +17,10 @@ boundaries, and repair patterns.
 - House overlays: where one person's planets fall in the other person's houses,
   especially angular houses and the 5th, 7th, 8th, and 11th houses when birth
   times are reliable.
+- Nodal contacts when supplied: contacts to the North Node or South Node can
+  describe developmental charge, familiarity, repetition, or a sense of
+  significance, but they do not prove fate, obligation, past-life certainty, or
+  moral requirement.
 - Repeated relational themes across both charts, such as several contacts to the
   same planet, house, axis, modality, element, or relationship significator.
 - Asymmetry between partners: the same contact may feel bonding, activating,
@@ -44,6 +48,9 @@ boundaries, and repair patterns.
 
 ## Inter-chart aspects
 
+- Build the comparison only after naming each person's natal baseline. Keep
+  separate notes for Person A's relationship needs, Person B's relationship
+  needs, and the inter-chart contacts between them.
 - Prioritize close aspects involving the Sun, Moon, Ascendant, Descendant, chart
   ruler, Venus, Mars, Saturn, and relationship house rulers.
 - Conjunctions and oppositions often describe strong mutual activation; squares
@@ -53,6 +60,14 @@ boundaries, and repair patterns.
 - Read the natal condition of each contacted planet before assigning meaning.
   A partner's planet may activate a theme the person already carries; it does
   not create the entire pattern from outside.
+- Interpret aspect direction with care. Person A's Mars aspecting Person B's
+  Moon may emphasize A's assertion/desire meeting B's emotional body, while the
+  reverse contact would have a different symbolic flow even if the aspect type
+  is similar.
+- Separate what the aspect describes from how the people handle it. The chart
+  can show activation, friction, attraction, inhibition, or recognition; lived
+  behavior, communication, consent, and repair show whether that contact becomes
+  supportive, painful, neutral, or inconsistent.
 - Distinguish attraction from compatibility, intensity from care, familiarity
   from safety, and stability from emotional fulfillment.
 - Saturn contacts can correlate with commitment, accountability, inhibition,
@@ -61,6 +76,9 @@ boundaries, and repair patterns.
 - Outer-planet contacts can describe fascination, disruption, idealization,
   surrender, transformation, or collective-scale themes, but they require natal
   and relational context before being treated as central.
+- Avoid assigning blame to one planet person. If a contact is difficult, name
+  the interaction: for example, one person's pace, boundary, desire, or need may
+  press on the other's sensitivity, expectation, fear, or growth edge.
 
 ## House overlays
 
@@ -82,6 +100,29 @@ boundaries, and repair patterns.
   and angular contacts as provisional or omit them. Prefer planet-to-planet
   aspects and whole-chart relational themes.
 
+## Nodal contacts
+
+- Use nodal contacts only when nodes are supplied in the chart data or requested
+  by the user. Do not invent nodal testimony to make a relationship sound more
+  meaningful.
+- Contacts from one person's planets or angles to the other person's North Node
+  can describe a sense of forward pull, growth edge, unfamiliar desire,
+  invitation, or future-oriented development.
+- Contacts to the South Node can describe familiarity, repetition, ease,
+  unfinished material, inherited habits, or patterns that feel known. Do not
+  state past-life claims as fact.
+- Close conjunctions and oppositions to the nodal axis are usually more
+  noticeable than wide or minor contacts. Aspects from luminaries, chart rulers,
+  Venus, Mars, Saturn, or relationship house rulers deserve more attention than
+  isolated contacts from less relevant factors.
+- Interpret nodal contacts through both natal charts. If a nodal contact
+  repeats a person's natal relationship pattern, it may feel especially
+  compelling to that person without requiring the other person to play a fixed
+  role.
+- Keep nodal language non-fatalistic. Say "this may feel significant,"
+  "developmentally charged," or "familiar" rather than "meant to be," "karmic
+  debt," or "impossible to leave."
+
 ## Repeated relational themes
 
 - Repetition increases relevance: multiple contacts to the same planet, axis,
@@ -96,6 +137,14 @@ boundaries, and repair patterns.
   points to what deserves attention, not what must happen.
 - When themes conflict, name the ambivalence directly: for example, "there is
   both strong emotional recognition and a need for clearer boundaries."
+- Separate repeated themes by layer:
+  natal baseline in Person A, natal baseline in Person B, inter-chart aspects,
+  house overlays, and nodal contacts if supplied. A theme is strongest when it
+  appears across more than one layer.
+- Notice whether repetition is mutual or one-sided. If most contacts activate
+  one person's Moon, Venus, 7th ruler, or nodal axis, say that person may feel
+  the relationship more directly in that symbolic area, while avoiding claims
+  about who cares more.
 
 ## Asymmetry between partners
 
@@ -109,6 +158,10 @@ boundaries, and repair patterns.
 - Check whether synastry repeats one person's natal pattern more strongly than
   the other's. The relationship may be more central to one person's existing
   developmental themes.
+- When a contact is challenging, distribute responsibility across the dynamic
+  rather than blaming one person. Describe the pattern as a shared field that
+  each person can meet with different levels of awareness, consent, skill, and
+  boundary-setting.
 - Use asymmetry to support empathy and boundaries: "this may land differently
   for each of you" is usually more useful than "you are compatible" or "you are
   incompatible."
@@ -148,12 +201,18 @@ boundaries, and repair patterns.
 - Retrieve each person's relevant natal factors before inter-chart synthesis:
   7th house, 7th ruler, Venus, Mars, Moon, chart ruler, luminaries, angular
   planets, and repeated natal aspects tied to relationships.
+- Keep the output structure clear: Person A natal baseline, Person B natal
+  baseline, inter-chart dynamics, repeated themes, data limits, and reflective
+  guidance.
 - For synastry contacts, prioritize exact inter-chart aspects involving
   luminaries, personal planets, angles, chart rulers, Venus, Mars, Saturn, and
   relationship house rulers.
 - For house overlays, retrieve the relevant house modules and natal planet
   modules only when the receiving person's birth time is reliable enough to use
   houses.
+- For nodal contacts, retrieve planet, angle, or house-ruler modules for the
+  contacting factor and keep interpretation proportional to orb, repetition,
+  and natal relevance.
 - When exact modules are missing, fall back to broader planet, house, aspect
   type, tradition, ethics, and synthesis resources rather than inventing missing
   compatibility rules.
