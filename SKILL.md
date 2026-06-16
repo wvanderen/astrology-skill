@@ -50,7 +50,9 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
 5. Rank the chart factors by relevance and weight.
 6. Synthesize across factors instead of listing cookbook meanings.
 7. Answer in the requested tone while preserving uncertainty and scope limits.
-8. Before sending the answer, run the internal reading self-check.
+8. Before sending the answer, run the internal reading self-check. For
+   validation or revision passes, load `references/foundations/anti_patterns.md`
+   and check for common synthesis drift.
 
 The reading plan is normally internal. Show it only if the user asks for method, traceability, or a reading outline.
 

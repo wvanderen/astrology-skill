@@ -11,11 +11,13 @@ Use this index to locate bundled interpretation resources and to name new module
 
 ### Foundations
 
-Foundational references are always loaded before synthesis.
+Foundational references support synthesis, guardrails, and revision passes.
 
 - `references/foundations/interpretive_principles.md`
 - `references/foundations/synthesis_rules.md`
 - `references/foundations/ethics_and_scope.md`
+- `references/foundations/anti_patterns.md` for validation or revision passes
+  when a reading sounds generic, list-like, overconfident, or unsupported.
 
 ### Traditions
 
