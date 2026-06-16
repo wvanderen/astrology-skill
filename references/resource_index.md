@@ -162,6 +162,20 @@ for classical or blended readings that need broader doctrine.
 - `references/placements/planet_condition/cazimi.md`
 - `references/placements/planet_condition/under_beams.md`
 
+### Rulerships
+
+Use these when a planet is explicitly supplied as ruler of a house. Retrieve the
+planet module, then use the section for the ruled house. Combine with the
+ruler's actual sign, house placement, dignity, sect, reception, and aspects.
+
+- `references/rulerships/sun.md`
+- `references/rulerships/moon.md`
+- `references/rulerships/mercury.md`
+- `references/rulerships/venus.md`
+- `references/rulerships/mars.md`
+- `references/rulerships/jupiter.md`
+- `references/rulerships/saturn.md`
+
 ### Templates
 
 Use templates when creating new composable interpretation modules.
