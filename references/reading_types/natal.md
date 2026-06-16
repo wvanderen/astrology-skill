@@ -16,7 +16,9 @@ Natal readings synthesize enduring chart patterns around life topics, temperamen
 - If birth time is missing, approximate, rounded, or uncertain, prioritize
   planets by sign, aspects, dignity, sect if known, and whole-chart patterns;
   avoid confident claims about Ascendant, MC, houses, house rulers, angularity,
-  or topics that depend on exact angles.
+  or topics that depend on exact angles. Retrieve
+  `references/foundations/birth_time_uncertainty.md` for standard scope
+  language.
 - If birth time confidence is low, label house-based interpretation as
   provisional and prefer "may be emphasized if the house placement is accurate"
   over firm topic claims.
@@ -76,4 +78,5 @@ ancestry, dwelling, privacy, relocation, or emotional grounding.
   clearly tied to the question.
 - For birth-time-sensitive questions, first check whether Ascendant, MC, house
   cusps, and house placements are reliable. If not, retrieve non-house-dependent
-  resources first and state the confidence limit in the reading plan.
+  resources and `references/foundations/birth_time_uncertainty.md` first, then
+  state the confidence limit in the reading plan.
