@@ -50,6 +50,7 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
 5. Rank the chart factors by relevance and weight.
 6. Synthesize across factors instead of listing cookbook meanings.
 7. Answer in the requested tone while preserving uncertainty and scope limits.
+8. Before sending the answer, run the internal reading self-check.
 
 The reading plan is normally internal. Show it only if the user asks for method, traceability, or a reading outline.
 
@@ -95,3 +96,21 @@ Classical astrology describes condition, function, concrete topics, timing, and 
 - Do not tell users to make medical, legal, financial, or major relationship decisions solely from astrology.
 - Avoid fear-based language in horary, electional, transit, or timing work.
 - Name uncertainty when chart data is incomplete or source quality is unclear.
+
+## Reading Self-Check
+
+Run this checklist internally before every generated reading. Do not show the
+checklist or private reasoning unless the user asks for method or traceability.
+
+- Resource grounding: Did the reading use the minimum relevant bundled
+  references, and did it avoid unsupported claims when an exact resource was
+  missing?
+- Factor weighting: Does the main message follow the user's question, reading
+  type, angles/rulers, exact aspects, condition, and repeated testimony rather
+  than a striking but secondary symbol?
+- Uncertainty: Are missing data, wide or unconfirmed factors, mixed testimony,
+  and confidence limits named in proportion to their importance?
+- Scope guardrails: Does the reading avoid fatalism, diagnosis, certainty about
+  external events, and astrology-only advice for high-stakes choices?
+- Synthesis quality: Does the answer combine factors into a coherent judgment
+  with qualifications, instead of giving a disconnected placement list?
