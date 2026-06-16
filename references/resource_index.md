@@ -167,6 +167,7 @@ for classical or blended readings that need broader doctrine.
 Use templates when creating new composable interpretation modules.
 
 - `references/templates/interpretation_module_template.md`
+- `references/templates/rulership_module_template.md`
 
 ## Planned modules
 
@@ -213,9 +214,10 @@ Use for exact planet-house combinations.
 Use for house ruler placement and rulership-based synthesis.
 
 - Directory: `references/placements/planet_as_house_ruler/`
-- Pattern: `references/placements/planet_as_house_ruler/{source_house}_ruler_in_{placement_house}.md`
-- Example: `references/placements/planet_as_house_ruler/7th_ruler_in_10th.md`
-- Naming: ordinal source house, `_ruler_in_`, ordinal placement house.
+- Pattern: `references/placements/planet_as_house_ruler/ruler_of_{source_house}_in_{target_house}.md`
+- Example: `references/placements/planet_as_house_ruler/ruler_of_7th_in_10th.md`
+- Naming: `ruler_of_`, ordinal source house, `_in_`, ordinal target house.
+- Template: `references/templates/rulership_module_template.md`
 
 ### Conditions
 
