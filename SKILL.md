@@ -61,7 +61,7 @@ Prefer exact, composable modules over broad summaries:
 - Sign emphasis: `references/signs/{sign}.md`
 - Planet in sign: `references/placements/planet_in_sign/{planet}_{sign}.md`
 - Planet in house: `references/placements/planet_in_house/{planet}_{house}.md`
-- Ruler placement: `references/placements/planet_as_house_ruler/ruler_of_{source_house}_in_{target_house}.md`
+- Planet as house ruler: `references/rulerships/{planet}.md`
 - Planet condition: `references/placements/planet_condition/{condition}.md`
 - Aspect type: `references/aspects/{aspect_type}.md`
 - Planet pair aspect: `references/aspects/by_planet_pair/{planet1}_{aspect}_{planet2}.md`

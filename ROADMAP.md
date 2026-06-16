@@ -373,23 +373,26 @@ Acceptance criteria:
 
 #### TD P3-E2-TD1: Define rulership module template
 
-Deliverable: Add a template for house-ruler placement modules.
+Deliverable: Add a template for planet-led house-rulership modules.
 
 Acceptance criteria:
 
-- Template supports `ruler_of_{source_house}_in_{target_house}` modules.
-- Template distinguishes the topic being carried from the arena where it manifests.
-- Template includes dignity, sect, and aspect modifiers.
+- Template supports one document per ruling planet under `references/rulerships/{planet}.md`.
+- Template includes sections such as "Mars ruling the 1st house" that describe how the planet administers each ruled house's topics.
+- Template distinguishes the ruled house topic from the ruler's actual house placement.
+- Template includes dignity, sect, reception, placement, and aspect modifiers.
+- Template warns against confusing chart-specific house rulers with natural house rulers.
 
 #### TD P3-E2-TD2: Add common rulership modules
 
-Deliverable: Create an initial batch of house-ruler combinations.
+Deliverable: Create an initial batch of planet-led rulership modules.
 
 Acceptance criteria:
 
-- Include common vocation, relationship, resource, and home combinations.
-- Use consistent naming under `references/placements/planet_as_house_ruler/`.
-- Each module avoids cookbook certainty and points back to full chart synthesis.
+- Include at least Mars, Venus, Mercury, Moon, Sun, Jupiter, and Saturn.
+- Each module includes house-by-house sections for the houses the planet may rule in the supported rulership scheme.
+- Use consistent naming under `references/rulerships/`.
+- Each module avoids cookbook certainty and points back to full chart synthesis, especially the ruler's sign, house placement, condition, and aspects.
 
 ### Epic P3-E3: Quality Checks
 

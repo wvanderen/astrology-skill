@@ -211,13 +211,19 @@ Use for exact planet-house combinations.
 
 ### Rulerships
 
-Use for house ruler placement and rulership-based synthesis.
+Use for house ruler and rulership-based synthesis. Rulership modules are
+planet-led: retrieve the module for the planet that rules the relevant house,
+then read that planet's section for the specific house being ruled. Combine it
+with the ruler's actual sign, house placement, dignity, sect, reception, and
+aspects from separate modules.
 
-- Directory: `references/placements/planet_as_house_ruler/`
-- Pattern: `references/placements/planet_as_house_ruler/ruler_of_{source_house}_in_{target_house}.md`
-- Example: `references/placements/planet_as_house_ruler/ruler_of_7th_in_10th.md`
-- Naming: `ruler_of_`, ordinal source house, `_in_`, ordinal target house.
+- Directory: `references/rulerships/`
+- Pattern: `references/rulerships/{planet}.md`
+- Example: `references/rulerships/mars.md`
+- Naming: lowercase planet name.
 - Template: `references/templates/rulership_module_template.md`
+- Do not create `ruler_of_{source_house}_in_{target_house}` files. Those modules
+  are too narrow for this skill's compositional model.
 
 ### Conditions
 
