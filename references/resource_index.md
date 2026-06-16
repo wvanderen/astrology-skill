@@ -92,6 +92,22 @@ Use the module matching the requested `reading_type` when it exists.
 - `references/reading_types/synastry.md`
 - `references/reading_types/transit.md`
 
+### Synthesis patterns
+
+Use synthesis patterns to combine repeated chart factors around the user's
+topic before drafting the final interpretation.
+
+- `references/synthesis_patterns/conflict.md`
+- `references/synthesis_patterns/creative_work.md`
+- `references/synthesis_patterns/health_routines.md`
+- `references/synthesis_patterns/home.md`
+- `references/synthesis_patterns/relationships.md`
+- `references/synthesis_patterns/resources.md`
+- `references/synthesis_patterns/spirituality.md`
+- `references/synthesis_patterns/strengths.md`
+- `references/synthesis_patterns/timing.md`
+- `references/synthesis_patterns/vocation.md`
+
 ### Aspects
 
 Aspect type modules describe the aspect's general interpretive mechanics.
