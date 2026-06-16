@@ -18,6 +18,9 @@ Foundational references support synthesis, guardrails, and revision passes.
 - `references/foundations/ethics_and_scope.md`
 - `references/foundations/birth_time_uncertainty.md` for missing, rounded,
   approximate, rectified, or low-confidence birth times.
+- `references/foundations/aspect_precision.md` for supplied aspects with
+  missing orbs, unclear exactness, unknown applying/separating status, or other
+  partial precision.
 - `references/foundations/anti_patterns.md` for validation or revision passes
   when a reading sounds generic, list-like, overconfident, or unsupported.
 

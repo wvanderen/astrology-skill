@@ -41,6 +41,9 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
    - Always load `references/foundations/interpretive_principles.md`.
    - Always load `references/foundations/synthesis_rules.md`.
    - Always load `references/foundations/ethics_and_scope.md`.
+   - Load `references/foundations/aspect_precision.md` when aspect data is
+     approximate, missing orbs, missing applying/separating status, marked
+     exact without degrees, or otherwise unclear in precision.
    - Load `references/reading_types/{reading_type}.md` when it exists.
    - Load tradition-specific references when the user requests classical, modern, or blended interpretation.
    - For classical or blended interpretation, prefer focused modules such as `references/traditions/classical/dignities.md`, `references/traditions/classical/sect.md`, and `references/traditions/classical/bonification_maltreatment.md` when they match supplied factors; use `references/traditions/classical.md` as the broad fallback.
@@ -111,7 +114,8 @@ checklist or private reasoning unless the user asks for method or traceability.
   type, angles/rulers, exact aspects, condition, and repeated testimony rather
   than a striking but secondary symbol?
 - Uncertainty: Are missing data, wide or unconfirmed factors, mixed testimony,
-  and confidence limits named in proportion to their importance?
+  unknown orbs, missing applying/separating status, and confidence limits named
+  in proportion to their importance?
 - Scope guardrails: Does the reading avoid fatalism, diagnosis, certainty about
   external events, and astrology-only advice for high-stakes choices?
 - Synthesis quality: Does the answer combine factors into a coherent judgment

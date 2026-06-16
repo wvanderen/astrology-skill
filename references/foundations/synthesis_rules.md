@@ -17,6 +17,13 @@ Give interpretive weight in this order:
 
 The hierarchy is not a scoring system. A lower-ranked factor can sharpen, condition, or time a higher-ranked factor, but it should not overturn the main testimony unless multiple strong indicators repeat the same correction.
 
+When aspect precision is incomplete, keep exactness and application claims
+within the supplied data. A listed aspect without an orb may be interpreted as a
+supplied contact, but it should not be called close, exact, wide, applying, or
+separating unless the source says so. Load
+`references/foundations/aspect_precision.md` when missing precision affects
+weighting or timing confidence.
+
 ## Identify primary factors
 
 Primary factors are the chart factors that most directly answer the request. Choose them from the user's focus, reading type, relevant houses, their rulers, angular planets, exact aspects, and timing triggers when supplied.
