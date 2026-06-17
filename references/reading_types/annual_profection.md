@@ -33,6 +33,9 @@ annual profections show which natal topics are activated for the year.
 
 - The profected house names the year's primary topical field. Interpret its
   topics as activated, not automatically improved or harmed.
+- Treat the profected house as the reading's headline before describing any
+  transits. The year is first about the natal topics of that house; timing
+  triggers describe how and when those topics are stirred.
 - Begin with the house topics themselves, then refine by planets in that natal
   house, the condition of those planets, and their relationship to the user's
   question.
@@ -56,6 +59,10 @@ annual profections show which natal topics are activated for the year.
 - The Lord of the Year is the primary annual ruler. Its natal condition shows
   the quality, resources, constraints, and style through which the activated
   house is expressed.
+- After naming the profected house, make the Lord of the Year the next
+  priority. Do not let an unrelated dramatic transit, solar return placement,
+  or general planet-year keyword outrank the ruler that carries the profected
+  house.
 - Read the Lord of the Year's natal house as a secondary topic field for the
   year. For example, a 10th-house profection ruled by a planet in the 2nd can
   link career visibility with income, values, or resource management.
@@ -78,6 +85,20 @@ annual profections show which natal topics are activated for the year.
 - Synthesize in this order: profected house topics, planets in that house, Lord
   of the Year natal condition, the Lord's natal house topics, aspects involving
   the Lord, and then current transits to or from the Lord.
+- Translate the Lord of the Year's natal condition into the annual storyline:
+  its sign and house describe where and how the year operates, its dignity or
+  debility describes ease, leverage, or friction, its sect condition describes
+  whether its significations tend to cooperate with the chart's baseline, and
+  its close aspects describe allies, pressures, or competing topics that travel
+  with the year.
+- When the Lord is natally strong but currently under hard transit, frame the
+  year as an activated capacity meeting temporary pressure, testing, or
+  responsibility. When the Lord is natally stressed but currently supported,
+  frame the year as a chance to work with difficult natal material through
+  help, repair, timing, or clearer strategy.
+- Connect the Lord's natal house back to the profected house with plain topic
+  language. For example, a 7th-house profection ruled by a Lord in the 10th may
+  connect partnership themes with public role, career, visibility, or authority.
 - Compare the profected house to the natal house relevant to the user's
   question. If they match or strongly connect by ruler, aspect, or repeated
   testimony, the reading can make that topic more central.
@@ -98,6 +119,18 @@ annual profections show which natal topics are activated for the year.
   are part of the reading tradition.
 - Transits to the Lord of the Year often describe when the year's themes become
   more active, pressured, visible, clarified, or supported.
+- Read transits to the Lord of the Year as modifiers of the annual ruler, not
+  replacements for it. They can heat, cool, delay, assist, intensify, reveal,
+  or time the Lord's natal topics, but they should remain anchored to the
+  profected house and the Lord's natal condition.
+- Benefic or supportive contacts to the Lord may describe help, openings,
+  protection, repair, or increased coherence around the annual themes. Hard or
+  malefic contacts may describe labor, limits, conflict, urgency, separation,
+  inflammation, or consequences, especially when they repeat natal stress.
+- A transit that repeats the Lord's natal condition deserves extra weight. For
+  example, transiting Saturn contacting a natally Saturn-conditioned Lord may
+  emphasize responsibility and consolidation; Jupiter contacting a Lord with
+  natal benefic support may emphasize growth, assistance, or opportunity.
 - Transiting contacts to the natal Lord of the Year usually matter more than
   unrelated transits that do not touch the profection structure.
 - Transits by the Lord of the Year can act as annual triggers, especially when
