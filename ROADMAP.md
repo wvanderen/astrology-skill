@@ -508,6 +508,28 @@ Acceptance criteria:
 
 ## Phase 5: Validation and Forward Testing
 
+Local validation command:
+
+```bash
+python3 quick_validate.py && python3 - <<'PY'
+import importlib.util
+import json
+from pathlib import Path
+
+for path in Path("assets/schemas").glob("*.json"):
+    json.loads(path.read_text(encoding="utf-8"))
+print("PASS: JSON schemas parse")
+
+if importlib.util.find_spec("yaml") is None:
+    print("SKIP: PyYAML unavailable; agents/openai.yaml not parsed")
+else:
+    import yaml
+
+    yaml.safe_load(Path("agents/openai.yaml").read_text(encoding="utf-8"))
+    print("PASS: agents/openai.yaml parses")
+PY
+```
+
 ### Epic P5-E1: Structural Validation
 
 #### TD P5-E1-TD1: Standardize validation command
