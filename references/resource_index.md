@@ -7,6 +7,31 @@ Use this index to locate bundled interpretation resources and to name new module
 - Implemented: file or directory exists in this repository.
 - Planned: supported by the skill contract or roadmap, but not yet present.
 
+## Maintenance decision
+
+Do not add a generated index helper yet. The repository currently has a
+moderate reference set, and this index is intentionally more than a deterministic
+file listing: it preserves retrieval guidance, planned categories, examples,
+and category-specific naming notes that would need extra metadata to regenerate
+without losing context.
+
+Maintain this file manually until the maintenance burden clearly exceeds the
+cost of generator upkeep. Reconsider a deterministic, tested generator if the
+reference set grows enough that routine additions regularly leave the index
+stale, or if future validation work already introduces structured metadata for
+resource categories.
+
+Manual maintenance rules:
+
+- When adding, moving, or deleting a reference module, update the matching
+  implemented list and planned-module section in the same change.
+- Keep implemented entries as explicit paths so retrieval remains easy to audit.
+- Preserve category guidance, examples, naming patterns, and fallback notes by
+  editing them directly rather than replacing the index with a raw file tree.
+- Move files from planned to implemented as soon as they exist.
+- Use `find references -type f -name '*.md' | sort` or `rg --files references`
+  as a quick drift check before review.
+
 ## Implemented modules
 
 ### Foundations
@@ -302,7 +327,8 @@ Reading type modules define retrieval priorities, uncertainty rules, and synthes
 - Implemented: `references/reading_types/synastry.md`
 - Implemented focused examples: `references/reading_types/synastry_examples.md`
 - Implemented: `references/reading_types/transit.md`
-- Planned names: `electional.md`
+- Implemented: `references/reading_types/electional.md`
+- Implemented focused examples: `references/reading_types/transit_examples.md`
 - Naming: lowercase snake_case reading type.
 
 ### Synthesis patterns
