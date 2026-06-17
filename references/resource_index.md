@@ -97,6 +97,8 @@ Use the module matching the requested `reading_type` when it exists.
 - `references/reading_types/horary.md`
 - `references/reading_types/solar_return.md`
 - `references/reading_types/synastry.md`
+- `references/reading_types/synastry_examples.md` for Moon-Saturn, Venus-Mars,
+  Sun-Moon, and Mars-Mercury synastry synthesis language.
 - `references/reading_types/transit.md`
 
 ### Synthesis patterns
@@ -295,6 +297,7 @@ Reading type modules define retrieval priorities, uncertainty rules, and synthes
 - Implemented: `references/reading_types/horary.md`
 - Implemented: `references/reading_types/solar_return.md`
 - Implemented: `references/reading_types/synastry.md`
+- Implemented focused examples: `references/reading_types/synastry_examples.md`
 - Implemented: `references/reading_types/transit.md`
 - Planned names: `electional.md`
 - Naming: lowercase snake_case reading type.

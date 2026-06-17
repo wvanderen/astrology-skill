@@ -216,6 +216,9 @@ boundaries, and repair patterns.
 - When exact modules are missing, fall back to broader planet, house, aspect
   type, tradition, ethics, and synthesis resources rather than inventing missing
   compatibility rules.
+- Retrieve `references/reading_types/synastry_examples.md` when the supplied
+  contacts include Moon-Saturn, Venus-Mars, Sun-Moon, or Mars-Mercury and use
+  its language as examples rather than verdicts.
 - For questions about whether to pursue, trust, leave, or escalate a
   relationship, retrieve ethics and scope first, then frame the reading around
   reflection, boundaries, and practical discernment.
