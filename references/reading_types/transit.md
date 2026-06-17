@@ -29,20 +29,39 @@ focus.
 - First establish what the natal chart can reasonably support. A transit can
   awaken, stress, clarify, delay, accelerate, or externalize a natal theme, but
   it should not be read as creating a life topic from nothing.
+- Keep the natal configuration and the active transit in separate steps before
+  synthesizing them. Describe the natal factor as the enduring pattern,
+  capacity, vulnerability, or topic structure; describe the transit as the
+  temporary pressure, opportunity, emphasis, or timing trigger moving across
+  that natal material.
 - Treat the natal house and ruler as the topic container, then read the transit
   as the timing trigger. For example, a transit to the 10th ruler is more about
   career, visibility, authority, or direction when the natal chart already
   links that ruler to those topics.
+- Do not let the transiting planet overwrite the natal planet. A Saturn transit
+  to the natal Moon, for example, should first read the natal Moon's sign,
+  house, condition, aspects, sect relevance, and topics; Saturn then times a
+  period of boundary, maturation, responsibility, cooling, delay, or structural
+  pressure around those Moon themes.
 - Weigh the natal condition of the contacted planet. Transits to well-supported
   natal factors may describe opportunity, integration, or increased capacity;
   transits to stressed or conflicted factors may describe pressure, repair,
   choice points, or the need for support.
+- If the active transit contacts a natal configuration involving several
+  planets, rulers, houses, or angles, identify which natal factor is being
+  contacted directly and which factors are being activated by association.
+  Avoid treating every planet in a natal pattern as equally activated unless
+  the transit contacts each one or repeated testimony supports the link.
 - If the natal data is incomplete, state which timing claims are limited. Do
   not make firm house, angle, or angularity claims when the birth time is
   missing, approximate, rounded, or uncertain.
 
 ## Timing priorities
 
+- Start with the user's question and the natal topic, then rank the active
+  transit testimony. A transit that exactly contacts the relevant house ruler,
+  angle, luminary, chart ruler, or time lord usually outranks a vivid but
+  unrelated contact.
 - Prioritize transiting Saturn, Uranus, Neptune, and Pluto for longer arcs,
   structural change, maturation, disruption, dissolution, renewal, and
   sustained developmental pressure.
@@ -60,10 +79,45 @@ focus.
   intensify the symbolism.
 - Exact aspects outrank loose contacts. When orb data is supplied, name whether
   a transit is applying, exact, separating, repeated by retrograde motion, or
-  part of a longer sequence.
+  part of a longer sequence. Exactness increases timing confidence, but it does
+  not guarantee a concrete event.
+- Stations can outweigh ordinary exact contacts when the station degree closely
+  touches a natal planet, angle, chart ruler, luminary, or topic ruler, because
+  the transiting planet lingers and repeats its symbolism. Treat the station as
+  an intensifier and time-window extender, not as proof that one specific event
+  must occur.
+- Angularity raises visibility and concreteness when birth time is reliable.
+  Transits to the Ascendant, Descendant, MC, IC, planets in angular houses, or
+  angular rulers are more likely to be noticeable in circumstances, body,
+  relationships, home, vocation, or public/private life than the same transit
+  occurring only by sign or to an unanchored point.
 - Repetition increases relevance: the same natal factor activated by an outer
   planet, lunation, station, angular transit, and exact aspect is more important
   than an isolated minor contact.
+- Repeated timing testimony can come from multiple hits by retrograde motion,
+  an outer-planet transit echoed by Mars or a lunation, a station on the same
+  degree, a transit to the ruler of the activated house, or a separate timing
+  technique pointing to the same natal topic. When these repeat, state that the
+  period is more emphasized; do not state that the outcome is certain.
+
+## Transit window language
+
+- Use windows rather than promises. Name the broad active period, the likely
+  peak near exactness or station, and the integration period after separation
+  only when the source supplies enough dates, orbs, and motion data.
+- If a transit makes multiple passes, treat the first pass as an introduction
+  or opening contact, the retrograde pass as review, complication, return, or
+  deepening, and the final direct pass as resolution, implementation, or clearer
+  expression only when those passes are supplied. Do not invent pass dates.
+- For slow planets, the window may include months around exactness, especially
+  when the planet stations near the natal degree. For fast planets, the window
+  is shorter and works best as an activator of a larger pattern.
+- When the user supplies only a date range without exact degrees, describe
+  general emphasis during that range and identify what additional data would be
+  needed to locate the peak.
+- When the user asks whether something will happen, translate the transit into
+  conditions, themes, decisions, pressures, openings, and likely periods of
+  attention. Avoid converting the timing window into a guarantee.
 
 ## Data quality limits
 
