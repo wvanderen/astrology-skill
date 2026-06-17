@@ -105,6 +105,14 @@ For stable non-house factors:
 > depend on exact birth time: signs, stable aspects, planetary condition when
 > supplied, and repeated themes among the planets.
 
+For vocation without houses or angles:
+
+> Without a reliable birth time, I would not use the MC, 10th house, 2nd house,
+> 6th house, chart ruler, angular planets, or house rulers as vocational
+> evidence. A cautious reading can still describe work style and sustainability
+> themes from stable planets by sign, supplied dignity, close aspects, and
+> repeated whole-chart patterns.
+
 For Moon uncertainty:
 
 > The Moon moves quickly, so if the time range could change its degree, sign,

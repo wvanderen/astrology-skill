@@ -44,6 +44,10 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
    - Load `references/foundations/aspect_precision.md` when aspect data is
      approximate, missing orbs, missing applying/separating status, marked
      exact without degrees, or otherwise unclear in precision.
+   - Load `references/foundations/birth_time_uncertainty.md` when birth time
+     confidence is unknown, approximate, rounded, rectified, low, or otherwise
+     unclear, especially for vocation, relationship, home, transit, or house-
+     dependent questions.
    - Load `references/reading_types/{reading_type}.md` when it exists.
    - For transit readings, load `references/reading_types/transit_examples.md`
      when the supplied timing factors include Saturn to the Moon, Jupiter to
@@ -93,6 +97,28 @@ Give strongest weight to:
 8. Outer planets, asteroids, minor points, and speculative factors only when requested or clearly relevant.
 
 Classical astrology describes condition, function, concrete topics, timing, and external circumstances. Modern astrology describes inner experience, developmental themes, archetypal meaning, and psychological integration. In blended mode, let classical condition shape concrete judgment and modern symbolism shape experiential language.
+
+When several user-supplied options are being compared, rank them only from the
+chart factors actually provided. Identify the strongest testimony, secondary
+support, and practical cautions; avoid presenting the ranking as a directive to
+make employment, financial, medical, legal, or relationship decisions from
+astrology alone.
+
+For incomplete-data readings, make the data limit part of the weighting rather
+than a footnote. State what cannot be judged before leaning on lower-confidence
+or non-house factors, then synthesize from the stable supplied factors only.
+
+For transit readings, do not derive missing timing data, station dates,
+retrograde passes, or house/angle contacts. You may describe the symbolism of a
+supplied transiting planet's sign and aspect, but only use dignity, debility, or
+planetary condition when the source explicitly supplies it or the reading
+clearly labels it as general sign symbolism rather than calculated condition.
+
+For synastry readings, preserve the relationship context supplied by the user.
+Do not default Venus-Mars, Sun-Moon, 5th-house, 7th-house, or 8th-house
+contacts to romantic or sexual language when the user frames the relationship
+as friendship, family, creative collaboration, professional partnership, or
+another non-romantic bond.
 
 ## Output Guardrails
 

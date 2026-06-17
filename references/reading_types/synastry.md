@@ -45,6 +45,11 @@ boundaries, and repair patterns.
 - For third-party questions, keep the reading focused on the user's reflections,
   observable dynamics, and boundaries rather than private claims about the other
   person's inner life.
+- Preserve the relationship container named by the user. If the question is
+  about creative collaboration, professional partnership, friendship, family, or
+  another non-romantic bond, translate attraction-coded contacts into the
+  relevant domain: aesthetic charge, pace, motivation, feedback, trust,
+  authorship, resources, boundaries, or shared aims.
 
 ## Inter-chart aspects
 
@@ -192,6 +197,9 @@ boundaries, and repair patterns.
 - If the relationship type is unclear, avoid assuming romance. Synastry can
   apply to friends, family, creative collaborators, colleagues, clients, and
   other one-to-one bonds.
+- If full house overlays are not supplied, do not infer them from natal houses.
+  Use the houses attached to each person's own placements only as natal context
+  and state that overlay analysis is unavailable.
 
 ## Retrieval guidance
 
@@ -219,6 +227,10 @@ boundaries, and repair patterns.
 - Retrieve `references/reading_types/synastry_examples.md` when the supplied
   contacts include Moon-Saturn, Venus-Mars, Sun-Moon, or Mars-Mercury and use
   its language as examples rather than verdicts.
+- For non-romantic or professional synastry, retrieve topic synthesis resources
+  that match the user's container, such as creative work, resources,
+  relationships, conflict, or strengths, before defaulting to romance-coded
+  examples.
 - For questions about whether to pursue, trust, leave, or escalate a
   relationship, retrieve ethics and scope first, then frame the reading around
   reflection, boundaries, and practical discernment.

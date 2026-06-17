@@ -55,6 +55,10 @@ focus.
 - If the natal data is incomplete, state which timing claims are limited. Do
   not make firm house, angle, or angularity claims when the birth time is
   missing, approximate, rounded, or uncertain.
+- When the source supplies a transiting planet's sign but not dignity,
+  condition, station history, retrograde passes, or full timing sequence, keep
+  those distinctions separate. Use sign symbolism if relevant, but do not imply
+  a calculated dignity or multi-pass storyline unless the source provides it.
 
 ## Timing priorities
 
@@ -166,6 +170,10 @@ focus.
   triggers to the same natal planet, house, axis, or ruler.
 - When exact transit modules are missing, fall back to the broader transiting
   planet, natal planet, aspect type, house, tradition, and synthesis resources.
+- For a transit to a natal planet that already has a natal aspect with the
+  same planet, retrieve both the transit example or aspect resources and the
+  natal aspect resources. Weight the direct current transit first, then the
+  natal aspect as the pattern being reactivated.
 - For short-term date questions, retrieve the larger active transit pattern
   first, then use inner-planet or lunar contacts as activators only when they
   connect to that larger pattern or the user's stated topic.

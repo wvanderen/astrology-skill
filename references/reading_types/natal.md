@@ -43,6 +43,13 @@ Sun, Saturn, 2nd and 6th house links, angularity, dignity and reception of work
 rulers, and repeated testimony about work, skill, authority, service, reputation,
 or visibility.
 
+For vocation without a reliable birth time, do not substitute sign-based
+interpretation for the missing MC, 10th house, 2nd house, 6th house, chart
+ruler, or angular testimony. Name those unavailable factors first, then use
+stable non-house factors such as Sun, Mercury, Saturn, Jupiter, Venus, Mars,
+supplied dignity, close interplanetary aspects, and repeated sign or modality
+themes as provisional vocational style rather than concrete career placement.
+
 For relationships, prioritize the 7th house, 7th ruler, Venus, Mars, Moon,
 relevant aspects to relationship significators, reception between rulers, and
 repeated testimony about attachment, conflict, commitment, desire, repair,
