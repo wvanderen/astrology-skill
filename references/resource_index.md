@@ -100,6 +100,9 @@ Use the module matching the requested `reading_type` when it exists.
 - `references/reading_types/synastry_examples.md` for Moon-Saturn, Venus-Mars,
   Sun-Moon, and Mars-Mercury synastry synthesis language.
 - `references/reading_types/transit.md`
+- `references/reading_types/transit_examples.md` for Saturn-to-Moon,
+  Jupiter-to-Sun, Mars-to-Ascendant, and Pluto-to-angle transit synthesis
+  language.
 
 ### Synthesis patterns
 

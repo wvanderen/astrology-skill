@@ -45,6 +45,9 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
      approximate, missing orbs, missing applying/separating status, marked
      exact without degrees, or otherwise unclear in precision.
    - Load `references/reading_types/{reading_type}.md` when it exists.
+   - For transit readings, load `references/reading_types/transit_examples.md`
+     when the supplied timing factors include Saturn to the Moon, Jupiter to
+     the Sun, Mars to the Ascendant, or Pluto to an angle.
    - Load tradition-specific references when the user requests classical, modern, or blended interpretation.
    - For classical or blended interpretation, prefer focused modules such as `references/traditions/classical/dignities.md`, `references/traditions/classical/sect.md`, and `references/traditions/classical/bonification_maltreatment.md` when they match supplied factors; use `references/traditions/classical.md` as the broad fallback.
    - For modern or blended interpretation, prefer focused modules such as `references/traditions/modern/psychological_framing.md`, `references/traditions/modern/outer_planets.md`, and `references/traditions/modern/archetypal_language.md` when they match supplied factors, tone, or the user's question; use `references/traditions/modern.md` as the broad fallback.

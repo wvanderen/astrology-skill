@@ -155,6 +155,9 @@ focus.
 - Always retrieve this transit module for `reading_type: transit`, then retrieve
   foundations, the requested tradition module, the natal module, and natal
   resources for the contacted planets, houses, rulers, and aspects.
+- Retrieve `references/reading_types/transit_examples.md` when the supplied
+  timing factors include Saturn to the Moon, Jupiter to the Sun, Mars to the
+  Ascendant, or Pluto to an angle.
 - Retrieve natal topic factors before transit factors: the relevant house,
   house ruler, planets in the house, chart ruler, luminaries, angular planets,
   and exact natal aspects tied to the user's question.
