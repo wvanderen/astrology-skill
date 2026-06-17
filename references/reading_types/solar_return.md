@@ -33,6 +33,9 @@ context.
 
 - Read solar return factors as year-specific emphasis, not as a permanent
   rewrite of natal character.
+- Never treat the solar return chart as standalone fate. Anchor every major
+  solar return claim in natal promise, the user's lived context, repeated
+  testimony, or a clearly stated confidence limit.
 - The solar return Ascendant describes the tone, posture, visibility, and
   developmental entry point for the return year. It should not replace the
   natal Ascendant as the user's baseline identity pattern.
@@ -47,6 +50,30 @@ context.
 - When solar return symbolism conflicts with natal symbolism, preserve the
   natal baseline and describe the return chart as a temporary season of
   development, pressure, practice, opportunity, or attention.
+
+## Synthesis order
+
+1. Start with the natal baseline for the user's question: relevant natal
+   houses, rulers, planets, angularity, luminaries, chart ruler, and repeated
+   natal testimony.
+2. Read the solar return Ascendant and chart ruler next. The return chart
+   ruler is the year's operating planet: assess its house, sign, condition,
+   angularity, aspects, and contacts to natal planets or angles before moving
+   to less central return placements.
+3. Read the solar return Sun and Moon as annual vitality and emotional pacing.
+   Prioritize their houses, aspects, angularity, dignity or debility when used,
+   and contacts to natal luminaries, the natal chart ruler, or the topic ruler.
+4. Bring in angular solar return planets, especially those close to the
+   Ascendant, Descendant, MC, or IC. Angular planets can dominate the year's
+   foreground, but they need natal connection or repeated testimony before
+   becoming the main storyline.
+5. Rank natal contacts above isolated solar return symbolism. Close contacts
+   from return planets or return angles to natal angles, luminaries, chart
+   ruler, time lord, or topic ruler are usually more important than a vivid
+   return placement with no natal anchor.
+6. Synthesize by repetition: the strongest annual theme is the topic repeated
+   by natal promise, return chart ruler, Sun or Moon, angular planets, house
+   emphasis, and natal contacts.
 
 ## Linking return chart to natal chart
 
@@ -80,6 +107,9 @@ context.
 - If the user supplies both natal-location and relocated solar return charts,
   compare stable themes first, then treat differences in Ascendant, houses,
   angles, angularity, and house rulers as location-sensitive.
+- Relocated solar return houses and angles are interpretive variables, not
+  certainties about outcome. Present them as possible shifts in emphasis unless
+  the return location is known and the chart data clearly supports them.
 - If the return location is unspecified, do not assume relocated or
   natal-location calculation. State that angle, house, chart ruler, and
   angular-planet claims are provisional because solar return houses can change
@@ -133,9 +163,9 @@ context.
 - Retrieve natal topic factors before solar return synthesis: natal Ascendant,
   chart ruler, luminaries, relevant houses and house rulers, angular planets,
   and repeated natal testimony tied to the user's question.
-- Prioritize solar return Ascendant, solar return chart ruler, solar return Sun
-  condition, angular planets, Moon condition, and repeated links between the
-  return chart and natal chart.
+- Prioritize solar return chart ruler, Sun, Moon, angular planets, and close
+  natal contacts, after establishing the natal baseline and location
+  reliability.
 - For topic questions, retrieve the relevant natal house and ruler first, then
   the solar return house, ruler, angular contacts, and solar return planets
   contacting the natal topic ruler.
