@@ -100,3 +100,16 @@ Modify interpretation by:
   credibility, and authority; for reputation, emphasize visibility, judgment,
   and public consequence; for family or parents, emphasize authority figures,
   legacy, expectation, and the maturation of one's public role.
+
+## Source notes
+
+- Accidental-strength and angular-house doctrine paraphrase Ptolemy,
+  *Tetrabiblos* Book I §24 (Robbins Loeb, LacusCurtius; public domain in the
+  U.S. via non-renewal); Saturn's greater-malefic and diurnal-malefic sect
+  nature follows I §§4-7, and 10th-house topic assignments follow Valens,
+  Firmicus, Bonatti, and Lilly (public-domain source texts, modern
+  translations copyrighted — paraphrased, not quoted). The psychological,
+  developmental, and vocational authority vocabulary adapts public-domain
+  modern language (Alan Leo). See `references/classical_doctrine_notes.md`
+  and `references/modern_language_notes.md` for the source passes and
+  provenance tags; doctrine is paraphrased, not quoted.

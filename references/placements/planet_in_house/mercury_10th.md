@@ -90,3 +90,16 @@ Modify interpretation by:
 - User question: for vocation, emphasize communication, analysis, commerce,
   writing, consulting, education, media, and technical skill; for reputation,
   emphasize messages, public voice, documentation, and accountability.
+
+## Source notes
+
+- Accidental-strength and angular-house doctrine paraphrase Ptolemy,
+  *Tetrabiblos* Book I §24 (Robbins Loeb, LacusCurtius; public domain in the
+  U.S. via non-renewal); 10th-house topic assignments and Mercury's
+  vocational significations follow Valens, Firmicus, Bonatti, and Lilly
+  (public-domain source texts, modern translations copyrighted — paraphrased,
+  not quoted). The psychological and vocational identity vocabulary adapts
+  public-domain modern language (Alan Leo). See
+  `references/classical_doctrine_notes.md` and
+  `references/modern_language_notes.md` for the source passes and provenance
+  tags; doctrine is paraphrased, not quoted.

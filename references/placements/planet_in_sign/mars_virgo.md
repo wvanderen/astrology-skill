@@ -88,3 +88,14 @@ Modify interpretation by:
 - User question: for vocation, emphasize technical skill, repair, analysis,
   operations, and conflict management; for routines, emphasize sustainable
   effort; for relationships, emphasize critique, service, anger, and requests.
+
+## Source notes
+
+- Rulership, host/reception, and nocturnal-malefic sect doctrine paraphrase
+  Ptolemy, *Tetrabiblos* Book I §§17-18 and §§4-7 (Robbins Loeb, LacusCurtius;
+  public domain in the U.S. via non-renewal); practical host administration
+  follows Lilly, *Christian Astrology* (public domain). The psychological,
+  developmental, and humane Mars vocabulary adapts public-domain modern
+  language (Alan Leo). See `references/classical_doctrine_notes.md` and
+  `references/modern_language_notes.md` for the source passes and provenance
+  tags; doctrine is paraphrased, not quoted.

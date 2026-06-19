@@ -85,3 +85,14 @@ Modify interpretation by:
 - User question: for vocation, emphasize communication, writing, analysis,
   commerce, media, teaching, and advisory work; for relationships, emphasize
   dialogue and interpretation; for timing, emphasize messages and movement.
+
+## Source notes
+
+- Domicile and essential-dignity doctrine paraphrase Ptolemy, *Tetrabiblos*
+  Book I §§17-19 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal); Mercury's planetary nature and common/convertible sect
+  membership follow I §§4-7. The psychological, developmental, and humane
+  Mercury vocabulary adapts public-domain modern language (Alan Leo). See
+  `references/classical_doctrine_notes.md` and
+  `references/modern_language_notes.md` for the source passes and provenance
+  tags; doctrine is paraphrased, not quoted.

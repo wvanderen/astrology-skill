@@ -94,3 +94,14 @@ Modify interpretation by:
   protective initiative and conflict management; for relationships, read
   boundaries, loyalty, and indirect anger; for home or family, read defense,
   inheritance, safety, and repair.
+
+## Source notes
+
+- Fall/depression doctrine paraphrases Ptolemy, *Tetrabiblos* Book I §19
+  (Robbins Loeb, LacusCurtius; public domain in the U.S. via non-renewal);
+  host/reception and nocturnal-malefic sect practice follow Lilly, *Christian
+  Astrology* (public domain) and Ptolemy I §§4-7. The psychological,
+  developmental, and humane Mars vocabulary adapts public-domain modern
+  language (Alan Leo). See `references/classical_doctrine_notes.md` and
+  `references/modern_language_notes.md` for the source passes and provenance
+  tags; doctrine is paraphrased, not quoted.
