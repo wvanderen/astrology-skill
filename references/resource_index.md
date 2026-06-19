@@ -48,6 +48,9 @@ Foundational references support synthesis, guardrails, and revision passes.
 - `references/foundations/interpretive_principles.md`
 - `references/foundations/synthesis_rules.md`
 - `references/foundations/ethics_and_scope.md`
+- `references/source_canon_and_rights_ledger.md` for source-family selection,
+  edition rights, acquisition URLs, and doctrine coverage before enriching
+  reference modules from historical sources.
 - `references/foundations/birth_time_uncertainty.md` for missing, rounded,
   approximate, rectified, or low-confidence birth times.
 - `references/foundations/aspect_precision.md` for supplied aspects with
