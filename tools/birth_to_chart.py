@@ -162,10 +162,17 @@ def _normalize_deg(value: float) -> float:
 
 
 def sign_and_degree(abs_deg: float) -> tuple[str, float, float]:
-    """Return (sign_name, in_sign_degree, absolute_degree) for a longitude."""
-    abs_deg = _normalize_deg(abs_deg)
-    index = int(abs_deg // 30) % 12
-    return SIGN_NAMES[index], abs_deg - index * 30.0, abs_deg
+    """Return (sign_name, in_sign_degree, absolute_degree) for a longitude.
+
+    Rounds the longitude to 4 decimals ONCE, then derives sign and in-sign
+    degree arithmetically so the values stay within the schema bounds
+    (absolute_degree < 360, degree < 30) and are mutually consistent. Double
+    rounding (degree and absolute separately) can otherwise yield 360.0 / 30.0
+    for longitudes like 359.99996° and violate exclusiveMaximum.
+    """
+    rounded = round(_normalize_deg(abs_deg), 4) % 360.0
+    index = int(rounded // 30) % 12
+    return SIGN_NAMES[index], round(rounded - index * 30.0, 4), rounded
 
 
 def zodiac_position(abs_deg: float) -> dict:
