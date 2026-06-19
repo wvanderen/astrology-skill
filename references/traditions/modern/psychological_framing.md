@@ -29,3 +29,14 @@ Modify interpretation by:
 - Ruler condition: ground psychological themes in the planet's available support, constraints, and context.
 - Repetition: give more weight to themes repeated by multiple supplied factors.
 - User question: prioritize psychological framing only where it clarifies the question being asked.
+
+## Source notes
+
+- Modern psychological and developmental framing draws on the public-domain
+  modern corpus (Alan Leo editions published no later than 1917/1930; Raphael
+  and Sepharial as secondary modern-popular witnesses) catalogued in
+  `references/modern_language_notes.md`, paraphrased into the skill's
+  non-diagnostic, non-deterministic ethics style. No Theosophical,
+  gender-essentialist, or moralizing phrasing is reproduced. Psychological
+  framing here is a contemporary synthesis choice grounded in those public-domain
+  sources, not a clinical or therapeutic claim.

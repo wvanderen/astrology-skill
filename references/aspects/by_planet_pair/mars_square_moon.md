@@ -150,3 +150,17 @@ Modify interpretation by:
   safety; for vocation, emphasize advocacy and pressure response; for health or
   body questions, stay within symbolic scope and recommend appropriate
   real-world support for medical concerns.
+
+## Source notes
+
+- Aspect mechanics, sect, malefic contact with the Moon, reception, and
+  planetary-combination logic paraphrase Ptolemy, *Tetrabiblos* Book I §§7-8,
+  §13, and §24 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal) and practical Hellenistic delineation in Vettius Valens,
+  *Anthologies* (ancient Greek text public domain; modern English translations
+  copyrighted — paraphrased, not quoted). Modern psychological and
+  developmental wording draws on the public-domain modern corpus in
+  `references/modern_language_notes.md`. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted, and no period tables or translator
+  examples are reproduced.

@@ -29,3 +29,13 @@ Modify interpretation by:
 - Chart structure: anchor each image in a supplied planet, house, aspect, rulership, or repeated theme.
 - Tension: when factors conflict, describe the archetypal dialogue rather than forcing one symbol to dominate.
 - Scope: label symbolic possibilities as interpretive images, not confirmed facts about the user's life.
+
+## Source notes
+
+- Archetypal framing is a contemporary synthesis choice rather than a quote
+  from a single source. Where it draws on modern psychological and symbolic
+  vocabulary, it paraphrases the public-domain modern corpus catalogued in
+  `references/modern_language_notes.md` (Alan Leo and adjacent modern-popular
+  witnesses) into the skill's non-deterministic, agency-preserving ethics
+  style. Avoid Theosophical, mythically deterministic, or universalizing
+  phrasing from those sources.

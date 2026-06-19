@@ -29,3 +29,14 @@ Modify interpretation by:
 - House placement: read the outer planet through the topics of its house rather than as a generalized life theme.
 - Rulership links: if an outer planet is tied to the ruler of a relevant house, use it as a modifier of that topic.
 - Classical or blended mode: do not let outer planets replace sect, dignity, rulership, house condition, or traditional significators.
+
+## Source notes
+
+- Outer-planet significations and the constructive/shadow framing here are a
+  contemporary synthesis of twentieth-century modern astrology rather than a
+  quote from a single source. The public-domain modern corpus catalogued in
+  `references/modern_language_notes.md` (Alan Leo, Raphael/Cross, Sepharial)
+  supplies adjacent psychological and character language; outer-planet
+  significations themselves postdate those authors and are paraphrased at a
+  high level only. Do not treat this module as a quote of any modern
+  translator, commentator, or living teacher.

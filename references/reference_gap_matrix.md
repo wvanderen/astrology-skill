@@ -236,7 +236,10 @@ Counts: 125 reference modules plus templates and this matrix.
   toward exemplar depth rather than enriching all uniformly. Watch tone in
   relational pairs (synastry ethics).
 - Priority: P1 second-wave (Phase 6). Prioritize Sun-Moon, Moon-Saturn,
-  Venus-Mars, Venus-Saturn, Mars-Saturn, Mars-Moon first.
+  Venus-Mars, Venus-Saturn, and Mars-Saturn toward the `mars_square_moon`
+  depth exemplar. Mars-Moon is represented by the exemplar itself
+  (`mars_square_moon.md`); the Mars-Moon conjunction and opposition remain
+  compact starters that compose from the aspect-type and planet modules.
 - Coverage note: named P2-E3-TD2 pairs are complete (Sun-Moon, Moon-Saturn,
   Venus-Mars, Mars-Saturn, Mercury-Jupiter, Venus-Saturn, Mars-Moon each have
   conjunction/square/opposition where applicable). Missing pairs (e.g.,
@@ -386,9 +389,9 @@ P1 second-wave:
   reception; add bonification/maltreatment vocabulary.
 - Planets (Phase 5, `td-722c1d`): light classical-nature and sect enrichment;
   keep moderate.
-- Planet-pair aspects (Phase 6, `td-fb39c1`): bring the six most-frequently-
-  retrieved pairs toward the `mars_square_moon` exemplar depth; do not enrich
-  all 26 uniformly.
+- Planet-pair aspects (Phase 6, `td-fb39c1`): bring the five most-frequently-
+  retrieved pairs (Sun-Moon, Moon-Saturn, Venus-Mars, Venus-Saturn, Mars-Saturn)
+  toward the `mars_square_moon` exemplar depth; do not enrich all 26 uniformly.
 
 ## Modules to keep compact
 
