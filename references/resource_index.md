@@ -55,6 +55,12 @@ Foundational references support synthesis, guardrails, and revision passes.
   category against the source canon, including current depth, missing classical
   and modern doctrine, synthesis-modifier gaps, source candidates, risk,
   priority, the first enrichment wave, and modules that should stay compact.
+- `references/classical_doctrine_notes.md` for distilled classical doctrine
+  (Ptolemy, Valens, Lilly, with Firmicus and medieval sources as cross-checks)
+  keyed to book/chapter and page ranges, with provenance tags separating direct
+  source claims from modern synthesis. Read during module authoring in Phases
+  5-7, then paraphrase the doctrine into the target module; do not load it
+  during a normal reading pass.
 - `references/foundations/birth_time_uncertainty.md` for missing, rounded,
   approximate, rectified, or low-confidence birth times.
 - `references/foundations/aspect_precision.md` for supplied aspects with
