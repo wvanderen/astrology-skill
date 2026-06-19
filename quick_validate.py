@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -76,6 +77,35 @@ def validate_metadata(metadata: dict[str, str]) -> None:
         fail("description must state when the skill should trigger")
 
 
+def validate_entry_surface() -> None:
+    """Run the entry-command parity check if the surface is present.
+
+    Folded in per docs/entry_commands.md §8 so the existing validation command
+    catches enum/fragment drift. Informational warnings are printed but do not
+    fail the build; only hard parity failures do.
+    """
+    entry = Path(__file__).resolve().parent / "entry_commands.py"
+    schema = Path(__file__).resolve().parent / "assets/schemas/chart_input_schema.json"
+    template = Path(__file__).resolve().parent / "prompts/entry/_reading.md"
+    if not (entry.is_file() and schema.is_file() and template.is_file()):
+        return  # entry surface not installed; nothing to check
+
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("entry_commands", entry)
+    if spec is None or spec.loader is None:
+        return
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    hard_failures, warnings = module._collect_parity_issues(
+        json.loads(schema.read_text(encoding="utf-8"))
+    )
+    for w in warnings:
+        print(f"WARN: {w}")
+    if hard_failures:
+        fail("entry surface parity check failed: " + "; ".join(hard_failures))
+
+
 def main() -> None:
     skill_path = Path(__file__).with_name("SKILL.md")
     if not skill_path.exists():
@@ -84,6 +114,8 @@ def main() -> None:
     metadata = parse_frontmatter(skill_path)
     validate_metadata(metadata)
     print("PASS: SKILL.md metadata is valid")
+
+    validate_entry_surface()
 
 
 if __name__ == "__main__":

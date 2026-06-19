@@ -210,6 +210,10 @@ python3 tools/birth_to_chart.py \
 The `--validate` flag on the pre-processor and the schema gate on the entry
 together guarantee the object is well-formed before `SKILL.md` sees it.
 
+For the full runnable walkthrough — including the piped one-liner, the
+file mode, external-tool charts, and the failure-mode messages — see
+[`docs/end_to_end.md`](end_to_end.md).
+
 ---
 
 ## 7. Canonical entry prompt template

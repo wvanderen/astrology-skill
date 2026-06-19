@@ -2,3 +2,23 @@ interface:
   display_name: "Astrology Reading"
   short_description: "Retrieval-first astrology reading workflow"
   default_prompt: "Use $astrology-skill to interpret this already-calculated chart from structured placements and aspects."
+  entry_commands:
+    spec: docs/entry_commands.md
+    enum_source: assets/schemas/chart_input_schema.json#/properties/reading_type/enum
+    canonical_template: prompts/entry/_reading.md
+    fragments_dir: prompts/entry
+    input_modes:
+      - inline_json
+      - file_path
+      - birth_data_script_stdout
+    birth_data_utility:
+      script: tools/birth_to_chart.py
+      design: docs/birth_to_chart_design.md
+      boundary: separate-process, opt-in, AGPL-confined; not imported by the skill runtime
+    listing:
+      command: python3 entry_commands.py --list
+      check: python3 entry_commands.py --check
+      route: python3 entry_commands.py --route <chart-or-path-or-->
+      description: Enumerate available reading types from the schema enum; assert parity; resolve and gate a chart into the SKILL.md workflow.
+    end_to_end: docs/end_to_end.md
+    no_calculation: true

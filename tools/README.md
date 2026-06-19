@@ -191,6 +191,24 @@ the pair orb uncapped. An aspect is `exact` when its orb is below 0.05°
 
 ---
 
+## From chart JSON to a reading
+
+This tool is stage 1 of the wired path. Hand its output to the entry gate to
+route it into the skill's retrieval workflow without calculating:
+
+```bash
+# File mode: the script wrote chart.json
+python3 entry_commands.py --route chart.json
+
+# Pipe mode: script stdout -> entry stdin, no temp file
+python3 tools/birth_to_chart.py --date 1990-05-21 --time 14:32 \
+    --lat 40.7128 --lon -74.0060 --tz "America/New_York" --validate \
+  | python3 entry_commands.py --route -
+```
+
+See [`docs/end_to_end.md`](../docs/end_to_end.md) for the full walkthrough
+(including external-tool charts and failure-mode messages).
+
 ## Smoke test
 
 ```bash

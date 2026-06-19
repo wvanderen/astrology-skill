@@ -32,6 +32,8 @@ When a requested reading depends on missing data:
 
 Use `assets/schemas/chart_input_schema.json` as the preferred structured input shape when a user asks how to provide data.
 
+Entry commands — one prompt template per `reading_type`, plus a canonical generic template — live under `prompts/entry/`. They resolve, validate, and hand a chart to Workflow step 1 without calculating. See `docs/entry_commands.md` for the surface and run `python3 entry_commands.py --list` to enumerate the current functions. For the wired path from raw birth data through `tools/birth_to_chart.py` to a reading, see `docs/end_to_end.md`.
+
 ## Workflow
 
 1. Parse the supplied chart data and reading request.
