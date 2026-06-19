@@ -89,3 +89,16 @@ Modify interpretation by:
   reform, and unconventional paths; for relationships, emphasize freedom,
   space, difference, and stability under change; for timing, emphasize sudden
   shifts while avoiding deterministic predictions.
+
+## Source notes
+
+- Uranus is intentionally absent from `references/classical_doctrine_notes.md`:
+  it is not part of the classical seven-planet framework, so this module makes
+  no classical nature, sect, or dignity claims. Its modern framing paraphrases
+  adjacent public-domain vocabulary catalogued in
+  `references/modern_language_notes.md` (Leo's "Will" / awakened
+  self-consciousness, and Raphael's treatment of Uranus under the older name
+  "Herschel"), overlaid with contemporary `[Synth]` individuation language; the
+  full constructive/shadow framing is a modern synthesis, not a quote. See
+  `references/traditions/modern/outer_planets.md` for the shared outer-planet
+  provenance statement.

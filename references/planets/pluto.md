@@ -93,3 +93,15 @@ Modify interpretation by:
   finance, investigation, and power analysis; for relationships, emphasize
   attachment, trust, control, honesty, and repair; for trauma-related topics,
   stay non-diagnostic and avoid implying inevitability.
+
+## Source notes
+
+- Pluto is intentionally absent from `references/classical_doctrine_notes.md`:
+  it is not part of the classical seven-planet framework, so this module makes
+  no classical nature, sect, or dignity claims. Pluto (discovered 1930) is
+  also absent from every verified public-domain source in
+  `references/modern_language_notes.md`, so its significations are a
+  contemporary `[Synth]` synthesis that borrows only adjacent PD vocabulary
+  for tone, not direct doctrine. See
+  `references/traditions/modern/outer_planets.md` for the shared outer-planet
+  provenance statement.

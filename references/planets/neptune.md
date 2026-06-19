@@ -90,3 +90,16 @@ Modify interpretation by:
   film, music, and symbolic work; for relationships, emphasize projection,
   compassion, boundaries, and clarity; for health, stay non-diagnostic and
   frame sensitivity, support, and grounding.
+
+## Source notes
+
+- Neptune is intentionally absent from `references/classical_doctrine_notes.md`:
+  it is not part of the classical seven-planet framework, so this module makes
+  no classical nature, sect, or dignity claims. Neptune's significations
+  postdate the public-domain modern corpus catalogued in
+  `references/modern_language_notes.md` (Leo uses Neptune in worked examples
+  but excludes it from his seven-ray scheme), so this module paraphrases only
+  adjacent PD vocabulary and treats the constructive/shadow framing as a
+  contemporary `[Synth]` synthesis, not direct doctrine. See
+  `references/traditions/modern/outer_planets.md` for the shared outer-planet
+  provenance statement.
