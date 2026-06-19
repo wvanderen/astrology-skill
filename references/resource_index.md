@@ -51,6 +51,10 @@ Foundational references support synthesis, guardrails, and revision passes.
 - `references/source_canon_and_rights_ledger.md` for source-family selection,
   edition rights, acquisition URLs, and doctrine coverage before enriching
   reference modules from historical sources.
+- `references/reference_gap_matrix.md` for a prioritized audit of every reference
+  category against the source canon, including current depth, missing classical
+  and modern doctrine, synthesis-modifier gaps, source candidates, risk,
+  priority, the first enrichment wave, and modules that should stay compact.
 - `references/foundations/birth_time_uncertainty.md` for missing, rounded,
   approximate, rectified, or low-confidence birth times.
 - `references/foundations/aspect_precision.md` for supplied aspects with
