@@ -61,6 +61,14 @@ Foundational references support synthesis, guardrails, and revision passes.
   source claims from modern synthesis. Read during module authoring in Phases
   5-7, then paraphrase the doctrine into the target module; do not load it
   during a normal reading pass.
+- `references/modern_language_notes.md` for distilled public-domain modern
+  language (Alan Leo 1899/1906/1913, with Raphael as a popular-modern witness)
+  keyed to edition and chapter, with provenance tags separating historical
+  modern doctrine from contemporary synthesis choices. Use it to enrich planet,
+  sign, house, aspect, rulership, and synthesis modules with psychological,
+  archetypal, developmental, and humane vocabulary; read it during module
+  authoring, then paraphrase into the target module. Do not load it during a
+  normal reading pass.
 - `references/foundations/birth_time_uncertainty.md` for missing, rounded,
   approximate, rectified, or low-confidence birth times.
 - `references/foundations/aspect_precision.md` for supplied aspects with
