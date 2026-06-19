@@ -312,7 +312,7 @@ expected answers.
       },
       {
         "body_a": "Person A Venus",
-        "aspect": "opposition",
+        "aspect": "conjunction",
         "body_b": "Person B Mars",
         "orb_degrees": 0.5,
         "applying": false
@@ -425,7 +425,7 @@ time-lord framing, and the supplied-versus-derived timing distinction.
   "reading_type": "annual_profection",
   "tradition_mode": "blended",
   "tone": "practical",
-  "user_question": "I just turned 34 and I am trying to understand what this year is about, especially around work and resources. Please anchor the year in the profection structure and then describe how the supplied transits modify it. Avoid predicting specific events.",
+  "user_question": "I just turned 28 and I am trying to understand what this year is about, especially around work and resources. Please anchor the year in the profection structure and then describe how the supplied transits modify it. Avoid predicting specific events.",
   "chart_data": {
     "source_notes": "Already-calculated tropical chart and annual profection data from an external astrology program.",
     "birth_time_confidence": "high; birth certificate time",
@@ -506,23 +506,23 @@ time-lord framing, and the supplied-versus-derived timing distinction.
     "aspects": [
       {
         "body_a": "Mars",
-        "aspect": "trine",
+        "aspect": "opposition",
         "body_b": "Jupiter",
-        "orb_degrees": 2.0,
-        "applying": true
+        "orb_degrees": 8.9,
+        "applying": false
       },
       {
         "body_a": "Venus",
-        "aspect": "opposition",
+        "aspect": "square",
         "body_b": "Saturn",
-        "orb_degrees": 2.3,
-        "applying": false
+        "orb_degrees": 7.7,
+        "applying": true
       }
     ],
     "timing_factors": [
       {
         "technique": "annual_profection",
-        "age": 34,
+        "age": 28,
         "birthday_occurred": true,
         "profected_house": 5,
         "lord_of_year": "Jupiter",
