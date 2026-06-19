@@ -179,14 +179,19 @@ Planet pair aspect modules describe exact combinations.
 - `references/aspects/by_planet_pair/mars_square_saturn.md`
 - `references/aspects/by_planet_pair/mars_opposition_saturn.md`
 - `references/aspects/by_planet_pair/mercury_conjunction_jupiter.md`
+- `references/aspects/by_planet_pair/mercury_trine_jupiter.md`
 - `references/aspects/by_planet_pair/mercury_square_jupiter.md`
 - `references/aspects/by_planet_pair/mercury_opposition_jupiter.md`
+- `references/aspects/by_planet_pair/mercury_trine_saturn.md`
+- `references/aspects/by_planet_pair/sun_square_saturn.md`
 - `references/aspects/by_planet_pair/venus_conjunction_saturn.md`
 - `references/aspects/by_planet_pair/venus_square_saturn.md`
 - `references/aspects/by_planet_pair/venus_opposition_saturn.md`
+- `references/aspects/by_planet_pair/mars_conjunction_mercury.md`
 - `references/aspects/by_planet_pair/mars_conjunction_moon.md`
 - `references/aspects/by_planet_pair/mars_square_moon.md`
 - `references/aspects/by_planet_pair/mars_opposition_moon.md`
+- `references/aspects/by_planet_pair/mars_opposition_jupiter.md`
 
 ### Planet Conditions
 
@@ -228,6 +233,21 @@ Use templates when creating new composable interpretation modules.
 
 - `references/templates/interpretation_module_template.md`
 - `references/templates/rulership_module_template.md`
+
+### Planet in sign placements
+
+Use for exact planet-sign combinations.
+
+- `references/placements/planet_in_sign/mercury_gemini.md`
+- `references/placements/planet_in_sign/mars_cancer.md`
+- `references/placements/planet_in_sign/mars_virgo.md`
+
+### Planet in house placements
+
+Use for exact planet-house combinations.
+
+- `references/placements/planet_in_house/saturn_10th.md`
+- `references/placements/planet_in_house/mercury_10th.md`
 
 ## Planned modules
 
