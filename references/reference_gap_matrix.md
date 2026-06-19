@@ -219,9 +219,9 @@ Counts: 125 reference modules plus templates and this matrix.
 
 - Modules: 26 in `aspects/by_planet_pair/`; one rich exemplar
   (`mars_square_moon.md`, 8.0 KB), 25 starters (~2.2–2.8 KB).
-- Current depth: Mixed. All 26 already include transit, synastry, reception,
-  and sect sections (confirmed by grep), so the gap is depth and modifier
-  richness, not missing structure.
+- Current depth: Mixed. All 26 already include dedicated transit and synastry
+  sections plus inline reception and sect coverage (confirmed by grep), so the
+  gap is depth and modifier richness, not missing structure.
 - Missing classical doctrine: reception-led cooperation vs. friction
   judgments; applying/separating and dexter/sinister timing; sect-modified
   benefic/malefic contact; enclosure and witnessing language for hard pairs.
