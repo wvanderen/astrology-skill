@@ -71,6 +71,19 @@ and exact planet-pair aspect modules when those factors are available.
 - Avoid calling a conjunction automatically fortunate or difficult. Judge the
   quality from the planets' condition and the user's actual question.
 
+## Classical aspect theory
+
+- Conjunction is co-presence rather than a ray cast across signs: the planets
+  share one zodiacal place and therefore one topical and elemental field.
+- Judgment can be by body (exact degree, the strongest form) or by sign
+  (whole-sign co-presence); sign-based conjunction still configures the planets
+  even when the degrees are loose.
+- A planet casts its rays most intensely through bodily conjunction; combustion,
+  cazimi, and under-the-beams are the solar forms of this co-presence.
+- Witnessing and testimony: a benefic bodily present with a planet is the
+  strongest constructive testimony; a malefic bodily present is the strongest
+  form of pressure.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -91,3 +104,14 @@ Modify interpretation by:
   emphasis.
 - User question: focus the conjunction on the relevant life topic rather than
   listing every possible expression of the planets involved.
+
+## Source notes
+
+- Aspect theory (configuring signs, bodily vs sign-based judgment, dexter/
+  sinister, witnessing and testimony) paraphrases Ptolemy, *Tetrabiblos* Book I
+  §13 and §24 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal); dexter/sinister and witnessing language follows the medieval
+  Arabic/Latin tradition at the family level; applying/separation follows Lilly,
+  *Christian Astrology* (public domain). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

@@ -23,6 +23,19 @@ planet, house, ruler condition, aspects, sect, dignity, and the user's question.
 - Avoid assuming humility means smallness; Virgo often builds excellence through
   attention, maintenance, and accountable improvement.
 
+## Classical sign-powers
+
+- Category: bicorporeal (mutable/double-bodied). Virgo completes the summer
+  season and transitions toward autumn.
+- Gender: feminine and nocturnal (even sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: commands its opposite, Pisces, under the commanding/obeying
+  doctrine (the late-summer hemisphere leads the late-winter one).
+- Temperament: hot tending to dry by season (late summer), steadied by the
+  earth element toward cold and dryness.
+- Bodily correspondence: the intestines and abdomen (symbolic melothesia,
+  non-diagnostic).
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -35,3 +48,10 @@ Modify interpretation by:
   learning, workflow, and the handling of complexity.
 - Aspects and dignity: distinguish skillful refinement from fault-finding,
   over-analysis, or chronic inadequacy scripts.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

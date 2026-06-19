@@ -66,6 +66,18 @@ exact planet-pair aspect modules when those factors are available.
   lack of grounding, or the user's situation requiring more effort than the
   trine alone supplies.
 
+## Classical aspect theory
+
+- The trine (120°) configures the three signs of one triplicity — the fire,
+  earth, air, or water triangle — sharing a single element.
+- Because the signs share elemental temperament, the trine is the aspect of
+  familiarity, witnessing, and easy mutual support.
+- Judgment can be by body (exact degree) or by sign (whole-sign trine); the
+  elemental kinship holds across the whole triangle even when degrees are loose.
+- Trine testimony is constructive when the planets are constructive, but a
+  difficult pattern can also flow easily through a trine: familiarity is not the
+  same as benefit.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -83,3 +95,14 @@ Modify interpretation by:
   building, peaking, or moving into integration.
 - User question: name how the trine can be consciously used in the matter at
   hand rather than describing it only as general good fortune.
+
+## Source notes
+
+- Aspect theory (configuring signs, bodily vs sign-based judgment, dexter/
+  sinister, witnessing and testimony) paraphrases Ptolemy, *Tetrabiblos* Book I
+  §13 and §24 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal); dexter/sinister and witnessing language follows the medieval
+  Arabic/Latin tradition at the family level; applying/separation follows Lilly,
+  *Christian Astrology* (public domain). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

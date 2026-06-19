@@ -24,6 +24,12 @@ sect, dignity, and the user's question.
   complement, attract, or challenge the native.
 - Planets here can signify the condition of partners, the nature of agreements,
   and the quality of direct relational exchange.
+- Turned houses: the 7th is the partnership pivot. Houses counted from the 7th
+  describe the partner's world (for example, the 2nd from the 7th equals the
+  8th, for the partner's resources; the 4th from the 7th equals the 10th, for
+  the partner's family or private base). Use these only for horary, synastry,
+  or explicit relational questions and when the supplied houses support the
+  count.
 
 ## Modern notes
 
@@ -50,3 +56,12 @@ sect, dignity, and the user's question.
   relationships, agreements, negotiation, or rivalry.
 - Judge outcomes through the 7th ruler's condition, aspects, dignity, reception,
   and relationship to planets in the 7th.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

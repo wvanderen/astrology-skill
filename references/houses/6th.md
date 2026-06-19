@@ -24,6 +24,8 @@ user's question.
   feel alienating, compulsory, or hard to integrate without deliberate practice.
 - Malefics can be especially concrete here, while benefic support may help with
   recovery, assistance, skill, and manageable routines.
+- Planetary joy: Mars is classically said to rejoice in the 6th, fitting the
+  house of toil, injury, labor, and difficult maintenance.
 
 ## Modern notes
 
@@ -50,3 +52,12 @@ user's question.
   work conditions, routines, repair, illness, or service.
 - Judge outcomes through the 6th ruler's condition, aspects, dignity, reception,
   and relationship to planets in the 6th.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

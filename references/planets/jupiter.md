@@ -17,6 +17,10 @@ those factors are available.
 
 ## Classical notes
 
+- Elemental nature: temperate, heating and humidifying; fertile. Situated
+  between Saturn's cold and Mars's heat.
+- Sect membership: diurnal; Jupiter is the benefic of the day sect, with the
+  Sun and Saturn as its sect partners.
 - Jupiter is the greater benefic and the diurnal benefic, generally more
   moderated and effective in day charts.
 - It rules Sagittarius and Pisces, is exalted in Cancer, is in detriment in
@@ -88,3 +92,13 @@ Modify interpretation by:
 - User question: for vocation, emphasize teaching, law, advising, publishing,
   and leadership; for relationships, emphasize generosity and shared beliefs;
   for resources, emphasize opportunity, stewardship, and proportion.
+
+## Source notes
+
+- Planetary nature (hot/cold/moist/dry), benefic/malefic baseline, and sect
+  membership paraphrase Ptolemy, *Tetrabiblos* Book I §§4-7 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); rulership and
+  dignity doctrine from I.17-19. Lilly's *Christian Astrology* (1647/1659,
+  public domain) is the practical English anchor for the traditional seven. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

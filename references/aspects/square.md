@@ -64,6 +64,18 @@ exact planet-pair aspect modules when those factors are available.
 - Ease increases through reception, dignity, benefic support, good timing,
   practical outlets, and willingness to work with the conflict directly.
 
+## Classical aspect theory
+
+- The square (quartile, 90°) configures signs of the same modality across
+  different elements: the cardinal, fixed, or mutable cross.
+- A dexter (right-hand) square is cast backward through the sign order; a
+  sinister (left-hand) square is cast forward. Use dexter/sinister language only
+  in classical or blended readings and only from supplied aspect data.
+- Judgment can be by body (exact degree) or by sign (whole-sign square); the
+  cross of modality holds even when the exact degrees are wide.
+- The square's friction is classical testimony that two configured signs differ
+  in element and heading, so their topics press on each other rather than flow.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -82,3 +94,14 @@ Modify interpretation by:
   building toward action or moving through consequence and repair.
 - User question: frame the square as the specific work, conflict, decision, or
   skill-building process relevant to the question.
+
+## Source notes
+
+- Aspect theory (configuring signs, bodily vs sign-based judgment, dexter/
+  sinister, witnessing and testimony) paraphrases Ptolemy, *Tetrabiblos* Book I
+  §13 and §24 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal); dexter/sinister and witnessing language follows the medieval
+  Arabic/Latin tradition at the family level; applying/separation follows Lilly,
+  *Christian Astrology* (public domain). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

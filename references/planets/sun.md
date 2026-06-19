@@ -17,6 +17,10 @@ those factors are available.
 
 ## Classical notes
 
+- Elemental nature: heating and moderately drying; the Sun is the source of
+  light and heat against which other planetary natures are measured.
+- Sect membership: diurnal; the Sun leads the day sect, with Jupiter and
+  Saturn as its sect partners.
 - The Sun is the sect light in day charts and is especially important for
   vitality, authority, visibility, and the condition of the diurnal sect.
 - It rules Leo, is exalted in Aries, is in detriment in Aquarius, and is in
@@ -87,3 +91,13 @@ Modify interpretation by:
 - User question: for vocation, emphasize leadership and visibility; for
   relationships, emphasize selfhood and mutual recognition; for health or
   vitality, stay non-diagnostic and frame energy, confidence, and life rhythm.
+
+## Source notes
+
+- Planetary nature (hot/cold/moist/dry), benefic/malefic baseline, and sect
+  membership paraphrase Ptolemy, *Tetrabiblos* Book I §§4-7 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); rulership and
+  dignity doctrine from I.17-19. Lilly's *Christian Astrology* (1647/1659,
+  public domain) is the practical English anchor for the traditional seven. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

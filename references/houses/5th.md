@@ -26,6 +26,10 @@ user's question.
 - Benefic testimony can increase ease, pleasure, and fruitfulness; malefic
   testimony may add delay, seriousness, risk, or difficulty around enjoyment and
   generation.
+- Planetary joy: Venus is classically said to rejoice in the 5th, fitting the
+  house of Good Fortune, pleasure, children, and generation.
+- Place quality: the 5th is a succedent place configured to the ascendant by
+  sextile, which makes it favorable for generation and enjoyment.
 
 ## Modern notes
 
@@ -51,3 +55,12 @@ user's question.
   enjoyment, art, children, courtship, risk, or celebration.
 - Judge outcomes through the 5th ruler's condition, aspects, dignity, reception,
   and relationship to planets in the 5th.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

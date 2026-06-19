@@ -17,6 +17,10 @@ condition when those factors are available.
 
 ## Classical notes
 
+- Elemental nature: variable — drying and moistening alike — taking on the
+  nature of its companions, condition, and solar phase.
+- Sect membership: common to both sects; diurnal as a morning star and
+  nocturnal as an evening star.
 - Mercury is common or convertible in sect and tends to take on the condition
   of nearby planets, its phase relative to the Sun, and the chart's broader
   context.
@@ -88,3 +92,13 @@ Modify interpretation by:
 - User question: for vocation, emphasize writing, analysis, commerce, craft,
   and communication; for relationships, emphasize dialogue and interpretation;
   for timing questions, emphasize messages, documents, movement, and revisions.
+
+## Source notes
+
+- Planetary nature (hot/cold/moist/dry), benefic/malefic baseline, and sect
+  membership paraphrase Ptolemy, *Tetrabiblos* Book I §§4-7 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); rulership and
+  dignity doctrine from I.17-19. Lilly's *Christian Astrology* (1647/1659,
+  public domain) is the practical English anchor for the traditional seven. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

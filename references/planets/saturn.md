@@ -18,6 +18,11 @@ factors are available.
 
 ## Classical notes
 
+- Elemental nature: cooling and moderately drying, being farthest from solar
+  heat and terrestrial moisture.
+- Sect membership: diurnal. By the classical sect-reversal, Saturn (cooling) is
+  assigned to the day sect so the day temperament moderates it; in the night
+  sect it reads sharper.
 - Saturn is the greater malefic and the diurnal malefic, generally more
   moderated in day charts.
 - It rules Capricorn and Aquarius, is exalted in Libra, is in detriment in
@@ -89,3 +94,13 @@ Modify interpretation by:
 - User question: for vocation, emphasize mastery, responsibility, and authority;
   for relationships, emphasize boundaries, fear, and commitment; for health,
   stay non-diagnostic and frame stress, limits, support, and sustainable pace.
+
+## Source notes
+
+- Planetary nature (hot/cold/moist/dry), benefic/malefic baseline, and sect
+  membership paraphrase Ptolemy, *Tetrabiblos* Book I §§4-7 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); rulership and
+  dignity doctrine from I.17-19. Lilly's *Christian Astrology* (1647/1659,
+  public domain) is the practical English anchor for the traditional seven. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

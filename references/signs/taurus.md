@@ -23,6 +23,19 @@ planet, house, ruler condition, aspects, sect, dignity, and the user's question.
 - Avoid assuming simplicity means lack of depth; Taurus often works through
   repetition, bodily knowledge, and durable commitments.
 
+## Classical sign-powers
+
+- Category: solid (fixed). Taurus stabilizes the spring temperament rather than
+  initiating or transitioning it.
+- Gender: feminine and nocturnal (even sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: commands its opposite, Scorpio, under the commanding/obeying
+  doctrine (the late-spring/summer hemisphere leads the autumn/winter one).
+- Temperament: moist by season (spring), steadied by the earth element toward
+  cold and dryness.
+- Bodily correspondence: the neck and throat (symbolic melothesia,
+  non-diagnostic).
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -35,3 +48,10 @@ Modify interpretation by:
   aesthetics, and relational or material support.
 - Aspects and dignity: distinguish grounded patience from fixation, avoidance,
   or over-attachment.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

@@ -24,6 +24,19 @@ question.
 - Avoid treating confidence as proof of truth; Sagittarius needs context,
   humility, and lived experience to make its vision useful.
 
+## Classical sign-powers
+
+- Category: bicorporeal (mutable/double-bodied). Sagittarius completes autumn
+  and transitions toward winter.
+- Gender: masculine and diurnal (odd sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: obeys its opposite, Gemini, under the commanding/obeying doctrine
+  (late autumn lies in the shorter-day hemisphere).
+- Temperament: dry by season (late autumn), activated by the fire element toward
+  heat and dryness.
+- Bodily correspondence: the hips, thighs, and liver (symbolic melothesia,
+  non-diagnostic).
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -36,3 +49,10 @@ Modify interpretation by:
   opportunity, excess, and coherence of worldview.
 - Aspects and dignity: distinguish liberating vision from overreach,
   dogmatism, avoidance, or inflated certainty.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

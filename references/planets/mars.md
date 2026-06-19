@@ -18,6 +18,10 @@ factors are available.
 
 ## Classical notes
 
+- Elemental nature: drying and burning (fiery), being near the Sun's sphere.
+- Sect membership: nocturnal. By the classical sect-reversal, Mars (drying and
+  hot) is assigned to the night sect so the night temperament moderates it; in
+  the day sect it reads sharper.
 - Mars is the lesser malefic and the nocturnal malefic, generally more moderated
   in night charts.
 - It rules Aries and Scorpio, is exalted in Capricorn, is in detriment in Taurus
@@ -87,3 +91,13 @@ Modify interpretation by:
 - User question: for vocation, emphasize initiative and conflict management;
   for relationships, emphasize desire, boundaries, and anger; for health, stay
   non-diagnostic and frame heat, stress, exertion, and recovery.
+
+## Source notes
+
+- Planetary nature (hot/cold/moist/dry), benefic/malefic baseline, and sect
+  membership paraphrase Ptolemy, *Tetrabiblos* Book I §§4-7 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); rulership and
+  dignity doctrine from I.17-19. Lilly's *Christian Astrology* (1647/1659,
+  public domain) is the practical English anchor for the traditional seven. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

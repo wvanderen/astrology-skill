@@ -25,6 +25,9 @@ user's question.
   feel hidden, indirect, or difficult to personally command.
 - Interpret mortality topics ethically and symbolically unless the user's
   question and tradition-specific rules require a bounded technical discussion.
+- Place quality: the 8th is a succedent place following the 7th, which is why
+  it governs the partner's resources, inheritances, and settlements as much as
+  personal vulnerability and endings.
 
 ## Modern notes
 
@@ -52,3 +55,12 @@ user's question.
   shared money, loss, dependence, settlement, or vulnerability.
 - Judge outcomes through the 8th ruler's condition, aspects, dignity, reception,
   and relationship to planets in the 8th.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

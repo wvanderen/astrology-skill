@@ -25,6 +25,8 @@ user's question.
   after public activity is done.
 - Because it is angular, planets here have concrete strength even when their
   effects are intimate, familial, or hidden from public view.
+- Place quality: the 4th is an angle (pivot), configured to the ascendant by
+  square, which gives its private and foundational topics concrete strength.
 
 ## Modern notes
 
@@ -50,3 +52,12 @@ user's question.
   domestic life, family matters, property, privacy, or endings.
 - Judge outcomes through the 4th ruler's condition, aspects, dignity, reception,
   and relationship to planets in the 4th.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

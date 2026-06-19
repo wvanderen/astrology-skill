@@ -18,6 +18,10 @@ factors are available.
 
 ## Classical notes
 
+- Elemental nature: humidifying (moistening), with secondary heating from
+  borrowed solar light.
+- Sect membership: nocturnal; the Moon leads the night sect, with Venus and
+  Mars as its sect partners.
 - The Moon is the sect light in night charts and is especially important for
   body, fortune, change, timing, and the condition of the nocturnal sect.
 - It rules Cancer, is exalted in Taurus, is in detriment in Capricorn, and is
@@ -85,3 +89,13 @@ Modify interpretation by:
 - User question: for relationships, emphasize attachment and care; for home or
   family, emphasize belonging and memory; for vocation, emphasize responsiveness
   to public need, caregiving, rhythm, and change management.
+
+## Source notes
+
+- Planetary nature (hot/cold/moist/dry), benefic/malefic baseline, and sect
+  membership paraphrase Ptolemy, *Tetrabiblos* Book I §§4-7 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); rulership and
+  dignity doctrine from I.17-19. Lilly's *Christian Astrology* (1647/1659,
+  public domain) is the practical English anchor for the traditional seven. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

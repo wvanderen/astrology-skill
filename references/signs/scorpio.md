@@ -23,6 +23,27 @@ planet, house, ruler condition, aspects, sect, dignity, and the user's question.
 - Avoid sensationalizing pain or crisis; Scorpio can indicate the capacity to
   stay present with complexity, vulnerability, and consequence.
 
+## Classical sign-powers
+
+- Category: solid (fixed). Scorpio concentrates and holds the autumn
+  temperament.
+- Gender: feminine and nocturnal (even sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: obeys its opposite, Taurus, under the commanding/obeying doctrine
+  (autumn lies in the shorter-day hemisphere).
+- Temperament: dry by season (autumn), deepened by the water element toward
+  cold and moisture.
+- Bodily correspondence: the genitals and groin (symbolic melothesia,
+  non-diagnostic).
+
+## Modern co-ruler note
+
+- Modern practice often adds Pluto as a co-ruler of Scorpio. Treat this as
+  optional modern testimony, not traditional rulership: use it only when Pluto
+  is supplied and a modern or blended reading is requested, and keep Mars as
+  the default and traditional ruler unless the chart data gives Pluto explicit
+  weight.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -35,3 +56,11 @@ Modify interpretation by:
   survival strategies, and the management of intensity.
 - Aspects and dignity: distinguish focused depth from compulsion, secrecy,
   suspicion, or defensive escalation.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). The modern co-ruler
+  note is contemporary practice (the outer planets are absent from the
+  traditional and verified public-domain modern rulership schemes); see
+  `references/classical_doctrine_notes.md` and `references/modern_language_notes.md`.

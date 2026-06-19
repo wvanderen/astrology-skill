@@ -23,6 +23,19 @@ planet, house, ruler condition, aspects, sect, dignity, and the user's question.
 - Avoid assuming harmony is passive; Libra may initiate conflict or boundary
   work in pursuit of a more balanced arrangement.
 
+## Classical sign-powers
+
+- Category: equinoctial (cardinal). Libra marks the autumn equinox, where day
+  and night balance again.
+- Gender: masculine and diurnal (odd sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: obeys its opposite, Aries, under the commanding/obeying doctrine
+  (the autumn equinox lies in the shorter-day hemisphere).
+- Temperament: dry by season (autumn), lightened by the air element toward heat
+  and moisture.
+- Bodily correspondence: the kidneys, loins, and lower back (symbolic
+  melothesia, non-diagnostic).
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -35,3 +48,10 @@ Modify interpretation by:
   agreement, attractiveness, and social or artistic support.
 - Aspects and dignity: distinguish principled balance from appeasement,
   detachment, or endless weighing of options.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

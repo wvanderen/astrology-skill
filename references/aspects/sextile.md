@@ -64,6 +64,20 @@ and exact planet-pair aspect modules when those factors are available.
 - Tension may come from weak planetary condition, difficult house topics, poor
   reception, or the need to activate the aspect under pressure.
 
+## Classical aspect theory
+
+- The sextile (60°) configures signs of compatible but different elements —
+  fire with air, earth with water — joining one sign to the next-but-one of a
+  friendly triplicity.
+- It is the weakest of the four configuring aspects, which is why classical
+  practice treats it as an opportunity that must be taken up rather than a
+  guarantee.
+- Judgment can be by body (exact degree) or by sign (whole-sign sextile);
+  sign-based familiarity still links the two houses and topics.
+- Sextile testimony offers a route for witnessing and exchange between the two
+  planets, but the planets must be in adequate condition for the opening to
+  amount to anything.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -80,3 +94,14 @@ Modify interpretation by:
   building toward contact or moving into follow-through after contact.
 - User question: translate the sextile into a concrete route, option, support,
   or practical next step relevant to the matter being asked about.
+
+## Source notes
+
+- Aspect theory (configuring signs, bodily vs sign-based judgment, dexter/
+  sinister, witnessing and testimony) paraphrases Ptolemy, *Tetrabiblos* Book I
+  §13 and §24 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal); dexter/sinister and witnessing language follows the medieval
+  Arabic/Latin tradition at the family level; applying/separation follows Lilly,
+  *Christian Astrology* (public domain). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

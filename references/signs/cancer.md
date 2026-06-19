@@ -23,6 +23,19 @@ planet, house, ruler condition, aspects, sect, dignity, and the user's question.
 - Avoid treating emotion as the opposite of action; Cancer often acts by
   sensing need, timing, memory, and vulnerability.
 
+## Classical sign-powers
+
+- Category: solstitial (cardinal). Cancer marks the summer solstice, where the
+  Sun's northward climb reverses.
+- Gender: feminine and nocturnal (even sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: commands its opposite, Capricorn, under the commanding/obeying
+  doctrine (the summer solstice is the most commanding point).
+- Temperament: hot by season (summer), tempered by the water element toward
+  cold and moisture.
+- Bodily correspondence: the chest, breast, and stomach (symbolic melothesia,
+  non-diagnostic).
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -35,3 +48,10 @@ Modify interpretation by:
   timing, attachment, and access to support.
 - Aspects and dignity: distinguish protective responsiveness from withdrawal,
   control, or unresolved emotional inheritance.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

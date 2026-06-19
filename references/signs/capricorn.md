@@ -25,6 +25,19 @@ question.
 - Avoid assuming restraint means lack of feeling; Capricorn may protect
   vulnerability through competence, timing, and responsibility.
 
+## Classical sign-powers
+
+- Category: solstitial (cardinal). Capricorn marks the winter solstice, where
+  the Sun's southward decline reverses.
+- Gender: feminine and nocturnal (even sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: obeys its opposite, Cancer, under the commanding/obeying doctrine
+  (the winter solstice is the most obeying point).
+- Temperament: cold by season (winter), hardened by the earth element toward
+  cold and dryness.
+- Bodily correspondence: the knees, bones, and skin (symbolic melothesia,
+  non-diagnostic).
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -37,3 +50,10 @@ Modify interpretation by:
   authority, delay, maturity, and the sustainability of effort.
 - Aspects and dignity: distinguish earned mastery from rigidity, shame,
   over-control, or isolation.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

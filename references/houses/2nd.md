@@ -25,6 +25,8 @@ user's question.
   food, and the capacity to gather or preserve resources.
 - The 2nd does not see the ascendant by major Ptolemaic aspect, so resources may
   require deliberate management rather than being identical with identity.
+- Place quality: the 2nd is a succedent place, rising immediately after the
+  1st as the house of substance that sustains the life begun there.
 
 ## Modern notes
 
@@ -51,3 +53,12 @@ user's question.
   money, possessions, values, and livelihood.
 - Judge financial and resource outcomes through the 2nd ruler's condition,
   aspects, dignity, reception, and relationship to planets in the 2nd.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

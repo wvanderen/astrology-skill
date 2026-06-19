@@ -17,6 +17,9 @@ factors are available.
 
 ## Classical notes
 
+- Elemental nature: temperate, humidifying and moderately heating; fertile.
+- Sect membership: nocturnal; Venus is the benefic of the night sect, with
+  the Moon and Mars as its sect partners.
 - Venus is the lesser benefic and the nocturnal benefic, generally more
   moderated and effective in night charts.
 - It rules Taurus and Libra, is exalted in Pisces, is in detriment in Aries and
@@ -86,3 +89,13 @@ Modify interpretation by:
 - User question: for relationships, emphasize mutuality, attraction, and
   values; for vocation, emphasize art, design, mediation, hospitality, and
   social intelligence; for money, emphasize resources, taste, ease, and worth.
+
+## Source notes
+
+- Planetary nature (hot/cold/moist/dry), benefic/malefic baseline, and sect
+  membership paraphrase Ptolemy, *Tetrabiblos* Book I §§4-7 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); rulership and
+  dignity doctrine from I.17-19. Lilly's *Christian Astrology* (1647/1659,
+  public domain) is the practical English anchor for the traditional seven. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

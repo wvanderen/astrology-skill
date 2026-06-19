@@ -23,6 +23,9 @@ user's question.
 - It has solar affinity through illumination, truth, doctrine, and orientation.
 - Although cadent, it is a favorable configured house and can describe
   meaningful guidance, teachers, sacred practice, and far-reaching knowledge.
+- Planetary joy: the Sun is classically said to rejoice in the 9th (and, by
+  variant traditions, the 10th), fitting the house of God, illumination,
+  doctrine, and far-reaching orientation.
 
 ## Modern notes
 
@@ -48,3 +51,12 @@ user's question.
   education, travel, publishing, law, religion, or meaning-making.
 - Judge outcomes through the 9th ruler's condition, aspects, dignity, reception,
   and relationship to planets in the 9th.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

@@ -23,6 +23,19 @@ planet, house, ruler condition, aspects, sect, dignity, and the user's question.
 - Avoid assuming contradiction is failure; Gemini may need to hold several
   perspectives before synthesis is possible.
 
+## Classical sign-powers
+
+- Category: bicorporeal (mutable/double-bodied). Gemini completes the spring
+  season and transitions toward summer.
+- Gender: masculine and diurnal (odd sign counted from Aries); distinct from
+  planetary gender.
+- Aspect-pair: commands its opposite, Sagittarius, under the commanding/obeying
+  doctrine (the summer hemisphere leads the winter one).
+- Temperament: moist by season (late spring), activated by the air element
+  toward heat and moisture.
+- Bodily correspondence: the shoulders, arms, and hands (symbolic melothesia,
+  non-diagnostic).
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -35,3 +48,10 @@ Modify interpretation by:
   learning, and the reliability of messages or choices.
 - Aspects and dignity: distinguish flexible intelligence from scattering,
   evasion, or nervous overactivity.
+
+## Source notes
+
+- Sign-powers paraphrase Ptolemy, *Tetrabiblos* Book I §§11-16 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

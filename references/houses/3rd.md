@@ -26,6 +26,8 @@ user's question.
   movement, communication, and recurring daily obligations.
 - The Moon has traditional affinity with the 3rd through motion, locality,
   change, and ordinary circulation.
+- Planetary joy: the Moon is classically said to rejoice in the 3rd, fitting
+  the house of locality, movement, kin, and daily circulation.
 
 ## Modern notes
 
@@ -53,3 +55,12 @@ user's question.
   communication, local networks, errands, and familiar routines.
 - Judge outcomes through the 3rd ruler's condition, aspects, dignity, reception,
   and relationship to planets in the 3rd.
+
+## Source notes
+
+- House topics, planetary joys, and turned-house doctrine paraphrase the
+  classical tradition (Valens, Firmicus, Bonatti, Lilly; public-domain source
+  texts, modern translations copyrighted — paraphrased, not quoted). The
+  good/bad-place and aspect-to-ascendant rationale follows Ptolemy,
+  *Tetrabiblos*. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags.

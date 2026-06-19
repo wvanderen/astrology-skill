@@ -60,7 +60,10 @@ Foundational references support synthesis, guardrails, and revision passes.
   keyed to book/chapter and page ranges, with provenance tags separating direct
   source claims from modern synthesis. Read during module authoring in Phases
   5-7, then paraphrase the doctrine into the target module; do not load it
-  during a normal reading pass.
+  during a normal reading pass. Phase 5 has applied this doctrine to the seven
+  traditional planets, the twelve signs, the twelve houses, and the five aspect
+  types; each enriched module carries a one-line `## Source notes` pointer back
+  to this file and `modern_language_notes.md`.
 - `references/modern_language_notes.md` for distilled public-domain modern
   language (Alan Leo 1899/1906/1913, with Raphael as a popular-modern witness)
   keyed to edition and chapter, with provenance tags separating historical
@@ -92,7 +95,7 @@ Use these when `tradition_mode` is `classical`, `modern`, or `blended`.
 
 ### Planets
 
-Planet core modules define baseline function, motivations, topics, and interpretive cautions.
+Planet core modules define baseline function, motivations, topics, and interpretive cautions, plus Ptolemaic elemental nature (hot/cold/moist/dry) and explicit sect membership for the seven traditional planets.
 
 - `references/planets/sun.md`
 - `references/planets/moon.md`
@@ -108,7 +111,9 @@ Planet core modules define baseline function, motivations, topics, and interpret
 ### Signs
 
 Sign modules define style, temperament, modality, element, ruler, polarity, and
-interpretive cautions.
+interpretive cautions, plus a compact Ptolemaic sign-powers layer (sign category,
+gender, commanding/obeying pair, seasonal temperament, bodily correspondence)
+and optional modern co-ruler notes for Scorpio, Aquarius, and Pisces.
 
 - `references/signs/aries.md`
 - `references/signs/taurus.md`
@@ -126,7 +131,8 @@ interpretive cautions.
 ### Houses
 
 House modules define topics, angularity, life areas, rulership interaction, and
-interpretive scope.
+interpretive scope, plus classical house doctrine (planetary joys, turned-house
+use for horary and synastry, and the aspect-to-ascendant place-quality rationale).
 
 - `references/houses/1st.md`
 - `references/houses/2nd.md`
@@ -177,7 +183,7 @@ topic before drafting the final interpretation.
 
 ### Aspects
 
-Aspect type modules describe the aspect's general interpretive mechanics.
+Aspect type modules describe the aspect's general interpretive mechanics, plus a light classical aspect-theory layer (configuring signs, bodily vs sign-based judgment, dexter/sinister, witnessing/testimony).
 
 - `references/aspects/conjunction.md`
 - `references/aspects/opposition.md`
