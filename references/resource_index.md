@@ -21,6 +21,13 @@ reference set grows enough that routine additions regularly leave the index
 stale, or if future validation work already introduces structured metadata for
 resource categories.
 
+Do not add a separate module-name validator yet. Current module names already
+match the documented directory and filename patterns, and repository history
+does not show recurring rename or naming-fix churn. Keep naming expectations in
+this index for now. Reconsider a validator if future additions repeatedly drift
+from the expected directories, lowercase names, snake_case multiword names,
+ordinal house labels, or planet/aspect/condition patterns documented below.
+
 Manual maintenance rules:
 
 - When adding, moving, or deleting a reference module, update the matching
@@ -135,9 +142,11 @@ Use synthesis patterns to combine repeated chart factors around the user's
 topic before drafting the final interpretation.
 
 - `references/synthesis_patterns/conflict.md`
+- `references/synthesis_patterns/consulting_advisory_vocation.md`
 - `references/synthesis_patterns/creative_work.md`
 - `references/synthesis_patterns/health_routines.md`
 - `references/synthesis_patterns/home.md`
+- `references/synthesis_patterns/professional_collaboration.md`
 - `references/synthesis_patterns/relationships.md`
 - `references/synthesis_patterns/resources.md`
 - `references/synthesis_patterns/spirituality.md`
@@ -337,7 +346,7 @@ Synthesis pattern modules describe how to combine repeated chart factors around 
 
 - Directory: `references/synthesis_patterns/`
 - Pattern: `references/synthesis_patterns/{topic}.md`
-- Examples: `references/synthesis_patterns/vocation.md`, `references/synthesis_patterns/relationships.md`, `references/synthesis_patterns/resources.md`
+- Examples: `references/synthesis_patterns/vocation.md`, `references/synthesis_patterns/consulting_advisory_vocation.md`, `references/synthesis_patterns/professional_collaboration.md`, `references/synthesis_patterns/relationships.md`, `references/synthesis_patterns/resources.md`
 - Naming: lowercase snake_case topic name.
 
 ## Naming rules

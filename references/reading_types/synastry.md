@@ -228,9 +228,12 @@ boundaries, and repair patterns.
   contacts include Moon-Saturn, Venus-Mars, Sun-Moon, or Mars-Mercury and use
   its language as examples rather than verdicts.
 - For non-romantic or professional synastry, retrieve topic synthesis resources
-  that match the user's container, such as creative work, resources,
-  relationships, conflict, or strengths, before defaulting to romance-coded
-  examples.
+  that match the user's container. Use
+  `references/synthesis_patterns/professional_collaboration.md` for colleagues,
+  clients, co-founders, creative partners, advisory relationships, teaching
+  partnerships, or shared work; add creative work, vocation, resources,
+  relationships, conflict, or strengths as the question requires before
+  defaulting to romance-coded examples.
 - For questions about whether to pursue, trust, leave, or escalate a
   relationship, retrieve ethics and scope first, then frame the reading around
   reflection, boundaries, and practical discernment.
