@@ -173,6 +173,12 @@ Use the module matching the requested `reading_type` when it exists.
 - `references/reading_types/transit_examples.md` for Saturn-to-Moon,
   Jupiter-to-Sun, Mars-to-Ascendant, and Pluto-to-angle transit synthesis
   language.
+- `references/reading_types/mundane.md` for collective, political, market,
+  weather, agricultural, or event focus, covering ingress charts (especially
+  the Aries ingress), lunations and eclipses, Jupiter-Saturn great
+  conjunctions, outer-planet ingresses and transits, the collective entity's
+  chart ruler and angular planets, classical and modern synthesis paths, and
+  strong event-certainty and fear-based-language guardrails.
 
 ### Synthesis patterns
 
@@ -413,8 +419,15 @@ Reading type modules define retrieval priorities, uncertainty rules, and synthes
 - Implemented focused examples: `references/reading_types/synastry_examples.md`
 - Implemented: `references/reading_types/transit.md`
 - Implemented: `references/reading_types/electional.md`
+- Implemented: `references/reading_types/mundane.md` for collective,
+  political, market, weather, agricultural, or event focus, covering ingress
+  charts (especially the Aries ingress), lunations and eclipses,
+  Jupiter-Saturn great conjunctions, outer-planet ingresses and transits, the
+  collective entity's chart ruler and angular planets, classical and modern
+  synthesis paths, and strong event-certainty and fear-based-language
+  guardrails.
 - Implemented focused examples: `references/reading_types/transit_examples.md`
-- Planned: `references/reading_types/mundane.md`
+- Planned: none
 - Naming: lowercase snake_case reading type.
 
 ### Synthesis patterns
