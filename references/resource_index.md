@@ -414,6 +414,7 @@ Reading type modules define retrieval priorities, uncertainty rules, and synthes
 - Implemented: `references/reading_types/transit.md`
 - Implemented: `references/reading_types/electional.md`
 - Implemented focused examples: `references/reading_types/transit_examples.md`
+- Planned: `references/reading_types/mundane.md`
 - Naming: lowercase snake_case reading type.
 
 ### Synthesis patterns

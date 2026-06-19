@@ -15,7 +15,7 @@ Perform a controlled interpretive retrieval pass before writing the reading. Ide
 
 Expect any mix of:
 
-- `reading_type`: `natal`, `transit`, `synastry`, `solar_return`, `annual_profection`, `horary`, or `electional`
+- `reading_type`: `natal`, `transit`, `synastry`, `solar_return`, `annual_profection`, `horary`, `electional`, or `mundane`
 - `tradition_mode`: `classical`, `modern`, or `blended`
 - `tone`: `practical`, `poetic`, `psychological`, `technical`, or `beginner-friendly`
 - `chart_data`: ascendant, MC, sect, house system, placements, houses, aspects, dignities, lots, rulerships, timing factors, and source notes
@@ -51,6 +51,11 @@ Entry commands — one prompt template per `reading_type`, plus a canonical gene
      unclear, especially for vocation, relationship, home, transit, or house-
      dependent questions.
    - Load `references/reading_types/{reading_type}.md` when it exists.
+   - For mundane readings (collective, political, market, weather,
+     agricultural, or event focus), keep event-certainty and high-stakes
+     claims within the Output Guardrails and the always-loaded ethics and
+     scope foundation; `references/reading_types/mundane.md` governs retrieval
+     when it exists.
    - For transit readings, load `references/reading_types/transit_examples.md`
      when the supplied timing factors include Saturn to the Moon, Jupiter to
      the Sun, Mars to the Ascendant, or Pluto to an angle.

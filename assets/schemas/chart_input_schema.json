@@ -16,7 +16,8 @@
         "solar_return",
         "annual_profection",
         "horary",
-        "electional"
+        "electional",
+        "mundane"
       ]
     },
     "tradition_mode": {
