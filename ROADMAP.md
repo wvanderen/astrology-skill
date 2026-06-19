@@ -596,3 +596,135 @@ Acceptance criteria:
 - Decision is based on how often module names drift.
 - If added, script checks expected directories and naming patterns.
 - If deferred, naming expectations remain clear in `references/resource_index.md`.
+
+## Phase 6: Entry Commands and Birth-Data Tooling
+
+These later-added epics (tracked in `td`) sit alongside Phases 0–5 without altering them. They add user-facing invocation affordances and a pre-processing companion script. The skill's interpretive core remains calculation-free: entry commands only route pre-calculated chart data, and the birth-data script is a separate pre-processor that the interpretive skill never imports.
+
+### Epic P6-E1: Entry Commands and Birth-Data Tooling (`td-9b20e3`)
+
+Deliverable: Enable users to access the skill's functions through explicit entry commands, and provide companion scripts that turn raw birth data into chart JSON conforming to `assets/schemas/chart_input_schema.json`. The skill's interpretive core must remain calculation-free; these are pre-processing and invocation affordances.
+
+#### TD P6-E1-TD1: Design entry-command surface (`td-78486e`, closed)
+
+Deliverable: Decide and document how users invoke each skill function through explicit entry commands that route pre-calculated chart data into the SKILL.md workflow.
+
+Acceptance criteria:
+
+- Enumerate the functions to expose: at minimum the reading types `natal`, `transit`, `synastry`, `solar_return`, `annual_profection`, `horary`, `electional` (and `mundane` once the mundane epic lands), plus the birth-data entry utility.
+- Decide the command mechanism appropriate to the Codex skill harness (prompt templates, slash commands, or a wrapper) and justify the choice against `agents/openai.yaml`.
+- Specify how each command accepts chart data (inline JSON, file path, or birth-data script output) and routes it to the matching `reading_type`.
+- Make the command surface enum-driven off `assets/schemas/chart_input_schema.json` so new reading types are picked up without rewriting commands.
+- Produce a spec (e.g., `docs/entry_commands.md` or an entry-commands section in `agents/openai.yaml`) describing the surface and any metadata changes.
+- Preserve the skill's no-calculation boundary: commands route pre-calculated data; they never calculate charts.
+
+#### TD P6-E1-TD2: Design birth-data to chart JSON script (`td-af721a`, closed)
+
+Deliverable: Design a companion pre-processor script that turns raw birth data into chart JSON conforming to `chart_input_schema.json`, without violating the skill's no-calculation boundary.
+
+Acceptance criteria:
+
+- Evaluate ephemeris/calculation libraries (e.g., `pyswisseph`/Swiss Ephemeris, flatlib, kerykeion) and record the choice with explicit licensing notes.
+- Define inputs: name (optional), date, time, location (lat/lon or place), house system default, and timezone handling.
+- Define output: JSON conforming to `assets/schemas/chart_input_schema.json`, including ascendant, MC, sect, placements, house cusps, aspects where available, `source_notes`, and `birth_time_confidence`.
+- Decide where the script lives (e.g., `tools/` or `scripts/`) and confirm it is a pre-processor NOT loaded by the interpretive skill, preserving SKILL.md's no-calculation boundary.
+- Address dependency packaging and Swiss Ephemeris data-file handling.
+- Produce a short design note capturing the decisions above.
+
+#### TD P6-E1-TD3: Implement entry commands (`td-13e366`, closed)
+
+Deliverable: Build the entry-command surface so each supported reading type routes pre-calculated chart data into the SKILL.md retrieval workflow.
+
+Acceptance criteria:
+
+- Entry commands exist and route each supported `reading_type` to the SKILL.md workflow.
+- Commands accept chart JSON (inline or file) conforming to `assets/schemas/chart_input_schema.json` and pass it into the reading workflow.
+- A help/listing command enumerates available functions.
+- Smoke test: invoking a command with a conforming sample chart reaches the retrieval workflow.
+- `agents/openai.yaml` (or the chosen surface) reflects the implemented commands.
+- New reading types added to the schema enum are picked up without rewriting commands.
+
+#### TD P6-E1-TD4: Implement birth-data to chart JSON script (`td-2e2cd9`, closed)
+
+Deliverable: Implement the companion script that converts birth data into chart JSON conforming to `chart_input_schema.json`.
+
+Acceptance criteria:
+
+- Script accepts birth data (interactive prompts and/or CLI args/JSON input) and emits chart JSON.
+- Output validates against `assets/schemas/chart_input_schema.json` (run a jsonschema check).
+- Handles timezone and missing/uncertain birth time by setting `birth_time_confidence` and `source_notes` rather than guessing.
+- Usage documented in a README or docstring; no calculation logic leaks into `references/` or `SKILL.md`.
+- Smoke test: a known birth data set produces the expected Ascendant and MC within tolerance.
+
+#### TD P6-E1-TD5: Wire end-to-end path: birth data to reading (`td-f1eb5b`, closed)
+
+Deliverable: Connect the birth-data script output to entry commands so a user can run one path from raw birth data to a synthesized reading.
+
+Acceptance criteria:
+
+- End-to-end path works: birth data -> script -> chart JSON -> entry command -> reading workflow.
+- Documented example of the full path (e.g., in `docs/` or a README).
+- Entry command gracefully handles chart JSON produced by the script and by external chart tools.
+- Failure modes (invalid JSON, missing required fields) surface a clear message pointing to `chart_input_schema.json`.
+
+#### TD P6-E1-TD6: Sync ROADMAP.md with new entry/tooling and mundane epics (`td-72cf41`)
+
+Deliverable: Reflect the new td epics and child TDs in ROADMAP.md so the canonical planning doc stays in sync with the td tracker.
+
+Acceptance criteria:
+
+- ROADMAP.md adds the entry-commands/birth-data-tooling epic and the mundane-astrology epic with their child TDs and acceptance criteria mirroring the td issues.
+- Existing phase structure is preserved (e.g., add a new phase or extend an existing one without rewriting prior content).
+- `quick_validate.py` still passes after the doc edit.
+
+## Phase 7: Mundane Astrology Consultation Support
+
+A later-added content epic (tracked in `td`) that introduces a first-class collective/mundane reading type with strong scope guardrails against event-certainty and high-stakes prediction.
+
+### Epic P7-E1: Mundane Astrology Consultation Support (`td-bd5aa7`)
+
+Deliverable: Add a first-class mundane reading type (collective/political/market/weather/agricultural astrology) to the skill contract, schema, references, and retrieval workflow, with strong scope guardrails against event-certainty and high-stakes prediction.
+
+#### TD P7-E1-TD1: Add mundane reading type to contract, schema, and index (`td-c2b8db`)
+
+Deliverable: Register mundane as a first-class reading type in the skill contract, input schema, and resource index before authoring doctrine modules.
+
+Acceptance criteria:
+
+- Add `mundane` to the `reading_type` enum in `assets/schemas/chart_input_schema.json`.
+- Add `mundane` to the reading_type list in the SKILL.md input contract and to the workflow's reading-type module selection step.
+- Add mundane to `references/resource_index.md` as planned (to be moved to implemented as modules land).
+- Run `python3 quick_validate.py` and the JSON schema parse check; both pass after the change.
+
+#### TD P7-E1-TD2: Create references/reading_types/mundane.md (`td-936685`)
+
+Deliverable: Author the mundane reading-type module with retrieval priorities, classical and modern paths, and strong scope guardrails. Requires a research pass before drafting.
+
+Acceptance criteria:
+
+- Covers baseline factors: relevant houses/signs for nations, cities, and markets; ingress charts (especially the Aries ingress); lunations and eclipses; Jupiter-Saturn great conjunctions; outer-planet ingresses and transits; the collective entity's chart ruler and angular planets.
+- Provides classical and modern synthesis paths consistent with other reading-type modules.
+- Strong scope guardrails: no certainty about political events, market moves, disasters, or conflict outcomes; non-fear-based language; defer to user-supplied timing rather than predicting events.
+- Uncertainty rules for missing location/entity context and for the difference between natal-like mundane charts and ingress/return-based mundane charts.
+- Carries a `## Source notes` pointer consistent with the other reading-type modules.
+- Update `references/resource_index.md` to mark the module implemented.
+
+#### TD P7-E1-TD3: Add mundane synthesis patterns (`td-eb68e8`)
+
+Deliverable: Add synthesis pattern module(s) for high-value mundane topics, or document them as planned in the resource index.
+
+Acceptance criteria:
+
+- Either implement at least one synthesis pattern under `references/synthesis_patterns/` for a high-value mundane topic (e.g., markets/resources, governance/leadership, or conflict/nations) OR document the planned set in `references/resource_index.md` with naming.
+- Each implemented pattern names primary and secondary factors, retrieval guidance, and scope cautions (no event/market certainty, non-fear-based language).
+- Update `references/resource_index.md` accordingly.
+
+#### TD P7-E1-TD4: Add mundane exemplar modules (`td-d90c80`)
+
+Deliverable: Add exemplar mundane modules (e.g., Aries ingress, Jupiter-Saturn great conjunction), or document them as planned.
+
+Acceptance criteria:
+
+- Either implement at least one mundane exemplar following `references/templates/interpretation_module_template.md` (e.g., Aries ingress reading, Jupiter-Saturn great conjunction) OR document the planned exemplars in `references/resource_index.md`.
+- Each implemented exemplar includes uncertainty and scope language consistent with the mundane reading-type module.
+- Update `references/resource_index.md` accordingly.
