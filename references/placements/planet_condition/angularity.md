@@ -37,6 +37,17 @@ cadent, or closely configured to an angle.
 - "Angular Saturn gives the chart real structural weight, but sect and benefic
   testimony determine whether that weight feels containing or burdensome."
 
+## Classical notes
+
+- Accidental strength is graded by place: planets are strongest when angular or
+  approaching the midheaven, next strongest on the horizon or in a succedent
+  place, and weakest when cadent.
+- Oriental (rising before the Sun), direct, and fast motion add power; occidental,
+  slow, and retrograde motion diminish it.
+- Angularity is accidental (visibility and capacity to act) and is distinct from
+  essential dignity. A loud planet can be difficult; a quiet planet can be highly
+  skilled when supported by dignity, reception, sect, or strong aspects.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -49,3 +60,10 @@ Modify interpretation by:
   combustion, and aspects.
 - User question: emphasize angular planets when the question concerns agency,
   visibility, vocation, relationships, home, embodiment, or life direction.
+
+## Source notes
+
+- Accidental-strength doctrine paraphrases Ptolemy, *Tetrabiblos* Book I §24
+  (Robbins Loeb, LacusCurtius; public domain in the U.S. via non-renewal). See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

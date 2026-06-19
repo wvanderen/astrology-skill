@@ -11,6 +11,16 @@ It can show where the native seeks breadth, trust, and wise order. Avoid
 assuming Jupiter guarantees abundance; its condition shows whether growth is
 well-governed, excessive, delayed, or supported.
 
+## Ruled house versus ruler placement
+
+- "Jupiter ruling the Nth house" describes how Jupiter's function *administers*
+  the topics of the Nth — the nature those ruled topics take on.
+- Jupiter's actual house placement is a separate question: it names the arena
+  where Jupiter operates and meets circumstance. Read it from the planet-in-house
+  module or the broader house module, not from this rulership module.
+- A full reading joins both: what Jupiter administers (ruled house) and where it
+  does so (placement house), modified by its condition. Do not collapse the two.
+
 ## Jupiter ruling the 2nd house
 
 - Core topic carried: resources, income, skills, and possessions are shaped by
@@ -67,8 +77,46 @@ well-governed, excessive, delayed, or supported.
 - Shadow expression: reputation can become inflated, preachy, or dependent on
   promises larger than the chart can sustain.
 
+## Condition modifiers
+
+Use these only when the chart data explicitly supplies the condition. Do not
+ derive missing dignity, sect, reception, or aspects from incomplete data.
+
+### Dignity and debility
+
+- Dignified Jupiter: the ruled-house topics have more coherent access to
+  Jupiter's resources, judgment, and constructive growth.
+- Debilitated Jupiter: the ruled-house topics may require adaptation, support,
+  practice, or alternate channels for growth and good counsel.
+- Reception: show whether another planet or house lord welcomes, supports,
+  redirects, or complicates Jupiter's administration.
+
+### Sect
+
+- Jupiter is the diurnal benefic and helps more consistently in a day chart; in
+  a night chart its support is still real but less dominant.
+
+### Aspects and testimony
+
+- Supportive aspects open channels of cooperation and easier integration for the
+  ruled-house topics.
+- Hard aspects describe pressure, friction, or necessary adjustment without
+  making the outcome deterministic.
+- Benefic testimony softens the administration; malefic testimony adds
+  constraint, delay, or severance, qualified by sect and dignity.
+
 ## Synthesis instructions
 
 Modify Jupiter rulership by dignity, sect, placement, aspects, reception, and
 material testimony from the ruled house. Use full synthesis before promising
 wealth, protection, marriage, honors, or escape from difficulty.
+
+## Source notes
+
+- Rulership, reception, sect, and condition-modifier doctrine paraphrase
+  Ptolemy, *Tetrabiblos* Book I §§17-18 and §24 (Robbins Loeb, LacusCurtius;
+  public domain in the U.S. via non-renewal); practical rulership administration
+  follows Lilly, *Christian Astrology* (public domain) and the medieval
+  Arabic/Latin tradition at the family level. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

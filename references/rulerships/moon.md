@@ -11,6 +11,16 @@ where life is cyclical, relational, and affected by mood or environment. Avoid
 treating lunar rulership as instability by default; judge reliability from the
 Moon's full condition.
 
+## Ruled house versus ruler placement
+
+- "The Moon ruling the Nth house" describes how the Moon's function *administers*
+  the topics of the Nth — the nature those ruled topics take on.
+- The Moon's actual house placement is a separate question: it names the arena
+  where the Moon operates and meets circumstance. Read it from the planet-in-house
+  module or the broader house module, not from this rulership module.
+- A full reading joins both: what the Moon administers (ruled house) and where it
+  does so (placement house), modified by its condition. Do not collapse the two.
+
 ## Moon ruling the 2nd house
 
 - Core topic carried: resources, income, skills, and possessions are tied to
@@ -65,8 +75,47 @@ Moon's full condition.
 - Shadow expression: public role can become too reactive to approval, demand, or
   emotional weather unless other chart factors stabilize it.
 
+## Condition modifiers
+
+Use these only when the chart data explicitly supplies the condition. Do not
+ derive missing dignity, sect, reception, or aspects from incomplete data.
+
+### Dignity and debility
+
+- Dignified Moon: the ruled-house topics have more coherent access to the Moon's
+  steadiness, resources, and responsiveness.
+- Debilitated Moon: the ruled-house topics may require adaptation, support,
+  practice, or alternate channels for stability and care.
+- Reception: show whether another planet or house lord welcomes, supports,
+  redirects, or complicates the Moon's administration.
+
+### Sect
+
+- The Moon leads the night sect; in a night chart its rulership is more directly
+  emphasized. In a day chart the Sun is the sect light, and lunar testimony leans
+  on other condition rather than sect favor.
+
+### Aspects and testimony
+
+- Supportive aspects open channels of cooperation and easier integration for the
+  ruled-house topics.
+- Hard aspects describe pressure, friction, or necessary adjustment without
+  making the outcome deterministic.
+- Benefic testimony softens the administration; malefic testimony adds
+  constraint, delay, or severance, qualified by sect and dignity.
+
 ## Synthesis instructions
 
 Read lunar rulership through the Moon's condition, phase, speed, aspects,
 placement, reception, and planets in the ruled house. Use repeated testimony
 before making firm claims about fluctuation, care work, family, or public life.
+
+## Source notes
+
+- Rulership, reception, sect, and condition-modifier doctrine paraphrase
+  Ptolemy, *Tetrabiblos* Book I §§17-18 and §24 (Robbins Loeb, LacusCurtius;
+  public domain in the U.S. via non-renewal); practical rulership administration
+  follows Lilly, *Christian Astrology* (public domain) and the medieval
+  Arabic/Latin tradition at the family level. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

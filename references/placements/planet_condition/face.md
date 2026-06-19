@@ -21,6 +21,16 @@ decan dignity, or occupying a named decan.
 - The effect is usually subtle and should not outweigh domicile, exaltation,
   detriment, fall, house strength, sect, or major aspects.
 
+## Classical notes
+
+- Faces (decanates, or chariots) are a minor dignity of image, role, and local
+  coherence within a ten-degree division of the sign.
+- Face can give an otherwise undignified (peregrine) planet a small but real
+  footing; it should not outweigh domicile, exaltation, house strength, sect, or
+  major aspects.
+- Peregrine — a planet lacking any essential dignity in its sign — is read as
+  dependence on other testimony (house, aspects, reception, sect), not as damage.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -34,3 +44,12 @@ Modify interpretation by:
   testimonies.
 - User question: include face when the question concerns identity, visibility,
   craft, reputation, or the planet's ability to sustain a specific role.
+
+## Source notes
+
+- Face/decan doctrine paraphrases Ptolemy, *Tetrabiblos* Book I §23 (Robbins
+  Loeb, LacusCurtius; public domain in the U.S. via non-renewal); peregrine
+  judgment follows Lilly, *Christian Astrology* (public domain) and the medieval
+  Arabic/Latin tradition at the family level. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

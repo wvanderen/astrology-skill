@@ -25,6 +25,25 @@ Use this module when supplied chart data includes benefic or malefic aspects, en
 - Combustion, severe invisibility, or other destructive solar condition when explicitly supplied.
 - Testimony from a malefic in poor condition, contrary to sect, or strongly placed to act.
 
+## Classical vocabulary
+
+- Witnessing (or testimony): a benefic constructively configured to a planet by
+  aspect, lending support. "Hurling rays" is a planet casting an aspect across
+  intervening signs.
+- Enclosure (hemming, besiegement): a planet bounded by two planets, usually
+  malefics, so its expression is squeezed between their natures. Benefic
+  enclosure (between two benefics) is protective.
+- Overcoming: a planet earlier in sign order casting a forward (dexter, or
+  right-hand) aspect onto a later planet is traditionally the stronger party in
+  the configuration; the later planet is overcome or commanded.
+- Dexter (right-hand) and sinister (left-hand) aspects describe the direction of
+  the cast ray across the sign order; classical practice often weighted dexter
+  aspects as more forceful, but use this only in classical mode and do not
+  over-claim the difference.
+- In plain-language or blended readings, name the specific mechanic (aspect,
+  enclosure, reception, solar condition) rather than relying on the
+  bonification/maltreatment label alone.
+
 ## Synthesis guidance
 
 - Assess the planet being modified, the modifying planet, sect, reception, dignity, house topics, and aspect closeness when provided.
@@ -35,3 +54,14 @@ Use this module when supplied chart data includes benefic or malefic aspects, en
 ## Required cautions
 
 Avoid fear-based language. Describe maltreatment as strain, exposure, blockage, volatility, or difficulty in the relevant topics, while preserving uncertainty and possible mitigation.
+
+## Source notes
+
+- Bonification/maltreatment, witnessing, hurling rays, enclosure, overcoming,
+  and dexter/sinister doctrine paraphrase the Hellenistic practical canon
+  (Vettius Valens, *Anthologies*, ancient Greek text public domain; English
+  material is modern and copyrighted — paraphrase only) and the medieval
+  Arabic/Latin tradition (Masha'allah, Sahl, Bonatti) at the family level;
+  reception and combustion cross-check Lilly, *Christian Astrology* (public
+  domain). See `references/classical_doctrine_notes.md` for the source pass and
+  provenance tags; doctrine is paraphrased, not quoted.

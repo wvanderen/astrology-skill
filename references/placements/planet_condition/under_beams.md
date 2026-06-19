@@ -38,6 +38,17 @@ hidden by solar light, but not cazimi.
 - "Because Mercury is under beams but angular, the voice is both central and
   partially obscured, making careful timing around disclosure important."
 
+## Classical notes
+
+- Under the beams is a planet roughly 8°30′–17° from the Sun: weakened by
+  invisibility but recovering as it elongates toward 17°, neither combust nor
+  cazimi.
+- This is primarily a condition of visibility and disclosure — topics may be
+  private, gestating, or emerging — not a measure of absolute strength.
+- A planet under the beams but angular or dignified can still act; balance the
+  hiddenness with the rest of the condition. Distinguish under the beams from
+  combustion and cazimi only when the supplied data gives an orb.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -49,3 +60,13 @@ Modify interpretation by:
   proximity is supplied.
 - Supporting testimony: use angularity, dignity, reception, and aspects to judge
   whether hiddenness is protective, frustrating, strategic, or temporary.
+
+## Source notes
+
+- Under-the-beams doctrine and the 17° convention paraphrase Lilly, *Christian
+  Astrology* (1659, Internet Archive id `b30328524_0001`; public domain) at
+  ~p.115 and ~p.123; additional condition doctrine from Ptolemy, *Tetrabiblos*
+  Book I §24 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal). See `references/classical_doctrine_notes.md` for the source pass
+  and provenance tags; doctrine is paraphrased, not quoted, and the orb is
+  Lilly's convention rather than a value derived from missing data.

@@ -16,6 +16,49 @@ reception, and reading type modules when those factors are available.
 - This can describe emotional discipline and loyalty, but also guardedness,
   loneliness, inhibition, or difficulty receiving care.
 
+## Classical notes
+
+- Saturn is the greater malefic (cold and drying) and the Moon is a luminary and
+  moist, fertile principle; their contact classically bears on the body, the
+  mother, caretaking, and emotional steadiness.
+- Sect is the decisive moderator. Saturn is more constructive (disciplined,
+  enduring, protective) in a day chart and harsher (cold, withholding) in a
+  night chart, when it runs contrary to sect.
+- Reception and benefic testimony — especially from Jupiter — can rescue the
+  contact; malefic enclosure or lack of reception intensifies inhibition and
+  heaviness.
+- Saturn conjunct the Moon can also place the Moon under Saturnian "weight"
+  rather than solar burning; read combust/visibility separately from this
+  contact.
+
+## Modern psychological notes
+
+- This aspect often describes a nervous system that learned early to regulate by
+  becoming self-sufficient, useful, controlled, or careful — a survival
+  intelligence built around limitation.
+- Needs may arrive with a sense of cost or obligation, so that feeling them can
+  feel like a burden to be managed rather than a signal to be answered.
+- Development involves rebuilding permission to receive: distinguishing
+  competence from self-denial, and tenderness from dependence.
+
+## Constructive expression
+
+- Emotional steadiness, loyalty, and the capacity to stay present with
+  difficult feelings and difficult people without flooding or fleeing.
+- Caring for others with structure and reliability, then extending that same
+  care inward.
+- Making room for need through small, repeated acts of permission (rest, support
+  requests, softness) so discipline does not become deprivation.
+
+## Shadow expression
+
+- Suppressing needs until they surface as fatigue, resentment, or somatic
+  symptoms, then performing competence to cover the strain.
+- Equating self-worth with usefulness, so that care feels earned rather than
+  given.
+- Guardedness that reads as coldness, or loyalty that hardens into emotional
+  control of self or others.
+
 ## Natal guidance
 
 - In natal readings, interpret this as a lifelong relationship with emotional
@@ -56,3 +99,14 @@ Modify interpretation by:
   emotional resilience.
 - User question: avoid fatalism; emphasize mature support, boundaries, and
   sustainable care.
+
+## Source notes
+
+- Aspect mechanics, sect, reception, and enclosure doctrine paraphrase Ptolemy,
+  *Tetrabiblos* Book I §§5, §7, §13, and §24 (Robbins Loeb, LacusCurtius;
+  public domain in the U.S. via non-renewal); practical planetary-combination
+  logic paraphrases Vettius Valens, *Anthologies* (ancient Greek text public
+  domain; English material is modern and copyrighted — paraphrase only), with
+  Lilly, *Christian Astrology* (public domain) as the practical English anchor
+  for Moon-Saturn readings. See `references/classical_doctrine_notes.md` for the
+  source pass and provenance tags; doctrine is paraphrased, not quoted.

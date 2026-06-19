@@ -22,6 +22,19 @@ opposite its exaltation.
 - Fall can describe sensitivity around the planet's topics, especially when
   reinforced by hard aspects, poor host condition, or lack of reception.
 
+## Classical notes
+
+- Fall (classical "depression") is the sign opposite a planet's exaltation,
+  describing lowered standing rather than incapacity.
+- A planet in fall lacks the public lift of exaltation and often develops its
+  function through craft, discretion, repetition, and attention to concrete need
+  rather than through obvious status.
+- Assess the sign's ruler for whatever guidance, protection, or unstable support
+  it offers the fallen planet; a well-placed, receiving host can turn fall into
+  skilled adaptation.
+- Read fall as lowered recognition and a need for humility, timing, and support,
+  not as shame or incapacity. The function still signifies.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -35,3 +48,11 @@ Modify interpretation by:
   reactive expression.
 - Sect and other condition: treat fall as one testimony among house strength,
   sect, angularity, reception, and benefic or malefic testimony.
+
+## Source notes
+
+- Fall/depression doctrine paraphrases Ptolemy, *Tetrabiblos* Book I §19
+  (Robbins Loeb, LacusCurtius; public domain in the U.S. via non-renewal);
+  host/reception practice follows Lilly, *Christian Astrology* (public domain).
+  See `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

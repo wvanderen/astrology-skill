@@ -38,6 +38,20 @@ to sect, or when chart sect is supplied.
 - "Saturn is of the sect, so its delays may be more constructive than punitive,
   especially when the native works with structure rather than against it."
 
+## Classical notes
+
+- Sect membership: diurnal sect = Sun, Jupiter, Saturn; nocturnal sect = Moon,
+  Venus, Mars; Mercury is variable — diurnal as a morning star, nocturnal as an
+  evening star.
+- The malefics are assigned to sects by opposite nature so that each is
+  moderated by the sect's temperament: cold Saturn joins the day sect; hot, dry
+  Mars joins the night sect. This is the classical root of the sect-reversal rule.
+- Sect is a fit and temperature modifier, not a ranking of planets. The malefic
+  of sect still signifies pressure, but more contained and workable; the malefic
+  contrary to sect signifies sharper, less regulated friction.
+- Do not infer chart sect. Interpret sect only when the data states the Sun's
+  horizon position or explicitly labels the chart day or night.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -50,3 +64,11 @@ Modify interpretation by:
   supported, complicated, or intensified.
 - Reading scope: use sect as a modifier of planetary expression, not as a
   standalone verdict.
+
+## Source notes
+
+- Sect membership and the malefic-reversal logic paraphrase Ptolemy,
+  *Tetrabiblos* Book I §7 (Robbins Loeb, LacusCurtius; public domain in the U.S.
+  via non-renewal). See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags; doctrine is paraphrased, not quoted, and chart sect
+  is never inferred from partial data.

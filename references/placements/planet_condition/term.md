@@ -21,6 +21,16 @@ bound dignity, or occupying a named bound.
 - If another planet rules the bound, that bound lord can describe who or what
   manages the planet's expression.
 
+## Classical notes
+
+- Terms (bounds) divide each sign into segments, each governed by a bound lord
+  who manages local rules, permissions, procedure, and leverage.
+- Two principal schemes circulate — Egyptian and Chaldaean — and Ptolemy also
+  describes his own monomorphic scheme. Do not assert a specific terms scheme
+  unless the supplied data names one.
+- Term is a minor dignity of jurisdiction and leverage; it rarely overrides
+  stronger dignity, debility, house condition, or aspect testimony.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -33,3 +43,12 @@ Modify interpretation by:
   especially in otherwise difficult configurations.
 - Other dignity or debility: term can mitigate but rarely dominates stronger
   dignity, debility, house condition, or aspect testimony.
+
+## Source notes
+
+- Term/bound doctrine paraphrases Ptolemy, *Tetrabiblos* Book I §§20-21
+  (Robbins Loeb, LacusCurtius; public domain in the U.S. via non-renewal);
+  bound-lord management practice follows the medieval Arabic/Latin tradition at
+  the family level. See `references/classical_doctrine_notes.md` for the source
+  pass and provenance tags; doctrine is paraphrased, not quoted, and no terms
+  scheme is asserted unless the supplied data names one.

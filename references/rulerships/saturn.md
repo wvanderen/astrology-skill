@@ -11,6 +11,16 @@ reality. It can show where the native must mature, commit, simplify, or work
 within constraints. Avoid treating Saturn as only denial; condition and
 testimony show whether it withholds, stabilizes, disciplines, or preserves.
 
+## Ruled house versus ruler placement
+
+- "Saturn ruling the Nth house" describes how Saturn's function *administers* the
+  topics of the Nth — the nature those ruled topics take on.
+- Saturn's actual house placement is a separate question: it names the arena
+  where Saturn operates and meets circumstance. Read it from the planet-in-house
+  module or the broader house module, not from this rulership module.
+- A full reading joins both: what Saturn administers (ruled house) and where it
+  does so (placement house), modified by its condition. Do not collapse the two.
+
 ## Saturn ruling the 2nd house
 
 - Core topic carried: resources, income, skills, and possessions are shaped by
@@ -67,8 +77,48 @@ testimony show whether it withholds, stabilizes, disciplines, or preserves.
 - Shadow expression: public life can feel delayed, pressured, lonely, or overly
   defined by duty unless the wider chart brings warmth and support.
 
+## Condition modifiers
+
+Use these only when the chart data explicitly supplies the condition. Do not
+ derive missing dignity, sect, reception, or aspects from incomplete data.
+
+### Dignity and debility
+
+- Dignified Saturn: the ruled-house topics have more coherent access to Saturn's
+  structure, resources, and durable authority.
+- Debilitated Saturn: the ruled-house topics may require adaptation, support,
+  practice, or alternate channels for structure and patience.
+- Reception: show whether another planet or house lord welcomes, supports,
+  redirects, or complicates Saturn's administration.
+
+### Sect
+
+- Saturn is the diurnal malefic and is more moderated in a day chart. In a night
+  chart (contrary to sect) its rulership tends to arrive with more delay,
+  coldness, or pressure unless mitigated by dignity, reception, or benefic
+  testimony.
+
+### Aspects and testimony
+
+- Supportive aspects open channels of cooperation and easier integration for the
+  ruled-house topics.
+- Hard aspects describe pressure, friction, or necessary adjustment without
+  making the outcome deterministic.
+- Benefic testimony softens the administration; malefic testimony adds
+  constraint, delay, or severance, qualified by sect and dignity.
+
 ## Synthesis instructions
 
 Judge Saturn by dignity, sect, placement, aspects, reception, and mitigating
 testimony. Use full synthesis before predicting delay, deprivation, permanence,
 separation, or career authority.
+
+## Source notes
+
+- Rulership, reception, sect, and condition-modifier doctrine paraphrase
+  Ptolemy, *Tetrabiblos* Book I §§17-18 and §24 (Robbins Loeb, LacusCurtius;
+  public domain in the U.S. via non-renewal); practical rulership administration
+  follows Lilly, *Christian Astrology* (public domain) and the medieval
+  Arabic/Latin tradition at the family level. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

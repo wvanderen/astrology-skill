@@ -11,6 +11,16 @@ shows where the native seeks harmony, enjoyment, and mutual benefit. Avoid
 assuming Venus guarantees pleasant outcomes; condition and testimony determine
 whether Venus can bind, soothe, indulge, or entangle.
 
+## Ruled house versus ruler placement
+
+- "Venus ruling the Nth house" describes how Venus's function *administers* the
+  topics of the Nth — the nature those ruled topics take on.
+- Venus's actual house placement is a separate question: it names the arena
+  where Venus operates and meets circumstance. Read it from the planet-in-house
+  module or the broader house module, not from this rulership module.
+- A full reading joins both: what Venus administers (ruled house) and where it
+  does so (placement house), modified by its condition. Do not collapse the two.
+
 ## Venus ruling the 2nd house
 
 - Core topic carried: resources, income, skills, and possessions are tied to
@@ -66,8 +76,46 @@ whether Venus can bind, soothe, indulge, or entangle.
 - Shadow expression: reputation can become dependent on pleasing others or
   avoiding necessary professional conflict.
 
+## Condition modifiers
+
+Use these only when the chart data explicitly supplies the condition. Do not
+ derive missing dignity, sect, reception, or aspects from incomplete data.
+
+### Dignity and debility
+
+- Dignified Venus: the ruled-house topics have more coherent access to Venus's
+  harmony, resources, and relational skill.
+- Debilitated Venus: the ruled-house topics may require adaptation, support,
+  practice, or alternate channels for ease and reciprocity.
+- Reception: show whether another planet or house lord welcomes, supports,
+  redirects, or complicates Venus's administration.
+
+### Sect
+
+- Venus is the nocturnal benefic and helps more consistently in a night chart;
+  in a day chart its support is still real but less dominant.
+
+### Aspects and testimony
+
+- Supportive aspects open channels of cooperation and easier integration for the
+  ruled-house topics.
+- Hard aspects describe pressure, friction, or necessary adjustment without
+  making the outcome deterministic.
+- Benefic testimony softens the administration; malefic testimony adds
+  constraint, delay, or severance, qualified by sect and dignity.
+
 ## Synthesis instructions
 
 Modify Venus rulership by dignity, sect, placement, aspects, reception, and
 benefic or malefic testimony. Use full chart synthesis before promising ease,
 wealth, marriage, popularity, or artistic success.
+
+## Source notes
+
+- Rulership, reception, sect, and condition-modifier doctrine paraphrase
+  Ptolemy, *Tetrabiblos* Book I §§17-18 and §24 (Robbins Loeb, LacusCurtius;
+  public domain in the U.S. via non-renewal); practical rulership administration
+  follows Lilly, *Christian Astrology* (public domain) and the medieval
+  Arabic/Latin tradition at the family level. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

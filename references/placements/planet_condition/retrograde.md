@@ -37,6 +37,17 @@ Use this module when a planet is explicitly supplied as retrograde.
 - "Because Mars is retrograde and angular, desire and anger may be highly
   visible but require conscious pacing and repair after false starts."
 
+## Classical notes
+
+- Ptolemy treats retrograde and slow motion as a reduction of accidental power —
+  a planet weakening as it turns back — distinct from any essential dignity it
+  may hold.
+- The first and second stations mark turning points that bracket the period of
+  reduced and redirected motion.
+- In horary and timing work, retrograde signifies returns, reversals, reworking,
+  and second chances — apply that only when the reading type and technique
+  support it, not as a generic weakening.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -48,3 +59,11 @@ Modify interpretation by:
   conflict, or lack of support.
 - Reading type: in timing work, connect retrograde to returns and reversals only
   when the chart technique supports that claim.
+
+## Source notes
+
+- Retrograde and motion doctrine paraphrase Ptolemy, *Tetrabiblos* Book I §24
+  (Robbins Loeb, LacusCurtius; public domain in the U.S. via non-renewal);
+  horary and timing application follows Lilly, *Christian Astrology* (public
+  domain). See `references/classical_doctrine_notes.md` for the source pass and
+  provenance tags; doctrine is paraphrased, not quoted.

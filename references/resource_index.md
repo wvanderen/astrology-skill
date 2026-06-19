@@ -62,8 +62,13 @@ Foundational references support synthesis, guardrails, and revision passes.
   5-7, then paraphrase the doctrine into the target module; do not load it
   during a normal reading pass. Phase 5 has applied this doctrine to the seven
   traditional planets, the twelve signs, the twelve houses, and the five aspect
-  types; each enriched module carries a one-line `## Source notes` pointer back
-  to this file and `modern_language_notes.md`.
+  types. Phase 6 has applied it to the thirteen planet-condition modules
+  (essential and minor dignity, sect, angularity, retrograde, and
+  combustion/cazimi/under-beams orb precision), the three classical-focused
+  tradition modules (deeper sect, reception, and bonification/maltreatment
+  vocabulary), the seven rulership modules, and the five prioritized planet-pair
+  aspect pairs; each enriched module carries a one-line `## Source notes` pointer
+  back to this file and `modern_language_notes.md`.
 - `references/modern_language_notes.md` for distilled public-domain modern
   language (Alan Leo 1899/1906/1913, with Raphael as a popular-modern witness)
   keyed to edition and chapter, with provenance tags separating historical
@@ -191,7 +196,12 @@ Aspect type modules describe the aspect's general interpretive mechanics, plus a
 - `references/aspects/trine.md`
 - `references/aspects/sextile.md`
 
-Planet pair aspect modules describe exact combinations.
+Planet pair aspect modules describe exact combinations. The five prioritized
+pairs (Sun-Moon, Moon-Saturn, Venus-Mars, Venus-Saturn, Mars-Saturn) carry
+classical notes, modern psychological notes, constructive and shadow
+expression, and reading-type guidance toward the `mars_square_moon` exemplar
+depth; other pairs remain compact starters that compose from the aspect-type
+and planet modules.
 
 - `references/aspects/by_planet_pair/sun_conjunction_moon.md`
 - `references/aspects/by_planet_pair/sun_square_moon.md`
@@ -222,9 +232,14 @@ Planet pair aspect modules describe exact combinations.
 
 ### Planet Conditions
 
-Use these when a supplied planet condition includes dignity, debility, or minor
-essential dignity. Pair exact modules with `references/traditions/classical/dignities.md`
-for classical or blended readings that need broader doctrine.
+Use these when a supplied planet condition includes dignity, debility, sect,
+visibility, motion, or minor essential dignity. Each module pairs a
+non-moralizing interpretive effect with a classical-doctrine layer and, for the
+solar conditions, Lilly's orb conventions (combustion within about 8°30′,
+cazimi within about 17′, under the beams toward 17°). Pair exact modules with
+`references/traditions/classical/dignities.md` for classical or blended readings
+that need broader doctrine; never derive an orb or minor dignity from missing
+data.
 
 - `references/placements/planet_condition/domicile.md`
 - `references/placements/planet_condition/exaltation.md`
@@ -242,9 +257,12 @@ for classical or blended readings that need broader doctrine.
 
 ### Rulerships
 
-Use these when a planet is explicitly supplied as ruler of a house. Retrieve the
-planet module, then use the section for the ruled house. Combine with the
-ruler's actual sign, house placement, dignity, sect, reception, and aspects.
+Use these when a planet is explicitly supplied as ruler of a house. Each module
+distinguishes the ruled-house topics from the ruler's own house placement and
+includes a condition-modifiers section (dignity and debility, sect, aspects and
+testimony). Retrieve the planet module, then use the section for the ruled
+house, and combine it with the ruler's actual sign, house placement, dignity,
+sect, reception, and aspects.
 
 - `references/rulerships/sun.md`
 - `references/rulerships/moon.md`

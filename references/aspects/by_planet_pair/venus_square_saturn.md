@@ -14,6 +14,47 @@ reading type modules when those factors are available.
 - This can show serious love, disciplined craft, financial caution, delayed
   gratification, or difficulty receiving warmth and value.
 
+## Classical notes
+
+- Venus (pleasure, value) under square from Saturn (limit, time) classically
+  signifies love and worth tested by delay, scarcity, duty, or fear of refusal.
+- Sect is decisive: Saturn is moderated by day; in a night chart Venus is the
+  sect light and Saturn runs contrary to sect, colder and more withholding.
+- The square demands active adjustment. Reception and benefic testimony
+  (especially Jupiter) can give the contact a constructive channel of lasting
+  value; without mitigation it tends toward inhibition, loneliness, or fear of
+  rejection.
+- Lilly reads Venus-Saturn for fidelity and the worth of bonds; preserve the
+  mechanism, not the fear-based tone.
+
+## Modern psychological notes
+
+- This aspect often describes a person whose sense of worth and capacity for
+  pleasure developed under conditions of scarcity, scrutiny, or delayed warmth,
+  so that affection can feel conditional.
+- Love may be learned through reliability and time, but the person may also
+  carry a belief that affection must be earned through perfection — and that
+  ease is suspect.
+- Development involves unlearning scarcity scripts and letting pleasure and
+  self-worth coexist with structure.
+
+## Constructive expression
+
+- Exquisite craft and loyalty: the patience to build lasting value in love,
+  art, and money.
+- Mature care expressed through clear agreements, reliability, and realistic
+  generosity.
+- Receiving warmth as legitimate rather than earned, and letting ease coexist
+  with commitment.
+
+## Shadow expression
+
+- A scarcity script that contracts around money, pleasure, or intimacy even when
+  resources are present.
+- Believing affection or rest must be earned through perfection or endurance.
+- Guardedness or withholding that reads as coldness and starves the very bonds
+  it tries to protect.
+
 ## Natal guidance
 
 - In natal readings, interpret this as a pattern in self-worth, commitment,
@@ -50,4 +91,17 @@ Modify interpretation by:
 - House placement: locate where value meets delay, duty, or structure.
 - Sect and dignity: weigh Saturn's constructive or restrictive role.
 - Reception: identify whether commitment supports Venusian ease.
+- Benefic support: note routes for warmth and repair.
 - User question: frame the square as maturing value, not proof of lovelessness.
+
+## Source notes
+
+- Aspect mechanics, sect, reception, and benefic/malefic doctrine paraphrase
+  Ptolemy, *Tetrabiblos* Book I §§5, §7, §13, and §24 (Robbins Loeb,
+  LacusCurtius; public domain in the U.S. via non-renewal); practical
+  planetary-combination logic paraphrases Vettius Valens, *Anthologies* (ancient
+  Greek text public domain; English material is modern and copyrighted —
+  paraphrase only), with Lilly, *Christian Astrology* (public domain) as the
+  practical English anchor for Venus-Saturn readings. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

@@ -31,6 +31,36 @@ Use this module when classical or blended interpretation includes supplied digni
 - Lack of reception can make otherwise strong testimony feel less coordinated or less able to deliver constructively.
 - Mutual reception links two planets' topics and can show exchange, dependency, alliance, or mixed obligations.
 
+## Reception mechanics and mutual reception
+
+- A planet is received when the ruler of the sign (or of its exaltation,
+  triplicity, bound, or face) it occupies attends to it, especially by aspect.
+  Reception shows welcome, access, and negotiated cooperation.
+- Strong reception can make a difficult aspect more workable; lack of reception
+  in a hard configuration intensifies friction.
+- Mutual reception: two planets occupy each other's dignities (for example, the
+  Moon in Capricorn while Saturn is in Cancer). It links their topics and can
+  show exchange, alliance, dependency, or shared obligation. Read which planet has
+  the stronger overall condition, because that planet tends to set the tone of
+  the exchange.
+- In horary, mutual reception between the querent's and quesited's
+  significators can perfect a matter that an applying aspect alone would not
+  (Lilly). Apply that only when the reading type is horary and the question
+  concerns whether a matter perfects; do not import horary perfection into natal
+  readings.
+- Reception modifies the *delivery* of a planet's testimony, not its existence.
+  A received malefic still signifies its topics; reception changes how
+  constructively those topics can be expressed.
+
+## Translation notes
+
+- "Domicile," "rulership," and "own sign" are interchangeable here; the
+  classical term is the "house of the planet," which predates the modern
+  house-and-ruler usage.
+- "Essential" dignity (by sign) is distinct from "accidental" strength (by
+  house, motion, visibility). Keep the two layers separate so a
+  debilitated-but-angular planet is read correctly.
+
 ## Synthesis guidance
 
 - Read dignity together with house placement, sect, angularity, and aspects. A dignified planet in a hidden or cadent house may have resources that are less visible or slower to express.
@@ -40,3 +70,13 @@ Use this module when classical or blended interpretation includes supplied digni
 ## Required cautions
 
 Avoid ranking a life or person by dignities. Use dignity language to describe condition, capacity, support, and friction within the supplied chart factors.
+
+## Source notes
+
+- Essential-dignity rationale paraphrases Ptolemy, *Tetrabiblos* Book I
+  §§17-23 (Robbins Loeb, LacusCurtius; public domain in the U.S. via
+  non-renewal); reception, mutual reception, and horary perfection mechanics
+  follow Lilly, *Christian Astrology* (public domain) and the medieval
+  Arabic/Latin tradition at the family level. See
+  `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.

@@ -21,6 +21,20 @@ the sign opposite its domicile.
 - Skill can develop through practice, but the planet may not act as simply,
   quickly, or self-authorized as it would in domicile.
 
+## Classical notes
+
+- Detriment (classical "exile") is the sign directly opposite a planet's
+  domicile — terrain organized around priorities contrary to its own.
+- Because the planet does not rule its environment, the sign's ruler (the host)
+  becomes the critical manager of its access; reception from that host strongly
+  changes how workable detriment is.
+- Detriment is an essential debility but does not cancel accidental strength: an
+  angular, well-aspected planet in detriment can still act powerfully, if more
+  indirectly or through negotiation.
+- Read detriment as constrained expression of the planet's principle, not as
+  weakness of character. The function is learned through difference, contrast,
+  and repeated adjustment.
+
 ## Synthesis instructions
 
 Modify interpretation by:
@@ -32,3 +46,11 @@ Modify interpretation by:
   workable by giving the planet welcome, tools, or a clear channel.
 - Sect and other condition: do not let detriment override angularity, sect,
   benefic testimony, or repeated supportive factors; weigh the whole condition.
+
+## Source notes
+
+- Detriment/exile doctrine follows from the Ptolemaic domicile scheme in
+  *Tetrabiblos* Book I §17 (Robbins Loeb, LacusCurtius; public domain in the
+  U.S. via non-renewal) and reception/host practice from Lilly, *Christian
+  Astrology* (public domain). See `references/classical_doctrine_notes.md` for
+  the source pass and provenance tags; doctrine is paraphrased, not quoted.

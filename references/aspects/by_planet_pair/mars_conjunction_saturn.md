@@ -16,6 +16,47 @@ reading type modules when those factors are available.
 - This contact can build mastery through patience, but may also describe
   blocked anger, harsh self-control, or conflict with authority.
 
+## Classical notes
+
+- The two malefics fused in one place: Saturn (cold, delaying) and Mars (hot,
+  severing). Classically a high-pressure combination signifying constrained
+  force, endurance, injury-risk themes, and disciplined mastery.
+- Sect is the key moderator. Saturn is better placed by day and Mars by night;
+  when the chart lets one or both operate in their own sect, the conjunction
+  channels constructively. When both run against sect, it presses hardest.
+- Reception, benefic enclosure, and dignity determine whether the pair builds or
+  frustrates. Without mitigation, watch for blocked anger, harshness, or
+  stop-start effort.
+- Keep health and injury language symbolic and non-diagnostic; recommend
+  appropriate real-world support for medical or safety concerns.
+
+## Modern psychological notes
+
+- This aspect often describes a person whose drive and self-control are fused, so
+  that acting freely can feel unsafe and holding back can feel like the only
+  responsible option.
+- Anger may be turned inward as pressure or harsh self-critique, or held until
+  it discharges as rigidity toward others.
+- Development involves learning timing — when to push, when to rest — and
+  separating discipline from self-punishment.
+
+## Constructive expression
+
+- Disciplined mastery: the capacity to apply steady, controlled force over time
+  toward difficult goals.
+- Strategic patience that conserves energy and chooses battles rather than
+  exhausting every front.
+- Conscious pacing and repair after effort, so endurance does not become
+  depletion.
+
+## Shadow expression
+
+- Blocked anger that surfaces as rigidity, harsh self-criticism, or somatic
+  tension.
+- Conflict with authority, or becoming the harsh authority one once resisted.
+- Frustration that hardens into bitterness when effort is not met with timely
+  recognition.
+
 ## Natal guidance
 
 - In natal readings, interpret this as a pattern in will, restraint, discipline,
@@ -54,3 +95,14 @@ Modify interpretation by:
 - Sect and dignity: judge which malefic is more constructive or severe.
 - Reception and benefic support: identify mitigation and productive channels.
 - User question: emphasize strategy, pacing, and responsible force.
+
+## Source notes
+
+- Aspect mechanics, sect, reception, and malefic doctrine paraphrase Ptolemy,
+  *Tetrabiblos* Book I §§5, §7, §13, and §24 (Robbins Loeb, LacusCurtius;
+  public domain in the U.S. via non-renewal); practical planetary-combination
+  logic paraphrases Vettius Valens, *Anthologies* (ancient Greek text public
+  domain; English material is modern and copyrighted — paraphrase only), with
+  Lilly, *Christian Astrology* (public domain) as the practical English anchor.
+  See `references/classical_doctrine_notes.md` for the source pass and provenance
+  tags; doctrine is paraphrased, not quoted.
