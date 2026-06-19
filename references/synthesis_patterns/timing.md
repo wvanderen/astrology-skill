@@ -36,6 +36,37 @@ malefic condition of the activated planets.
 - Record missing timing data rather than inventing dates, orbs, birth time,
   location, house cusps, solar return placements, or transit contacts.
 
+## Supplied data versus derived calculation
+
+Timing work blends two kinds of input that must be kept distinct in the
+reading plan and the output.
+
+- Supplied data is anything the source chart data or user explicitly provides:
+  transit dates and orbs, a profection age or stated period ruler, a solar
+  return chart cast by external software, station and retrograde-pass dates,
+  eclipse or lunation contacts, an ingress date, the user's stated decision
+  window, and any lot, time-lord, or period the chart data names.
+- Derived calculation is anything the skill would have to compute or infer,
+  which it does not do: exact peak dates inferred from orbs, the multi-pass
+  sequence of a retrograde, the dignity or debility of a transiting planet
+  when only its sign is given, a calculated lot or its ruler, a derived
+  time-lord or bound lord from a sign alone, rectified angles or birth time,
+  and inferred house or angle contacts.
+
+Rules:
+
+- Use supplied timing data at face value, then rank it by exactness,
+  repetition, natal relevance, angularity, and birth-time reliability.
+- Never present a derived value as if it were supplied. If a peak date, pass
+  sequence, transiting-planet dignity, or time-lord sub-period is not in the
+  source, describe the period thematically and name the missing data.
+- When the source supplies a transiting planet's sign but not its dignity or
+  condition, use sign symbolism and clearly label it as general sign
+  symbolism, not as calculated condition.
+- Record missing timing data in the reading plan rather than inventing dates,
+  orbs, birth time, location, house cusps, solar return placements, or transit
+  contacts. The skill's non-calculation rule in `SKILL.md` governs here.
+
 ## Synthesis cautions
 
 - Do not present timing as certainty. Use windows, themes, activation, and

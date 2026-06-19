@@ -77,6 +77,35 @@ annual profections show which natal topics are activated for the year.
 - If the Lord of the Year is also the natal chart ruler, sect light, or ruler
   of the user's question, increase its interpretive weight.
 
+## Classical time-lord framing
+
+Annual profections belong to the broader classical family of time-lord
+("chronocrator") techniques, in which a sequence of ruling planets governs
+successive periods and gives each period its planetary character. The profected
+house and its Lord of the Year are the profection-specific form of that idea: the
+Lord of the Year is the period ruler whose natal condition colors the whole
+birthday-to-birthday year.
+
+- Treat the Lord of the Year as the year's ruling planet. Its dignity, sect,
+  reception, house, and aspects describe the tone, cooperativeness, and
+  constraints of the period, not a verdict on the year's outcome.
+- Some traditions further divide the year into sub-periods or month-lords drawn
+  from the same sign or from sect order. Use those only when the supplied data
+  or the user explicitly names them; do not calculate sub-rulers, bound lords,
+  or month-lords from a sign alone.
+- When several timing techniques agree — a profected house, its Lord of the
+  Year, a concurrent transit, a solar return emphasis, or another supplied
+  time-lord — treat the agreement as stronger testimony about the period's
+  themes, never as proof of a specific event.
+- Keep the framing non-deterministic. A time-lord names which planet's
+  significations are foregrounded for the year; it does not ordain what must
+  happen. A difficult Lord of the Year describes the work, constraint, or repair
+  the period tends to surface, with agency, support, and choice intact.
+- If the source supplies a different time-lord scheme (decennials,
+  distributions, zodiacal releasing, firdaria, or dasha-style periods) instead of
+  profections, name the scheme, use its supplied period ruler, and do not mix
+  periods from different systems without labeling the combination.
+
 ## Linking profection to natal chart data
 
 - First establish the natal promise for the activated house and the user's
@@ -198,3 +227,15 @@ annual profections show which natal topics are activated for the year.
 - When exact modules are missing, fall back to broader planet, house, aspect
   type, tradition, ethics, and synthesis resources rather than inventing
   missing profection rules.
+
+## Source notes
+
+- The profection and time-lord framing paraphrases the Hellenistic period-ruler
+  concept preserved in practical form by Vettius Valens (*Anthologies*, ancient
+  Greek text public domain; modern translations copyrighted — paraphrased, not
+  quoted) and the later profection/direction/return practice recorded by William
+  Lilly (*Christian Astrology* Book III, 1659, public domain). Ptolemy treats
+  the division of times as an activation method in *Tetrabiblos* IV.10. See
+  `references/classical_doctrine_notes.md` (time-lords, profections, directions
+  section) for the source pass and provenance tags; no period tables or
+  translator examples are reproduced here.

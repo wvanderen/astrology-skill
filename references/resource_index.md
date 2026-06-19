@@ -68,7 +68,12 @@ Foundational references support synthesis, guardrails, and revision passes.
   tradition modules (deeper sect, reception, and bonification/maltreatment
   vocabulary), the seven rulership modules, and the five prioritized planet-pair
   aspect pairs; each enriched module carries a one-line `## Source notes` pointer
-  back to this file and `modern_language_notes.md`.
+  back to this file and `modern_language_notes.md`. Phase 7 has applied it to the
+  annual profection reading type (classical time-lord framing) and the
+  resources, home, creative work, health routines, and spirituality synthesis
+  patterns (classical and modern paths, mixed-testimony resolution, and
+  incomplete-birth-time guidance); each enriched module likewise carries a
+  `## Source notes` pointer.
 - `references/modern_language_notes.md` for distilled public-domain modern
   language (Alan Leo 1899/1906/1913, with Raphael as a popular-modern witness)
   keyed to edition and chapter, with provenance tags separating historical
@@ -157,7 +162,8 @@ use for horary and synastry, and the aspect-to-ascendant place-quality rationale
 Use the module matching the requested `reading_type` when it exists.
 
 - `references/reading_types/natal.md`
-- `references/reading_types/annual_profection.md`
+- `references/reading_types/annual_profection.md` for profected house, Lord of
+  the Year, classical time-lord framing, and transits to the Lord of the Year.
 - `references/reading_types/horary.md`
 - `references/reading_types/solar_return.md`
 - `references/reading_types/synastry.md`
@@ -171,7 +177,12 @@ Use the module matching the requested `reading_type` when it exists.
 ### Synthesis patterns
 
 Use synthesis patterns to combine repeated chart factors around the user's
-topic before drafting the final interpretation.
+topic before drafting the final interpretation. The topic patterns
+(resources, home, creative work, health routines, spirituality, vocation,
+relationships, consulting, and professional collaboration) carry classical and
+modern synthesis paths, mixed-testimony resolution, and incomplete-birth-time
+guidance; the narrower patterns (strengths, conflict, timing) stay compact.
+`timing.md` also separates supplied timing data from derived calculation.
 
 - `references/synthesis_patterns/conflict.md`
 - `references/synthesis_patterns/consulting_advisory_vocation.md`

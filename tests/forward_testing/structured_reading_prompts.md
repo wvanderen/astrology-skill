@@ -414,3 +414,224 @@ expected answers.
   }
 }
 ```
+
+## Annual Profection Prompt
+
+Use this prompt to exercise the annual profection workflow, the classical
+time-lord framing, and the supplied-versus-derived timing distinction.
+
+```json
+{
+  "reading_type": "annual_profection",
+  "tradition_mode": "blended",
+  "tone": "practical",
+  "user_question": "I just turned 34 and I am trying to understand what this year is about, especially around work and resources. Please anchor the year in the profection structure and then describe how the supplied transits modify it. Avoid predicting specific events.",
+  "chart_data": {
+    "source_notes": "Already-calculated tropical chart and annual profection data from an external astrology program.",
+    "birth_time_confidence": "high; birth certificate time",
+    "house_system": "Whole Sign",
+    "ascendant": {
+      "sign": "Scorpio",
+      "degree": 9.3
+    },
+    "sect": {
+      "status": "night",
+      "luminary_of_sect": "Moon",
+      "sect_mate_planets": ["Venus", "Mars"]
+    },
+    "placements": [
+      {
+        "body": "Sun",
+        "sign": "Taurus",
+        "degree": 4.1,
+        "house": 7,
+        "motion": "direct",
+        "rules_houses": [10]
+      },
+      {
+        "body": "Moon",
+        "sign": "Pisces",
+        "degree": 22.7,
+        "house": 5,
+        "motion": "direct",
+        "rules_houses": [9]
+      },
+      {
+        "body": "Mercury",
+        "sign": "Aries",
+        "degree": 18.0,
+        "house": 6,
+        "motion": "direct",
+        "rules_houses": [8, 11]
+      },
+      {
+        "body": "Venus",
+        "sign": "Gemini",
+        "degree": 3.5,
+        "house": 8,
+        "motion": "direct",
+        "condition": ["domicile"],
+        "dignity": ["domicile"],
+        "rules_houses": [7, 12]
+      },
+      {
+        "body": "Mars",
+        "sign": "Capricorn",
+        "degree": 14.8,
+        "house": 3,
+        "motion": "direct",
+        "condition": ["exaltation"],
+        "dignity": ["exaltation"],
+        "rules_houses": [1, 6]
+      },
+      {
+        "body": "Jupiter",
+        "sign": "Cancer",
+        "degree": 5.9,
+        "house": 9,
+        "motion": "direct",
+        "condition": ["exaltation"],
+        "dignity": ["exaltation"],
+        "rules_houses": [2, 5]
+      },
+      {
+        "body": "Saturn",
+        "sign": "Pisces",
+        "degree": 11.2,
+        "house": 5,
+        "motion": "direct",
+        "rules_houses": [3, 4]
+      }
+    ],
+    "aspects": [
+      {
+        "body_a": "Mars",
+        "aspect": "trine",
+        "body_b": "Jupiter",
+        "orb_degrees": 2.0,
+        "applying": true
+      },
+      {
+        "body_a": "Venus",
+        "aspect": "opposition",
+        "body_b": "Saturn",
+        "orb_degrees": 2.3,
+        "applying": false
+      }
+    ],
+    "timing_factors": [
+      {
+        "technique": "annual_profection",
+        "age": 34,
+        "birthday_occurred": true,
+        "profected_house": 5,
+        "lord_of_year": "Jupiter",
+        "notes": "Profection to the 5th house counted from the Scorpio Ascendant; Lord of the Year supplied by the source."
+      },
+      {
+        "technique": "transit",
+        "date": "2026-05-02",
+        "triggering_body": "Jupiter",
+        "natal_body": "Jupiter",
+        "aspect": "conjunction",
+        "orb_degrees": 0.4,
+        "description": "Transiting Jupiter returning to its natal place during the 5th-house profection year."
+      },
+      {
+        "technique": "transit",
+        "date": "2026-02-14",
+        "triggering_body": "Saturn",
+        "natal_body": "Venus",
+        "aspect": "square",
+        "orb_degrees": 1.1,
+        "description": "Transiting Saturn in Pisces squaring natal Venus in Gemini."
+      }
+    ]
+  }
+}
+```
+
+## Natal Resources Prompt
+
+Use this prompt to exercise the enriched resources synthesis pattern and the
+incomplete-birth-time weighting guidance. It deliberately supplies no houses,
+angles, or sect so the reading must name those limits before synthesizing.
+
+```json
+{
+  "reading_type": "natal",
+  "tradition_mode": "blended",
+  "tone": "practical",
+  "user_question": "I want a grounded read of my relationship with money, earning, and security from the placements I have. I do not have a reliable birth time, so please say up front what cannot be judged without houses.",
+  "chart_data": {
+    "source_notes": "Date and place are known; birth time is unknown. Placements are sign-only except where a degree was provided by the source.",
+    "birth_time_confidence": "unknown; no recorded birth time",
+    "house_system": "not available",
+    "sect": "unknown",
+    "placements": [
+      {
+        "body": "Sun",
+        "sign": "Capricorn",
+        "degree": 9.0,
+        "motion": "direct"
+      },
+      {
+        "body": "Moon",
+        "sign": "Taurus",
+        "motion": "unknown",
+        "notes": "Moon sign listed by source; degree and exact aspects not supplied."
+      },
+      {
+        "body": "Mercury",
+        "sign": "Sagittarius",
+        "degree": 27.3,
+        "motion": "direct"
+      },
+      {
+        "body": "Venus",
+        "sign": "Aquarius",
+        "degree": 4.2,
+        "motion": "direct"
+      },
+      {
+        "body": "Mars",
+        "sign": "Leo",
+        "degree": 16.6,
+        "motion": "direct"
+      },
+      {
+        "body": "Jupiter",
+        "sign": "Cancer",
+        "degree": 8.1,
+        "motion": "direct",
+        "condition": ["exaltation"],
+        "dignity": ["exaltation"]
+      },
+      {
+        "body": "Saturn",
+        "sign": "Aries",
+        "degree": 12.4,
+        "motion": "retrograde",
+        "condition": ["fall"],
+        "dignity": ["fall"]
+      }
+    ],
+    "aspects": [
+      {
+        "body_a": "Venus",
+        "aspect": "opposition",
+        "body_b": "Mars",
+        "orb_degrees": 2.4,
+        "applying": false
+      },
+      {
+        "body_a": "Jupiter",
+        "aspect": "square",
+        "body_b": "Saturn",
+        "orb_degrees": 4.3,
+        "applying": true
+      }
+    ]
+  }
+}
+```
