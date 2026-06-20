@@ -1,0 +1,253 @@
+#!/usr/bin/env bash
+#
+# install.sh — install the astrology skill into an Agent-Skills-standard harness.
+#
+# Copies the skill into a harness skills directory so the agent discovers it on
+# next start. Targets any Agent-Skills-standard loader — Codex, Pi, or the
+# harness-neutral ~/.agents/skills/ (scanned by Pi and any compliant loader).
+#
+# The skill name is read from SKILL.md frontmatter (default: astrology-skill).
+#
+# Idempotent: it safely REPLACES a previous install of THIS skill (matched by the
+# `name:` field in the destination's SKILL.md) and REFUSES to clobber a directory
+# that belongs to a DIFFERENT skill. A leftover symlink from a previous manual
+# install is replaced with a real copy. Use --force to override the clobber refusal.
+#
+# AGPL boundary: tools/ (the pyswisseph birth-data calculator) is intentionally
+# NOT copied. The agent-loaded skill package stays dependency-free and AGPL-free
+# per docs/birth_to_chart_design.md §7. Install the calculator separately, into a
+# venv of your own:
+#     python3 -m venv .venv && . .venv/bin/activate \
+#       && pip install -r tools/requirements.txt -r tools/requirements-dev.txt
+#
+# Usage:
+#   ./install.sh                      # default: install into all three targets
+#   ./install.sh --target codex       # $CODEX_HOME/skills/        (default ~/.codex/skills)
+#   ./install.sh --target pi          # $PI_HOME/agent/skills/     (default ~/.pi/agent/skills)
+#   ./install.sh --target agents      # $AGENTS_HOME/skills/       (default ~/.agents/skills, harness-neutral)
+#   ./install.sh --target all         # install into all three (default)
+#   ./install.sh --dry-run            # show what would happen; copy nothing
+#   ./install.sh --force              # overwrite a destination that belongs to another skill
+#   ./install.sh --help
+#
+# Exit codes: 0 success; 1 usage/runtime error; 2 a target was refused (different skill).
+
+set -uo pipefail
+
+# --------------------------------------------------------------------------- #
+# Globals
+# --------------------------------------------------------------------------- #
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEFAULT_NAME="astrology-skill"
+TARGET="all"
+DRY_RUN=false
+FORCE=0
+OVERALL=0
+
+# Files/dirs excluded from the copied skill package (keeps it lean + AGPL-free).
+# `tools` is the AGPL calculator — see header. Everything else is local dev noise.
+EXCLUDES=(
+  '.git'
+  '.gitignore'
+  '.gitattributes'
+  '.github'
+  '.venv'
+  'venv'
+  'env'
+  '__pycache__'
+  '*.pyc'
+  '*.pyo'
+  '.env'
+  '.env.*'
+  '.todos'
+  '.sidecar'
+  '.sidecar-agent'
+  '.sidecar-task'
+  '.sidecar-pr'
+  '.sidecar-start.sh'
+  '.sidecar-base'
+  '.td-root'
+  '.DS_Store'
+  'node_modules'
+  '.idea'
+  '.vscode'
+  'tools'
+)
+
+# --------------------------------------------------------------------------- #
+# Helpers
+# --------------------------------------------------------------------------- #
+
+err()  { printf 'install: ERROR: %s\n' "$*" >&2; }
+note() { printf 'install: %s\n' "$*"; }
+
+read_skill_name() {
+  # Print the first `name:` value from the YAML frontmatter of $1/SKILL.md.
+  # Returns non-zero if the file is missing or has no frontmatter name.
+  local dir="$1" file="$1/SKILL.md" name
+  [ -f "$file" ] || return 1
+  name="$(awk '
+    /^---[[:space:]]*$/ { f++; next }
+    f == 1 && /^[[:space:]]*name:[[:space:]]*/ {
+      sub(/^[[:space:]]*name:[[:space:]]*/, "")
+      sub(/^["'\'']/, "")
+      sub(/["'\'']$/, "")
+      print
+      exit
+    }
+  ' "$file")"
+  [ -n "$name" ] || return 1
+  printf '%s' "$name"
+}
+
+resolve_target() {
+  # Set globals T_LABEL and T_DIR for a target key.
+  case "$1" in
+    codex)  T_LABEL="Codex";               T_DIR="${CODEX_HOME:-$HOME/.codex}/skills" ;;
+    pi)     T_LABEL="Pi";                  T_DIR="${PI_HOME:-$HOME/.pi}/agent/skills" ;;
+    agents) T_LABEL="Agents (harness-neutral)"; T_DIR="${AGENTS_HOME:-$HOME/.agents}/skills" ;;
+    *) err "unknown target '$1' (expected codex|pi|agents|all)"; exit 1 ;;
+  esac
+}
+
+validate_paths() {
+  local skills_dir="$1" dest="$2"
+  [ -n "$skills_dir" ] || { err "resolved skills dir is empty for target"; exit 1; }
+  case "$skills_dir" in
+    /*) : ;;  # absolute — required so rm -rf targets are predictable
+    *)  err "skills dir must be an absolute path: '$skills_dir'"; exit 1 ;;
+  esac
+  [ "$dest" = "/" ] && { err "refusing destination '/'"; exit 1; }
+  case "$dest" in
+    "$skills_dir/$SKILL_NAME") : ;;
+    *) err "destination path mismatch: '$dest'"; exit 1 ;;
+  esac
+}
+
+copy_skill() {
+  # Copy $1 (src) into $2 (dest), applying EXCLUDES. rsync preferred; tar fallback.
+  local src="$1" dest="$2"
+  local excludes=("${EXCLUDES[@]}")
+
+  if command -v rsync >/dev/null 2>&1; then
+    local rsync_args=()
+    local e
+    for e in "${excludes[@]}"; do rsync_args+=( --exclude "$e" ); done
+    # dest is freshly created by the caller; trailing slash on src copies contents.
+    rsync -a "${rsync_args[@]}" "$src/" "$dest/"
+  else
+    local tar_args=()
+    local e
+    for e in "${excludes[@]}"; do tar_args+=( --exclude="$e" ); done
+    mkdir -p "$dest"
+    tar -cf - -C "$src" "${tar_args[@]}" . | tar -xf - -C "$dest"
+  fi
+}
+
+install_target() {
+  local key="$1"
+  resolve_target "$key"
+  local label="$T_LABEL" skills_dir="$T_DIR"
+  local dest="$skills_dir/$SKILL_NAME"
+
+  validate_paths "$skills_dir" "$dest"
+  printf '==> [%s] %s\n' "$label" "$dest"
+
+  local action="install"
+  local existing_name=""
+  if [ -L "$dest" ] || [ -e "$dest" ]; then
+    existing_name="$(read_skill_name "$dest" 2>/dev/null || true)"
+    if [ -L "$dest" ]; then
+      action="replace (previous symlink -> copy)"
+    elif [ "$existing_name" = "$SKILL_NAME" ]; then
+      action="replace (previous install of $SKILL_NAME)"
+    elif [ "$FORCE" -eq 1 ]; then
+      action="FORCE-overwrite (dest name: '${existing_name:-<none>}'; expected '$SKILL_NAME')"
+    else
+      if $DRY_RUN; then
+        printf '    WOULD REFUSE: destination belongs to a different skill (name: %q)\n' "${existing_name:-<none>}"
+        printf '    (skipped in dry-run; would exit non-zero without --force)\n'
+        return 0
+      fi
+      printf '    REFUSED: %s belongs to a different skill.\n' "$dest"
+      [ -n "$existing_name" ] && printf '      found name: %q (expected: %q)\n' "$existing_name" "$SKILL_NAME"
+      printf '      Re-run with --force to overwrite.\n'
+      return 2
+    fi
+  fi
+
+  if $DRY_RUN; then
+    printf '    (dry-run) would %s\n' "$action"
+    return 0
+  fi
+
+  mkdir -p "$skills_dir"
+  if [ -L "$dest" ] || [ -e "$dest" ]; then
+    rm -rf "$dest"
+  fi
+  copy_skill "$SCRIPT_DIR" "$dest"
+  printf '    installed (%s)\n' "$action"
+  return 0
+}
+
+usage() {
+  sed -n '3,/^$/p' "${BASH_SOURCE[0]}" \
+    | sed 's/^# \{0,1\}//' \
+    | sed -n '2,$p'  # skip the leading blank line from the # line
+}
+
+# --------------------------------------------------------------------------- #
+# Arg parsing
+# --------------------------------------------------------------------------- #
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --target)
+      [ $# -ge 2 ] || { err "--target requires a value"; exit 1; }
+      TARGET="$2"; shift 2 ;;
+    --target=*) TARGET="${1#--target=}"; shift ;;
+    --dry-run) DRY_RUN=true; shift ;;
+    --force)   FORCE=1; shift ;;
+    -h|--help) usage; exit 0 ;;
+    *) err "unknown argument '$1' (try --help)"; exit 1 ;;
+  esac
+done
+
+# --------------------------------------------------------------------------- #
+# Pre-flight
+# --------------------------------------------------------------------------- #
+
+[ -f "$SCRIPT_DIR/SKILL.md" ] || { err "SKILL.md not found in $SCRIPT_DIR (run from the repo root)"; exit 1; }
+SKILL_NAME="$(read_skill_name "$SCRIPT_DIR" || printf '%s' "$DEFAULT_NAME")"
+note "skill: $SKILL_NAME  (from $SCRIPT_DIR/SKILL.md)"
+note "source: $SCRIPT_DIR"
+$DRY_RUN && note "DRY RUN — nothing will be copied."
+note "excludes include 'tools/' (AGPL calculator; install separately, see header)"
+
+case "$TARGET" in
+  all) targets="codex pi agents" ;;
+  codex|pi|agents) targets="$TARGET" ;;
+  *) err "--target must be codex|pi|agents|all (got '$TARGET')"; exit 1 ;;
+esac
+
+# --------------------------------------------------------------------------- #
+# Run
+# --------------------------------------------------------------------------- #
+
+for t in $targets; do
+  if install_target "$t"; then
+    :
+  else
+    rc=$?
+    [ "$rc" -gt "$OVERALL" ] && OVERALL=$rc
+  fi
+done
+
+echo
+if [ "$OVERALL" -eq 0 ]; then
+  note "done."
+else
+  note "done with issues (exit $OVERALL)."
+fi
+exit "$OVERALL"
