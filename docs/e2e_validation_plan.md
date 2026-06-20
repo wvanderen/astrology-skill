@@ -1,6 +1,6 @@
 # E2E Validation Pass, Evaluation, and Refinement — Plan
 
-**Status:** proposed
+**Status:** delivered — Phases A–E landed (see per-phase "Delivered" notes). Deterministic matrix green (8/8); blind forward test clean across 11 prompts / 8-of-8 reading types (`td-846f9a`).
 **Scope:** A single coordinated pass that (1) re-runs the full deterministic
 end-to-end validation harness, (2) closes two structural-drift gaps the
 harnesses do not currently catch, (3) extends blind forward-test coverage to
@@ -39,7 +39,7 @@ single-walkthrough missed").
 | `python3 tests/entry/smoke_test.py` | PASS — full entry-surface parity |
 | `.venv/bin/python3 tests/entry/end_to_end_test.py` | PASS — calculator-backed stages included (pipe + file modes) |
 | `.venv/bin/python3 tools/smoke_test.py` | PASS — 3 fixtures, Asc/MC within ±0.05° |
-| Most recent blind pass (`td-06b45e`) | Clean across 6 prompts on all 5 rubric axes |
+| Most recent blind pass (`td-846f9a`) | Clean across **11 prompts / 8-of-8 reading types** on all 5 rubric axes (supersedes the 6-prompt `td-06b45e` run; see Phase C) |
 
 So the deterministic path is green. The work below is about **closing
 blindness gaps** and **fixing two drift artifacts the harnesses do not
@@ -215,6 +215,33 @@ and contamination-audit format.
    mundane especially needs scope-aligned source notes matching
    `references/reading_types/mundane.md`.
 
+### C.3 Delivered (`td-846f9a`)
+
+Phase C landed in one combined run; `tests/forward_testing/forward_test_findings_td-846f9a.md`
+is the durable record.
+
+- **C.1** — re-run confirmed `td-06b45e`'s clean verdict still holds: all 11
+  prompts pass on every rubric axis. Contamination audit clean by
+  construction (0 retrieval / bash leaks across 11 isolated contexts).
+- **C.2.1** — the four `td-06b45e` bugs were already corrected by `td-4605f5`
+  (commit `3cc171e`; the C task description was stale). A programmatic
+  orb re-verification then surfaced **three further** hand-typed orb
+  mismatches `td-06b45e` had not caught (Natal Vocation Mercury–Jupiter
+  trine / Sun–Saturn square / an irreconcilable Venus–Jupiter "opposition"
+  replaced with the geometrically real Mars–Jupiter square; Natal Resources
+  Venus–Mars; Incomplete-Data Mercury–Saturn relabeled
+  opposition→quincunx). After these surgical fixes a full recompute reports
+  **0 aspect mismatches** across all 11 prompts. Because the four mislabels
+  are now corrected, one **explicitly labeled** `aspect_precision` stress-test
+  fixture was added so the precision retrieval path stays exercised.
+- **C.2.2** — four new reading-type prompts (`solar_return`, `horary`,
+  `electional`, `mundane`) bring blind coverage from 4/8 to **8/8**. Every
+  new chart's geometry originates from `tools/birth_to_chart.py` (then
+  rounded, with orbs recomputed from the rounded degrees), preserving the
+  no-calculation boundary; the mundane prompt is scope-aligned to
+  `references/reading_types/mundane.md`. Research-before-authoring honored:
+  dignity/rulership/notes added by hand, geometry from the bundled calculator.
+
 ---
 
 ## Phase D — Refinement
@@ -233,6 +260,31 @@ Each doctrinal change obeys research-before-authoring. Each non-doctrinal
 change (fragments, fixtures, the matrix, the findings file) is test-hygiene
 or routing.
 
+### D.1 Delivered (`td-afe437`)
+
+Every corpus change Phase D enumerates landed **inside** the B and C tasks
+themselves (B.1/B.2 in `td-76f5e0`; C.1/C.2 in `td-846f9a`), so Phase D's
+work is consolidation and verification rather than a separate application
+pass. Final disposition, verified this session:
+
+- `prompts/entry/mundane.md` (B.1) — present; enum↔fragment parity complete
+  (8/8); `entry_commands.py --check` green.
+- `references/reference_gap_matrix.md` refresh (B.2) — reconciled to on-disk
+  reality; `tests/structure/gap_matrix_drift.py` went 8 findings → 0 (now a
+  regression guard).
+- Four forward-test fixtures (C.2.1) — corrected (see C.3); programmatic
+  recompute reports 0 aspect mismatches across the 11 prompts.
+- Four new forward-test prompts + precision stress-test (C.2.2) — present;
+  blind coverage 8/8.
+- C.1 findings file — `forward_test_findings_td-846f9a.md`.
+- **Any corpus fixes the C.1 blind pass surfaces: none.** The findings file
+  records "made no doctrinal changes to the corpus" and "No corpus drift
+  was introduced"; the pass added fixtures and a findings file only.
+
+Full deterministic matrix re-run this session: **8/8 PASS** (green tree).
+No doctrinal corpus change was authored in Phase D, so the
+research-before-authoring rule was not triggered here.
+
 ---
 
 ## Phase E — Closure
@@ -245,6 +297,21 @@ or routing.
 - Update `references/resource_index.md` if any module moves implemented ↔
   planned (none expected this pass; the mundane modules are already
   registered).
+
+### E.1 Delivered (`td-afe437`)
+
+- **Review/approve** — recorded under this task per the td workflow.
+- **ROADMAP.md** — no sync. Phases A–E of this pass are operational
+  execution tracked in `td` + this plan doc, not enumerated in `ROADMAP.md`
+  (whose Phase 5 validation TDs are generic acceptance criteria). No new TDs
+  were spawned by B or C, so TD P6-E1-TD6-style sync is not triggered. The
+  historical "(and `mundane` once the mundane epic lands)" parenthetical in
+  the closed design TD P6-E1-TD1 is left intact (accurate-as-history; TD6's
+  discipline is to preserve prior content).
+- **references/resource_index.md** — no change. The mundane reading-type,
+  exemplar, and three synthesis-pattern modules are already registered in
+  the implemented list, and every category's "Planned" set is `none`; no
+  module moved implemented ↔ planned this pass.
 
 ---
 
