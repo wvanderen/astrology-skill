@@ -87,6 +87,143 @@ precision, download `.se1` files from Astrodienst and pass `--ephe-path <dir>`
 
 ---
 
+## Installing the skill into coding agents
+
+This skill follows the [Agent Skills standard](https://agentskills.io/specification):
+a directory containing `SKILL.md` with `name` + `description` frontmatter. Any
+standard-compliant harness loads it the same way — you register the skill
+directory once per harness.
+
+> The skill's [`SKILL.md`](SKILL.md) already conforms to the standard.
+> [`agents/openai.yaml`](agents/openai.yaml) is **extra interface metadata**
+> (display name, entry-command surface). The standard loader ignores unknown
+> fields, so the skill loads even in a harness that does not read that file;
+> harnesses that do (e.g. Codex) use it for the entry-command surface.
+
+### Recommended: clone once, symlink into each harness
+
+Keep a single source so `git pull` updates flow through to every harness:
+
+```bash
+# clone once (anywhere stable)
+git clone <this-repo-url> ~/skills/astrology-skill
+
+# then link it into each harness's skills directory (see paths below)
+ln -s ~/skills/astrology-skill ~/.codex/skills/astrology-skill
+ln -s ~/skills/astrology-skill ~/.pi/agent/skills/astrology-skill
+ln -s ~/skills/astrology-skill ~/.claude/skills/astrology-skill
+```
+
+Symlinks are preferred; copy the directory instead if your harness does not
+follow symlinks (`cp -R ~/skills/astrology-skill <dest>/`).
+
+### Per-harness locations
+
+| Harness | Skills directory | Notes |
+|---|---|---|
+| **OpenAI Codex** | `~/.codex/skills/<name>/` | Native path (`$CODEX_HOME/skills`). Codex ships a built-in `skill-installer`; see below. |
+| **Pi** | `~/.pi/agent/skills/<name>/` or `~/.agents/skills/<name>/` | Both are scanned. The shared `~/.agents/skills/` location is read by multiple harnesses. |
+| **Claude Code** | `~/.claude/skills/<name>/` | Global user skills. Project-level: `.claude/skills/`. |
+| **OpenCode** | config / plugin model | No native Agent-Skills directory in this install; register the directory in `opencode.jsonc` or place a project-level `.agents/skills/` symlink (see below). |
+
+#### OpenAI Codex
+
+```bash
+mkdir -p ~/.codex/skills
+ln -s "$PWD" ~/.codex/skills/astrology-skill
+```
+
+Alternatively, Codex's built-in `skill-installer` skill installs into
+`~/.codex/skills` from a GitHub repo path — invoke it inside Codex and point it
+at this repository. (`agents/openai.yaml` declares the entry-command surface
+Codex reads.)
+
+#### Pi
+
+```bash
+mkdir -p ~/.pi/agent/skills ~/.agents/skills
+ln -s "$PWD" ~/.pi/agent/skills/astrology-skill
+ln -s "$PWD" ~/.agents/skills/astrology-skill      # shared across harnesses
+```
+
+Pi also accepts a one-off load without installing:
+
+```bash
+pi --skill "$PWD"
+```
+
+…or a `skills` array in `~/.pi/settings.json` / project `.pi/settings.json`:
+
+```json
+{ "skills": ["~/skills/astrology-skill"] }
+```
+
+Once installed, the skill registers as `/skill:astrology-skill` and is
+auto-suggested when a request matches its description.
+
+#### Claude Code
+
+```bash
+mkdir -p ~/.claude/skills
+ln -s "$PWD" ~/.claude/skills/astrology-skill
+```
+
+For project-only scope, symlink into `.claude/skills/` inside the project root
+instead.
+
+#### OpenCode
+
+OpenCode is config/plugin-driven. Two reliable options:
+
+- **Project-level shared skills dir** (read by standard-compliant harnesses):
+  symlink the skill into `.agents/skills/` at your project root.
+- **Register in config** by adding the directory to your `opencode.jsonc`
+  agent/plugin configuration (OpenCode does not scan a fixed `skills/` dir).
+
+> OpenCode's exact Agent-Skills loading can vary by version — confirm against
+> your OpenCode release if the skill does not appear.
+
+### Project-level install (all harnesses, per-project)
+
+For a single project, the cross-harness convention is `.agents/skills/` at the
+project root (discovered by Pi and other standard-compliant harnesses):
+
+```bash
+mkdir -p .agents/skills
+ln -s /absolute/path/to/astrology-skill .agents/skills/astrology-skill
+```
+
+Claude Code and Pi also read their own project dirs (`.claude/skills/`,
+`.pi/skills/`).
+
+### Verify it loaded
+
+After installing, confirm the harness discovered the skill:
+
+```bash
+# Pi: list registered skill commands
+ls ~/.pi/agent/skills ~/.agents/skills    # astrology-skill present
+
+# Generic: the harness should expose /skill:astrology-skill (Pi) or list the
+# skill in its startup roster. Ask the agent: "what skills are available?"
+```
+
+Then trigger it with a small chart, e.g.:
+
+```bash
+python3 entry_commands.py --route '{
+  "reading_type": "natal",
+  "chart_data": {
+    "house_system": "Whole Sign",
+    "placements": [{"body": "Sun", "sign": "Taurus", "degree": 0}]
+  }
+}'
+```
+
+…and ask the agent to interpret the routed chart using the skill.
+
+---
+
 ## Usage
 
 ### List the available reading functions
