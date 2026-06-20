@@ -8,6 +8,25 @@ natal chart describes enduring temperament, capacity, and life patterns; the
 solar return describes annual activation and emphasis within that natal
 context.
 
+## Data source
+
+The solar-return chart is **computed by the bundled tool**, not derived by the
+skill:
+
+    python3 tools/birth_to_chart.py --reading-type solar_return \
+        --date <birth> --time <birth> --lat/--lon/--tz <birth> \
+        --target-date <return-year> [--return-lat L --return-lon L]
+
+It arrives in `chart_data.solar_return` as `return_moment_utc`, SR
+`ascendant`/`midheaven`/`house_cusps`, `chart_ruler`, SR `sect`, SR
+`placements`/`aspects`, and `natal_contacts` (SR planets → natal planets and
+angles), with a summary in `chart_data.timing_factors`. The return moment is
+the UT at which the transiting Sun returns to its natal longitude, cast at the
+return location (defaults to the birth location; solar-return houses are
+location-sensitive). It requires a known birth time to anchor the natal Sun.
+If an externally computed return chart is supplied instead, consume the same
+shape per `docs/end_to_end.md`.
+
 ## Baseline factors
 
 - Solar return Ascendant, Ascendant ruler, and the condition of the chart ruler.

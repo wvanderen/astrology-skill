@@ -98,6 +98,15 @@ the schema enum, the entry surface picks it up automatically:
 No entry command is rewritten when a new type lands. That is the enum-driven
 guarantee.
 
+**Output-side companion: `--report`.** The same surface gates *output*
+artefacts. `python3 entry_commands.py --report <report-or-path-or-->`
+validates a reading report against `assets/schemas/report_schema.json` and
+re-runs the chart-input gate on every embedded `chart_input` artefact, so a
+delivered report cannot silently wrap a chart that `--route` would reject. The
+report standard is documented in `docs/report_format.md`; the end-to-end path
+(reading → report) is Stage 4 of `docs/end_to_end.md`. `--check` also asserts
+parity between the report-schema enums and the chart-input enums.
+
 ---
 
 ## 4. Command mechanism: prompt templates (chosen)

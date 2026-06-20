@@ -53,6 +53,41 @@ python tools/birth_to_chart.py \
     --validate --output chart.json
 ```
 
+### Timing-type charts (`solar_return` / `annual_profection` / `transit`)
+
+These reading-types compute the matching timing chart **on top of the natal
+chart** (the natal chart is always the base). Pass `--target-date` and the
+tool derives the rest from Swiss Ephemeris; the output is schema-clean and
+feeds `entry_commands.py --route` unchanged.
+
+```bash
+# Annual profection: age -> profected house, sign, Lord of the Year
+python tools/birth_to_chart.py \
+    --date 1992-10-28 --time 22:30 \
+    --lat 38.0406 --lon -84.5037 --tz America/New_York \
+    --reading-type annual_profection --target-date 2025-10-28 --validate
+
+# Solar return: Sun-return moment + SR chart (cast at the return location)
+python tools/birth_to_chart.py \
+    --date 1992-10-28 --time 22:30 \
+    --lat 38.0406 --lon -84.5037 --tz America/New_York \
+    --reading-type solar_return --target-date 2025-10-28 \
+    --return-lat 40.7128 --return-lon -74.0060 --return-place "New York, NY" \
+    --validate
+
+# Transit: transiting positions (in natal houses) + transit->natal contacts
+python tools/birth_to_chart.py \
+    --date 1992-10-28 --time 22:30 \
+    --lat 38.0406 --lon -84.5037 --tz America/New_York \
+    --reading-type transit --target-date 2025-10-28 --target-time 12:00 --validate
+```
+
+`solar_return` and `transit` default the target instant to **noon** when
+`--target-time` is omitted, and default the target timezone to the birth
+`--tz`. `annual_profection` needs only the birth date + `--target-date` (the
+age is derived); a timed chart is still required to resolve the profected sign
+and Lord of the Year from the natal Ascendant.
+
 ### JSON input file
 
 ```bash
@@ -110,8 +145,11 @@ bad/missing input or validation failure, with a message naming the field.
 | `--lmt` | optional | Local Mean Time offset derived from `--lon`. |
 | `--place`, `--name` | optional | Free-text labels for `source_notes`. **Coordinates are authoritative** — no network geocoding (deterministic/offline). |
 | `--house-system` | optional | Default **`Whole Sign`** (robust to birth-time uncertainty). Also: Placidus, Regiomontanus, Koch, Equal, Campanus, Porphyrius, Morinus, Alcabitius, Topocentric. |
-| `--reading-type` / `--tradition-mode` / `--tone` | optional | Pass-through; defaults `natal` / `blended` / `practical`. |
+| `--reading-type` / `--tradition-mode` / `--tone` | optional | `natal` default. For `solar_return` / `annual_profection` / `transit` the tool computes the matching timing chart (see [Timing-type charts](#timing-type-charts-solar_return--annual_profection--transit)); other values are pass-through. |
 | `--user-question` | optional | Querent focus. |
+| `--target-date` | conditional | YYYY-MM-DD the reading concerns. **Required** for `solar_return` (sets the return year), `annual_profection` (sets the age), and `transit` (the transit date). |
+| `--target-time` / `--target-tz` / `--target-lmt` | optional | Time + timezone for the target instant (`transit`/`solar_return`). Defaults: noon; birth `--tz`; LMT off. |
+| `--return-lat` / `--return-lon` / `--return-place` | optional | Solar-return location (location-sensitive). Defaults to birth `--lat`/`--lon`. |
 | `--elevation` | optional | Meters; enables parallax-corrected (topocentric) Moon. |
 | `--ayanamsa` | optional | `tropical` (default) or a SE sidereal mode (e.g. `Lahiri`). |
 | `--ephe-path` / `SWISSEPH_PATH` | optional | Directory of `.se1` files. |
@@ -168,6 +206,29 @@ Conforms to `chart_input_schema.json` (top-level `reading_type`,
   Sun is above the horizon (when time known).
 - `lots` — Lot of Fortune (sect-aware: day = Asc + Moon − Sun; night = Asc + Sun − Moon).
 
+### Timing factors (`solar_return` / `annual_profection` / `transit`)
+
+For these three reading-types the natal chart above is the base; the tool also
+emits the matching timing data so the skill never has to derive it:
+
+- `timing_factors` — schema-documented array. One `annual_profection` entry
+  (`active_house`, `profected_sign`, `time_lord`, `lord_of_the_year_natal`);
+  one `solar_return` summary (`date_time`, `time_lord` = SR chart ruler); one
+  `transit` entry per transit→natal contact (`triggering_body`, `natal_body`,
+  `aspect`, `orb_degrees`, `applying`/`separating`, `exact`).
+- `solar_return` block — `return_year`, `return_moment_utc`, `return_location`,
+  SR `ascendant`/`midheaven`/`house_cusps`, `chart_ruler` (domicile ruler of the
+  SR Ascendant), SR `sect`, SR `placements`, SR `aspects`, and `natal_contacts`
+  (SR planets → natal planets/angles). Computed at the UT where the transiting
+  Sun returns to its natal longitude.
+- `transit_chart` block — `date_time`, transiting `placements` (each placed in
+  its **natal** house), and `natal_contacts` (transit → natal planets/angles).
+
+Profections are whole-sign, counted from the natal Ascendant; the Lord of the
+Year is the classical domicile ruler. `solar_return` requires a known birth
+time (to anchor the natal Sun); `annual_profection` and `transit` degrade
+gracefully on an untimed chart (no Ascendant-dependent factors are invented).
+
 ### Default orb table
 
 Per-body max orbs (pair orb = the larger of the two): luminaries 10°, personal
@@ -188,6 +249,9 @@ the pair orb uncapped. An aspect is `exact` when its orb is below 0.05°
 | Aspect geometry, orbs, applying/separating | Aspect *interpretation* |
 | Lot of Fortune position | Lot *significance* |
 | Motion (direct/retrograde) | Essential/accidental **dignity**, **condition** |
+| Solar-return moment, SR chart (Asc/MC/houses/placements/aspects), SR→natal contacts | SR *meaning*, annual-emphasis synthesis |
+| Annual profection (profected house/sign, Lord of the Year, Lord's natal placement) | Profection *interpretation*, topic synthesis |
+| Transiting positions, transit→natal aspect geometry | Transit *interpretation*, timing-window synthesis |
 
 ---
 
@@ -212,10 +276,11 @@ See [`docs/end_to_end.md`](../docs/end_to_end.md) for the full walkthrough
 ## Smoke test
 
 ```bash
-python tools/smoke_test.py
+python tools/smoke_test.py          # natal Asc/MC vs independent stdlib recomputation
+python tools/timing_smoke_test.py   # solar_return / annual_profection / transit
 ```
 
-Runs three documented birth-data sets (different years, hemispheres, IANA
+`smoke_test.py` runs three documented birth-data sets (different years, hemispheres, IANA
 zones) and checks that the script's Ascendant and MC (via Swiss Ephemeris)
 agree to **±0.05°** with an **independent** from-scratch recomputation
 (IAU 1982 GMST + IAU 1980 obliquity, stdlib only — no Swiss Ephemeris), and

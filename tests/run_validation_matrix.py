@@ -24,6 +24,8 @@ A.1 deterministic suite (must be green before B–D proceed):
   4. tests/entry/end_to_end_test.py (.venv; calculator-backed stages)
   5. tools/smoke_test.py          (.venv; Asc/MC within ±0.05° on 3 fixtures)
   6. schema + agents/openai.yaml parse (.venv; ROADMAP Phase 5 static guard)
+  7. tests/entry/report_test.py   (system python3; report gate --report)
+  8. tools/timing_smoke_test.py   (.venv; solar_return/annual_profection/transit)
 
 A.2 structural-drift guards (new in td-3b7112):
   7. tests/structure/gap_matrix_drift.py        (system python3)
@@ -82,7 +84,13 @@ CHECKS: list[Check] = [
           "Asc/MC within +/-0.05 deg on 3 fixtures"),
     Check("A.1.6", "A.1", "schema + agents/openai.yaml parse",
           "venv", ["tests/structure/schema_and_agents_parse.py"],
-          "ROADMAP Phase 5 static-asset guard"),
+          "ROADMAP Phase 5 static-asset guard (+ report schema/output keys)"),
+    Check("A.1.7", "A.1", "tests/entry/report_test.py",
+          "system", ["tests/entry/report_test.py"],
+          "report gate (--report) + nested chart_input validation"),
+    Check("A.1.8", "A.1", "tools/timing_smoke_test.py",
+          "venv", ["tools/timing_smoke_test.py"],
+          "solar_return / annual_profection / transit computation (td-9dfe2c)"),
     Check("A.2.1", "A.2", "tests/structure/gap_matrix_drift.py",
           "system", ["tests/structure/gap_matrix_drift.py"],
           "gap matrix vs on-disk modules (regression guard)"),

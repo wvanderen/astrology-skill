@@ -7,6 +7,23 @@ the underlying promise, capacity, and topic structure; transits describe when
 those themes may be activated, intensified, revised, or brought into conscious
 focus.
 
+## Data source
+
+Transiting positions and transit→natal contacts are **computed by the bundled
+tool**, not derived by the skill:
+
+    python3 tools/birth_to_chart.py --reading-type transit \
+        --date <birth> --time <birth> --lat/--lon/--tz <birth> \
+        --target-date <date> [--target-time HH:MM --target-tz <zone>]
+
+They arrive in `chart_data.transit_chart` as transiting `placements` (each
+placed in its **natal** house) and `natal_contacts` (transit → natal planets
+and angles, with `orb_degrees`, `applying`/`separating`, `exact`); one
+`chart_data.timing_factors` entry is emitted per contact. The natal chart is
+still the base. On an untimed chart, planet-to-planet contacts remain but
+angular/house contacts are omitted (not invented). If transit data arrives
+from an external tool instead, consume the same shape per `docs/end_to_end.md`.
+
 ## Baseline factors
 
 - Natal promise for the topic: house, ruler, planet condition, aspects, sect,

@@ -19,6 +19,12 @@ interface:
       command: python3 entry_commands.py --list
       check: python3 entry_commands.py --check
       route: python3 entry_commands.py --route <chart-or-path-or-->
-      description: Enumerate available reading types from the schema enum; assert parity; resolve and gate a chart into the SKILL.md workflow.
+      report: python3 entry_commands.py --report <report-or-path-or-->
+      description: Enumerate reading types; assert parity (enum/fragments/report enums); gate a chart into the workflow (--route); gate a report envelope and its embedded chart artefacts (--report).
     end_to_end: docs/end_to_end.md
     no_calculation: true
+  output:
+    report_schema: assets/schemas/report_schema.json
+    report_template: references/templates/report_template.md
+    report_format_doc: docs/report_format.md
+    description: When the host or user asks to save, archive, export, or deliver a reading, wrap it in the standardized report envelope (client, reading type, date of reading, JSON chart artefacts). Quick chat answers need no envelope.

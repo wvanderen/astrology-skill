@@ -32,6 +32,8 @@ When a requested reading depends on missing data:
 
 Use `assets/schemas/chart_input_schema.json` as the preferred structured input shape when a user asks how to provide data.
 
+When the host or user asks to **save, archive, export, or deliver** the reading as a report artefact, produce a standardized report per `assets/schemas/report_schema.json` and render it with `references/templates/report_template.md` (see [Report Output](#report-output) below and `docs/report_format.md`). Quick chat answers need no envelope.
+
 Entry commands — one prompt template per `reading_type`, plus a canonical generic template — live under `prompts/entry/`. They resolve, validate, and hand a chart to Workflow step 1 without calculating. See `docs/entry_commands.md` for the surface and run `python3 entry_commands.py --list` to enumerate the current functions. For the wired path from raw birth data through `tools/birth_to_chart.py` to a reading, see `docs/end_to_end.md`.
 
 ## Workflow
@@ -79,6 +81,10 @@ Entry commands — one prompt template per `reading_type`, plus a canonical gene
 8. Before sending the answer, run the internal reading self-check. For
    validation or revision passes, load `references/foundations/anti_patterns.md`
    and check for common synthesis drift.
+9. If the request is for a saved, archived, exported, or delivered report
+   artefact, wrap the reading in the standardized report envelope defined by
+   `assets/schemas/report_schema.json` (see [Report Output](#report-output)).
+   Otherwise, deliver the prose answer directly.
 
 The reading plan is normally internal. Show it only if the user asks for method, traceability, or a reading outline.
 
@@ -172,3 +178,42 @@ checklist or private reasoning unless the user asks for method or traceability.
   external events, and astrology-only advice for high-stakes choices?
 - Synthesis quality: Does the answer combine factors into a coherent judgment
   with qualifications, instead of giving a disconnected placement list?
+
+## Report Output
+
+A **report** is a saved, archived, exported, or delivered reading artefact —
+not every chat answer. Produce a report only when the host or user asks to save,
+export, archive, or deliver the reading.
+
+The canonical contract is `assets/schemas/report_schema.json`. It wraps the
+reading with provenance and attaches the JSON chart artefact(s) it was built
+from:
+
+- **Client** (`client.name` or pseudonymous `client.label`).
+- **Type of reading** (`reading_type`, required).
+- **Date of reading** (`generated_at`, ISO date-time, required).
+- **Tradition mode, tone, user question, practitioner** where relevant.
+- **Chart artefact(s)** (`chart_artefacts`, required, at least one): the
+  `chart_input` the reading interpreted, plus optional `reading_plan`,
+  `secondary_chart`, or `timing` artefacts. Embed the JSON inline (`object`) or
+  reference a path (`ref`).
+- **The reading itself** (`reading.summary` + `reading.body` Markdown, or
+  structured `reading.sections`), with `scope_notes` and `uncertainty_notes`.
+- **Self-check** materialized only for archival/audit reports; omit it for
+  client-facing deliverables.
+
+Render the envelope to Markdown with
+`references/templates/report_template.md` when a human-readable artefact is
+wanted. `docs/report_format.md` documents the field map, embed-vs-reference
+rules, and a minimal example.
+
+Once an envelope exists, gate it deterministically with
+`python3 entry_commands.py --report <report-or-path-or-->` — the output-side
+twin of `--route`. It validates the envelope against `report_schema.json` and
+holds every embedded `chart_input` artefact to the same gate as `--route`, so
+a report cannot silently wrap a chart the input gate would reject.
+
+The report composes with the existing input and plan contracts unchanged — a
+chart that passes `entry_commands.py --route` embeds verbatim as a
+`chart_input` artefact. The report never calculates, rectifies, or derives a
+chart factor.

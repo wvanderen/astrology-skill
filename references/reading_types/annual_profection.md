@@ -8,6 +8,25 @@ developmental during the profection year. They do not replace the natal chart.
 The natal chart describes enduring capacity, condition, and topic structure;
 annual profections show which natal topics are activated for the year.
 
+## Data source
+
+The profected house, profected sign, Lord of the Year, and the Lord's natal
+condition are **computed by the bundled tool**, not derived by the skill:
+
+    python3 tools/birth_to_chart.py --reading-type annual_profection \
+        --date <birth> --time <birth> --lat/--lon/--tz <birth> \
+        --target-date <profection-year-start>
+
+They arrive in `chart_data.timing_factors` as `active_house`, `profected_sign`,
+`time_lord`, and `lord_of_the_year_natal` (whole-sign, counted from the natal
+Ascendant; the Lord is the classical domicile ruler). This preserves
+`SKILL.md`'s rule that the skill "does not calculate profections" — the
+derivation lives in the calculation tool (stage 1), and the skill interprets
+its output. If the timing data arrives from an external tool instead, consume
+the same fields; external-tool charts conform to the same schema
+(`docs/end_to_end.md`). When the chart is untimed, only the age-based house
+number is available; do not invent a profected sign or Lord.
+
 ## Baseline factors
 
 - Exact age at the relevant birthday, including whether the birthday has

@@ -106,6 +106,39 @@ def validate_entry_surface() -> None:
         fail("entry surface parity check failed: " + "; ".join(hard_failures))
 
 
+def validate_report_schema_parity() -> None:
+    """Assert report_schema.json enums match chart_input_schema.json.
+
+    Delegates to ``entry_commands._collect_report_parity_issues`` so there is a
+    single source of truth for report parity (the same function ``--check``
+    uses at runtime). The report standard is optional: if
+    ``report_schema.json`` is absent this is a no-op.
+    """
+    entry = Path(__file__).resolve().parent / "entry_commands.py"
+    report_schema = (
+        Path(__file__).resolve().parent / "assets" / "schemas" / "report_schema.json"
+    )
+    if not report_schema.is_file():
+        return  # report standard not installed; nothing to check
+    if not entry.is_file():
+        return  # entry surface not installed; nothing to delegate to
+
+    import importlib.util  # noqa: PLC0415
+
+    spec = importlib.util.spec_from_file_location("entry_commands", entry)
+    if spec is None or spec.loader is None:
+        return
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    schema_path = Path(__file__).resolve().parent / "assets" / "schemas" / "chart_input_schema.json"
+    chart_schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    hard_failures, _warnings = module._collect_report_parity_issues(chart_schema)
+    if hard_failures:
+        fail("report schema parity check failed: " + "; ".join(hard_failures))
+    print("PASS: report_schema.json enums match chart_input_schema.json")
+
+
 def main() -> None:
     skill_path = Path(__file__).with_name("SKILL.md")
     if not skill_path.exists():
@@ -116,6 +149,7 @@ def main() -> None:
     print("PASS: SKILL.md metadata is valid")
 
     validate_entry_surface()
+    validate_report_schema_parity()
 
 
 if __name__ == "__main__":

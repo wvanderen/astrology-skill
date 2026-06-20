@@ -34,11 +34,17 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 CHART_SCHEMA = ROOT / "assets" / "schemas" / "chart_input_schema.json"
 PLAN_SCHEMA = ROOT / "assets" / "schemas" / "reading_plan_schema.json"
+REPORT_SCHEMA = ROOT / "assets" / "schemas" / "report_schema.json"
 AGENTS = ROOT / "agents" / "openai.yaml"
 
 REQUIRED_ENTRY_KEYS = (
     "spec", "enum_source", "canonical_template",
     "fragments_dir", "input_modes",
+)
+# interface.output keys declared by the report standard (td-7d265d / td-8ddeaa).
+# Asserted only when report_schema.json is installed (the standard is optional).
+REQUIRED_OUTPUT_KEYS = (
+    "report_schema", "report_template", "report_format_doc",
 )
 
 
@@ -95,6 +101,22 @@ def main() -> int:
     jsonschema.Draft202012Validator.check_schema(plan)
     print("  PASS: reading_plan_schema.json is a valid Draft 2020-12 JSON Schema")
 
+    # 2b. Report schema (optional standard): when present it must parse and be
+    #     a valid Draft 2020-12 schema, and its inlined enums must match the
+    #     chart-input enums (parity is also enforced at runtime by
+    #     entry_commands.py --check and quick_validate.py).
+    if REPORT_SCHEMA.is_file():
+        report = json.loads(REPORT_SCHEMA.read_text(encoding="utf-8"))
+        jsonschema.Draft202012Validator.check_schema(report)
+        print("  PASS: report_schema.json is a valid Draft 2020-12 JSON Schema")
+        for field in ("reading_type", "tradition_mode", "tone"):
+            input_enum = chart["properties"][field].get("enum")
+            report_enum = report["properties"][field].get("enum")
+            _check(list(report_enum) == list(input_enum),
+                   f"report_schema.json {field} enum matches chart_input_schema.json")
+    else:
+        print("  SKIP: report_schema.json absent (report standard not installed)")
+
     # 3. agents/openai.yaml parses and declares the entry contract.
     agents_doc = yaml.safe_load(AGENTS.read_text(encoding="utf-8"))
     _check(isinstance(agents_doc, dict), "agents/openai.yaml root is a mapping")
@@ -102,6 +124,19 @@ def main() -> int:
     entry = agents_doc.get("interface", {}).get("entry_commands", {})
     for key in REQUIRED_ENTRY_KEYS:
         _check(key in entry, f"agents/openai.yaml declares entry_commands.{key}")
+
+    # 3b. When the report standard is installed, agents/openai.yaml must declare
+    #     the output contract (interface.output) that points at it.
+    output = agents_doc.get("interface", {}).get("output", {})
+    if REPORT_SCHEMA.is_file():
+        for key in REQUIRED_OUTPUT_KEYS:
+            _check(key in output,
+                   f"agents/openai.yaml declares output.{key}")
+        _check(output.get("report_schema") == "assets/schemas/report_schema.json",
+               "output.report_schema points at the report schema")
+    else:
+        _check(not output,
+               "output block absent when report_schema.json is not installed")
 
     # 4. enum_source resolves against the chart schema to a non-empty enum.
     enum_source = entry["enum_source"]

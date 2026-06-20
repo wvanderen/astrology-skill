@@ -13,10 +13,14 @@ The interpretive routing itself is owned by the prompt templates under
 
   - **lists** the available reading functions (``--list``);
   - **checks** structural parity between the schema enum, the entry fragments,
-    and the retrieval modules (``--check``);
+    the retrieval modules, and the report-schema enums (``--check``);
   - **routes** a resolved chart object through the single validation gate and
     prints a route ticket that hands control to ``SKILL.md`` step 1
-    (``--route``).
+    (``--route``);
+  - **validates** a resolved reading report against ``report_schema.json``
+    and prints a report ticket (``--report``). Embedded ``chart_input``
+    artefacts are held to the same gate as ``--route``, so a report cannot
+    silently wrap a chart the input gate would reject.
 
 It never calculates a chart factor. See ``docs/entry_commands.md`` §2 for the
 no-calculation boundary.
@@ -43,6 +47,11 @@ AGENTS_PATH = HERE / "agents" / "openai.yaml"
 # Appended to every chart-input failure so the user is pointed at the
 # authoritative shape (AC: failure modes surface a clear schema pointer).
 _SCHEMA_HINT = f"See {SCHEMA_PATH_DISPLAY} for the required shape."
+REPORT_SCHEMA_PATH = HERE / "assets" / "schemas" / "report_schema.json"
+REPORT_SCHEMA_PATH_DISPLAY = REPORT_SCHEMA_PATH.relative_to(HERE).as_posix()
+# Appended to every report-gate failure so the user is pointed at the
+# authoritative report contract (mirrors _SCHEMA_HINT for the input gate).
+_REPORT_SCHEMA_HINT = f"See {REPORT_SCHEMA_PATH_DISPLAY} for the required shape."
 CANONICAL_TEMPLATE = HERE / "prompts" / "entry" / "_reading.md"
 FRAGMENTS_DIR = HERE / "prompts" / "entry"
 READING_TYPES_DIR = HERE / "references" / "reading_types"
@@ -199,6 +208,148 @@ def validate_chart(obj: Any, schema: dict[str, Any] | None = None) -> None:
 
 
 # --------------------------------------------------------------------------- #
+# Report gate (single gate, dependency-free; deep check when available)
+# --------------------------------------------------------------------------- #
+
+class ReportError(ValueError):
+    """Raised when a resolved report object fails the report gate."""
+
+
+def _report_gate(message: str) -> ReportError:
+    """Build a report error that points the user at the report schema."""
+    return ReportError(f"{message} {_REPORT_SCHEMA_HINT}")
+
+
+def load_report_schema() -> dict[str, Any]:
+    if not REPORT_SCHEMA_PATH.is_file():
+        fail(f"report schema not found: {REPORT_SCHEMA_PATH}")
+    return json.loads(REPORT_SCHEMA_PATH.read_text(encoding="utf-8"))
+
+
+def _report_enum(report_schema: dict[str, Any]) -> list[str]:
+    values = (
+        report_schema.get("properties", {})
+        .get("reading_type", {})
+        .get("enum")
+    )
+    if not isinstance(values, list) or not values:
+        fail("report_schema.json is missing properties.reading_type.enum")
+    return list(values)
+
+
+def validate_report(
+    obj: Any,
+    report_schema: dict[str, Any] | None = None,
+    chart_schema: dict[str, Any] | None = None,
+) -> None:
+    """Run the report gate on a resolved report object.
+
+    Required (always, stdlib only):
+      - the report is a JSON object;
+      - ``schema_version`` (``1.0``), ``report_id``, ``generated_at``,
+        ``reading_type``, ``chart_artefacts``, and ``reading`` are present and
+        well-shaped;
+      - ``reading_type`` is one of the report-schema enum values;
+      - each ``chart_artefacts`` entry has ``role`` + ``source`` and either an
+        embedded ``object`` or a ``ref``;
+      - ``reading`` has a non-empty ``body`` or a non-empty ``sections`` array;
+      - every embedded ``chart_input`` artefact passes the same chart-input
+        gate as ``entry_commands.py --route`` (reuses ``validate_chart``), so a
+        report cannot silently wrap a chart that the input gate would reject.
+
+    Opportunistic (when ``jsonschema`` is installed): full Draft 2020-12
+    validation against ``report_schema.json``. Absence of ``jsonschema`` is not
+    an error — the structural gate is the contract (same philosophy as the
+    chart gate).
+
+    Every failure points the user at the report schema via
+    ``_REPORT_SCHEMA_HINT`` (deep failures are reduced to one concise line).
+    """
+    if not isinstance(obj, dict):
+        raise _report_gate("report must be a JSON object")
+
+    if report_schema is None:
+        report_schema = load_report_schema()
+    enum = _report_enum(report_schema)
+
+    schema_version = obj.get("schema_version")
+    if schema_version is None:
+        raise _report_gate("missing required field: schema_version")
+    if schema_version != "1.0":
+        raise _report_gate(f"schema_version must be '1.0', got {schema_version!r}")
+
+    for field in ("report_id", "generated_at"):
+        if not obj.get(field):
+            raise _report_gate(f"missing required field: {field}")
+
+    reading_type = obj.get("reading_type")
+    if reading_type is None:
+        raise _report_gate("missing required field: reading_type")
+    if not isinstance(reading_type, str):
+        raise _report_gate(
+            f"reading_type must be a string, got {type(reading_type).__name__}"
+        )
+    if reading_type not in enum:
+        raise _report_gate(
+            f"reading_type {reading_type!r} is not in the report schema enum "
+            f"(allowed: {', '.join(enum)})"
+        )
+
+    artefacts = obj.get("chart_artefacts")
+    if artefacts is None:
+        raise _report_gate("missing required field: chart_artefacts")
+    if not isinstance(artefacts, list) or not artefacts:
+        raise _report_gate("chart_artefacts must be a non-empty array")
+    for i, art in enumerate(artefacts):
+        if not isinstance(art, dict):
+            raise _report_gate(f"chart_artefacts[{i}] must be an object")
+        if not art.get("role"):
+            raise _report_gate(f"chart_artefacts[{i}] is missing 'role'")
+        if not art.get("source"):
+            raise _report_gate(f"chart_artefacts[{i}] is missing 'source'")
+        if art.get("object") is None and not art.get("ref"):
+            raise _report_gate(
+                f"chart_artefacts[{i}] must have an embedded 'object' or a 'ref'"
+            )
+
+    reading = obj.get("reading")
+    if reading is None:
+        raise _report_gate("missing required field: reading")
+    if not isinstance(reading, dict):
+        raise _report_gate(
+            f"reading must be an object, got {type(reading).__name__}"
+        )
+    has_body = isinstance(reading.get("body"), str) and reading["body"].strip()
+    has_sections = isinstance(reading.get("sections"), list) and reading["sections"]
+    if not (has_body or has_sections):
+        raise _report_gate(
+            "reading must have a non-empty 'body' or a non-empty 'sections' array"
+        )
+
+    if _HAS_JSONSCHEMA:
+        try:
+            jsonschema.Draft202012Validator(report_schema).validate(obj)
+        except jsonschema.ValidationError as exc:
+            where = exc.json_path or "$"
+            raise _report_gate(
+                f"report failed schema validation at {where}: {exc.message}"
+            ) from exc
+
+    # Nested: every embedded chart_input must pass the same gate as --route.
+    if chart_schema is None:
+        chart_schema = load_schema()
+    for i, art in enumerate(artefacts):
+        if art.get("role") == "chart_input" and isinstance(art.get("object"), dict):
+            try:
+                validate_chart(art["object"], chart_schema)
+            except ChartInputError as exc:
+                raise _report_gate(
+                    f"chart_artefacts[{i}] (role 'chart_input') failed the "
+                    f"chart-input gate: {exc}"
+                ) from exc
+
+
+# --------------------------------------------------------------------------- #
 # Input resolution (inline JSON | file path | stdin)
 # --------------------------------------------------------------------------- #
 
@@ -296,8 +447,45 @@ def _collect_parity_issues(schema: dict[str, Any]) -> tuple[list[str], list[str]
     return hard_failures, warnings
 
 
+def _collect_report_parity_issues(
+    chart_schema: dict[str, Any],
+) -> tuple[list[str], list[str]]:
+    """Return (hard_failures, warnings) for the report standard.
+
+    The report standard is optional: if ``report_schema.json`` is absent this
+    is a no-op (the report gate is simply not installed). When present, the
+    inlined ``reading_type`` / ``tradition_mode`` / ``tone`` enums must match
+    ``chart_input_schema.json`` so the two contracts cannot drift. This is the
+    single source of truth — ``quick_validate.py`` delegates here.
+    """
+    if not REPORT_SCHEMA_PATH.is_file():
+        return [], []
+    report_schema = load_report_schema()
+    hard_failures: list[str] = []
+    for field in ("reading_type", "tradition_mode", "tone"):
+        input_enum = chart_schema.get("properties", {}).get(field, {}).get("enum")
+        report_enum = (
+            report_schema.get("properties", {}).get(field, {}).get("enum")
+        )
+        if report_enum is None:
+            hard_failures.append(
+                f"report_schema.json is missing an enum for {field!r}"
+            )
+            continue
+        if input_enum is None or list(report_enum) != list(input_enum):
+            hard_failures.append(
+                f"report_schema.json {field} enum drifted from "
+                f"chart_input_schema.json (report: {report_enum}; "
+                f"input: {input_enum})"
+            )
+    return hard_failures, []
+
+
 def check_parity(schema: dict[str, Any]) -> int:
     hard_failures, warnings = _collect_parity_issues(schema)
+    report_hard, report_warns = _collect_report_parity_issues(schema)
+    hard_failures += report_hard
+    warnings += report_warns
 
     for w in warnings:
         print(f"WARN: {w}")
@@ -307,9 +495,14 @@ def check_parity(schema: dict[str, Any]) -> int:
             print(f"FAIL: {message}", file=sys.stderr)
         raise SystemExit(2)
 
+    if REPORT_SCHEMA_PATH.is_file():
+        report_note = "; report_schema.json in parity"
+    else:
+        report_note = "; report_schema.json absent (report standard not installed)"
     print(
         f"PASS: entry surface is in parity "
         f"({len(reading_types(schema))} reading types; enum-driven; canonical template present)"
+        f"{report_note}"
         + (f"; {len(warnings)} informational warning(s)" if warnings else "")
     )
     return 0
@@ -354,6 +547,75 @@ def route(arg: str, schema: dict[str, Any]) -> int:
     return 0
 
 
+def _describe_report_client(client: Any) -> str:
+    if isinstance(client, dict):
+        if client.get("name"):
+            return str(client["name"])
+        if client.get("label"):
+            return str(client["label"])
+    return "Anonymous"
+
+
+def report(
+    arg: str, report_schema: dict[str, Any], chart_schema: dict[str, Any]
+) -> int:
+    """Resolve + validate a report, then print a report ticket."""
+    obj = resolve_input(arg)
+    try:
+        validate_report(obj, report_schema, chart_schema)
+    except ReportError as exc:
+        fail(str(exc))
+
+    deep = " (deep: jsonschema)" if _HAS_JSONSCHEMA else " (deep: unavailable)"
+    client = _describe_report_client(obj.get("client"))
+    tz = obj.get("timezone")
+    generated_at = obj.get("generated_at", "")
+    when = f"{generated_at} ({tz})" if tz else generated_at
+    artefacts = obj["chart_artefacts"]
+    self_check = obj.get("self_check")
+    refs = obj.get("references_used") or []
+
+    print("REPORT TICKET")
+    print("=============")
+    print(f"status:               VALID — gate passed{deep}")
+    print(f"report_id:            {obj.get('report_id')}")
+    print(f"schema_version:       {obj.get('schema_version')}")
+    print(f"generated_at:         {when}")
+    print(f"client:               {client}")
+    print(f"reading_type:         {obj.get('reading_type')}")
+    if obj.get("tradition_mode"):
+        print(f"tradition_mode:       {obj.get('tradition_mode')}")
+    if obj.get("tone"):
+        print(f"tone:                 {obj.get('tone')}")
+    print(f"chart_artefacts:      {len(artefacts)} total")
+    for i, art in enumerate(artefacts, start=1):
+        role = art.get("role")
+        if art.get("object") is not None:
+            kind = "embedded"
+        else:
+            kind = f"ref: {art.get('ref')}"
+        if role == "chart_input" and isinstance(art.get("object"), dict):
+            note = " (chart_input gate: passed)"
+        elif art.get("schema_ref"):
+            note = f" ({art.get('schema_ref')})"
+        else:
+            note = ""
+        print(f"  - [{i}] {role:<16} {kind}{note}")
+    if self_check:
+        print(f"self_check:           present ({len(self_check)} item(s))")
+    else:
+        print("self_check:           absent (client-facing deliverable)")
+    print(f"references_used:      {len(refs)}")
+    print()
+    print("REPORT -> The envelope conforms to report_schema.json. Render to "
+          "Markdown with")
+    print("        references/templates/report_template.md, or deliver the "
+          "JSON as-is.")
+    print("        The report contains no derived chart factors "
+          "(no-calculation boundary).")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         prog="entry_commands.py",
@@ -364,12 +626,18 @@ def main() -> int:
     group.add_argument("--list", action="store_true",
                        help="Enumerate reading types from the schema enum.")
     group.add_argument("--check", action="store_true",
-                       help="Assert parity between the enum, fragments, and "
-                            "retrieval modules.")
+                       help="Assert parity between the enum, fragments, "
+                            "retrieval modules, and the report-schema enums.")
     group.add_argument("--route", metavar="CHART",
                        help="Resolve + validate a chart (file path, inline "
                             "JSON, or '-' for stdin) and print a route ticket "
                             "to SKILL.md step 1.")
+    group.add_argument("--report", metavar="REPORT",
+                       help="Resolve + validate a reading report (file path, "
+                            "inline JSON, or '-' for stdin) against "
+                            "report_schema.json and print a report ticket. "
+                            "Embedded chart_input artefacts are held to the "
+                            "same gate as --route.")
     args = parser.parse_args()
 
     schema = load_schema()
@@ -379,6 +647,8 @@ def main() -> int:
         return check_parity(schema)
     if args.route:
         return route(args.route, schema)
+    if args.report:
+        return report(args.report, load_report_schema(), schema)
     parser.error("no mode selected")  # unreachable: group is required
     return 2
 

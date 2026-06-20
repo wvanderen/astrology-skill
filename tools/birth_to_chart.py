@@ -25,6 +25,11 @@ USAGE (non-interactive)
         --reading-type natal --tradition-mode blended --tone practical \\
         --validate --output chart.json
 
+    # Timing-type charts compute the matching chart on top of the natal base:
+    #   --reading-type annual_profection --target-date 2025-10-28
+    #   --reading-type solar_return     --target-date 2025-10-28 [--return-lat L --return-lon L]
+    #   --reading-type transit          --target-date 2025-10-28 [--target-time HH:MM]
+
     # Feed all flags as JSON instead:
     python tools/birth_to_chart.py --input birth.json --validate
 
@@ -64,6 +69,21 @@ SIGN_NAMES = [
     "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
     "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces",
 ]
+
+# Classical domicile rulers (essential dignity). Used for the profection Lord
+# of the Year and the solar-return chart ruler. Profections are a Hellenistic
+# time-lord technique, so the traditional ruler is the time-lord; modern
+# co-rulers are surfaced in notes (not as the time-lord) for the three signs
+# that have one.
+SIGN_DOMICILE_RULER: dict[str, str] = {
+    "Aries": "Mars", "Taurus": "Venus", "Gemini": "Mercury", "Cancer": "Moon",
+    "Leo": "Sun", "Virgo": "Mercury", "Libra": "Venus", "Scorpio": "Mars",
+    "Sagittarius": "Jupiter", "Capricorn": "Saturn", "Aquarius": "Saturn",
+    "Pisces": "Jupiter",
+}
+SIGN_MODERN_CORULER: dict[str, str] = {
+    "Scorpio": "Pluto", "Aquarius": "Uranus", "Pisces": "Neptune",
+}
 
 SPEED_LUMINARY = "luminary"
 SPEED_FAST = "fast"
@@ -572,6 +592,178 @@ def compute_lot_of_fortune(
 
 
 # --------------------------------------------------------------------------- #
+# Timing-type computation (solar_return / annual_profection / transit)
+# --------------------------------------------------------------------------- #
+#
+# These reading-types ADD structured timing data on top of the natal chart
+# (the natal chart is always the base; the retrieval modules anchor every
+# timing claim in natal promise). All of this is objective geometry — the
+# skill still does the interpretation. See ``tools/README.md``.
+
+
+def _ordinal(n: int) -> str:
+    suffix = "th" if 11 <= n % 100 <= 13 else \
+        {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
+
+
+def _completed_years(birth_str: str, target_str: str) -> int:
+    """Whole years elapsed between a birth date and a target date."""
+    by, bm, bd = parse_date(birth_str)
+    ty, tm, td = parse_date(target_str)
+    age = ty - by
+    if (tm, td) < (bm, bd):
+        age -= 1
+    if age < 0:
+        raise ConfigError(
+            f"--target-date {target_str} is before the birth date "
+            f"{birth_str}; a timing year cannot precede birth.")
+    return age
+
+
+def _jd_to_utc(jd: float) -> datetime:
+    """Julian Day (UT) → timezone-aware UTC datetime."""
+    year, month, day, hf = swe.revjul(jd)
+    total = int(round(hf * 3600.0))
+    # timedelta addition normalizes a 24:00 rollover across a day boundary.
+    return (datetime(year, month, day, tzinfo=timezone.utc)
+            + timedelta(seconds=total)).astimezone(timezone.utc)
+
+
+def _iso_z(ut: datetime) -> str:
+    """ISO-8601 UTC string at second precision, e.g. 2025-10-29T03:28:28Z."""
+    return ut.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _placement_bodies(
+    placements: list[dict],
+    angles: dict[str, tuple[float, float | None, str]] | None = None,
+) -> list[tuple[str, float, float | None, str]]:
+    """Flatten placements (+ optional angles) to (name, lon, speed, class).
+
+    Used for the MOVING chart in cross-chart aspects (transit / solar return),
+    where the placement's own daily speed is wanted for applying/separating.
+    """
+    out = [(p["body"], p["absolute_degree"], p.get("speed_deg_per_day"),
+            _infer_class(p["body"])) for p in placements]
+    if angles:
+        for aname, (lon, spd, cls) in angles.items():
+            out.append((aname, lon, spd, cls))
+    return out
+
+
+def compute_cross_aspects(
+    moving: list[tuple[str, float, float | None, str]],
+    fixed: list[tuple[str, float, float | None, str]],
+    include_minor: bool,
+) -> list[dict]:
+    """Aspects from a 'moving' chart (transit / solar return) onto a 'fixed'
+    natal chart.
+
+    Unlike ``compute_aspects`` (within one chart), pairs are NOT de-duplicated:
+    one moving body may contact several natal bodies, which is exactly the
+    testimony timing readings rank by. Records carry ``triggering_body`` /
+    ``natal_body`` so the direction is unambiguous. The fixed (natal) side is
+    treated as stationary (speed None) so applying/separating reflects the
+    transiting body's motion against the natal degree.
+    """
+    wanted = [a for a in ASPECT_DEFS if a[2] or include_minor]
+    out: list[dict] = []
+    for m_name, m_lon, m_spd, m_cls in moving:
+        for f_name, f_lon, _f_spd, f_cls in fixed:
+            for aspect_name, aspect_deg, _major in wanted:
+                orb, applying = _aspect_relation(
+                    m_lon, m_spd, f_lon, None, aspect_deg)
+                allowed = _allowed_orb(m_name, m_cls, f_name, f_cls, aspect_name)
+                if orb > allowed:
+                    continue
+                rec: dict = {
+                    "triggering_body": m_name,
+                    "aspect": aspect_name,
+                    "natal_body": f_name,
+                    "orb_degrees": round(orb, 4),
+                }
+                if applying is True:
+                    rec["applying"] = True
+                elif applying is False:
+                    rec["separating"] = True
+                rec["exact"] = orb < EXACT_TOL_DEG
+                out.append(rec)
+    return out
+
+
+def solar_return_moment(natal_sun_abs: float, seed_jd: float) -> float:
+    """JD (UT) at which the transiting Sun returns to its natal longitude.
+
+    The Sun never stations retrograde, so a few Newton steps from a birthday
+    seed converge to ~1e-8 deg (well under an arcsecond). Returns the return
+    nearest ``seed_jd``.
+    """
+    jd = seed_jd
+    for _ in range(50):
+        sun, _ = swe.calc_ut(jd, swe.SUN, swe.FLG_SWIEPH | swe.FLG_SPEED)
+        diff = (sun[0] - natal_sun_abs + 180.0) % 360.0 - 180.0
+        if abs(diff) < 1e-8:
+            break
+        jd -= diff / sun[3]
+    return jd
+
+
+def compute_annual_profection(
+    asc_sign: str | None, age: int, target_date_str: str,
+    natal_placements: list[dict],
+) -> dict:
+    """Whole-sign annual profection: age → profected house, sign, Lord of the Year."""
+    profected_house = (age % 12) + 1
+    entry: dict = {
+        "technique": "annual_profection",
+        "date": target_date_str,
+        "age": age,
+        "active_house": profected_house,
+    }
+    if asc_sign is None:
+        entry["description"] = (
+            f"Age {age} profection year ({target_date_str}): whole-sign house "
+            f"{profected_house} counted from the natal Ascendant. The natal "
+            f"Ascendant is unavailable for an untimed chart, so the profected "
+            f"sign and Lord of the Year cannot be derived — supply a timed "
+            f"natal chart (birth time) to resolve them.")
+        entry["notes"] = (
+            "Profected house is age-based (age mod 12)+1 and whole-sign; the "
+            "profected sign and Lord of the Year require the natal Ascendant.")
+        return entry
+    asc_idx = SIGN_NAMES.index(asc_sign)
+    profected_sign = SIGN_NAMES[(asc_idx + (age % 12)) % 12]
+    lord = SIGN_DOMICILE_RULER[profected_sign]
+    entry["profected_sign"] = profected_sign
+    entry["time_lord"] = lord
+    lord_p = next((p for p in natal_placements if p["body"] == lord), None)
+    lord_natal: dict = {"body": lord}
+    if lord_p is not None:
+        lord_natal["sign"] = lord_p.get("sign")
+        lord_natal["absolute_degree"] = lord_p.get("absolute_degree")
+        if "house" in lord_p:
+            lord_natal["house"] = lord_p["house"]
+        if "motion" in lord_p:
+            lord_natal["motion"] = lord_p["motion"]
+    entry["lord_of_the_year_natal"] = lord_natal
+    notes_bits = [
+        f"Profected house counted whole-sign from the natal Ascendant (1st "
+        f"house = {asc_sign}).",
+        "Lord of the Year is the classical domicile ruler of the profected sign.",
+    ]
+    coruler = SIGN_MODERN_CORULER.get(profected_sign)
+    if coruler:
+        notes_bits.append(f"Modern co-ruler of {profected_sign}: {coruler}.")
+    entry["notes"] = " ".join(notes_bits)
+    entry["description"] = (
+        f"Age {age} profection year ({target_date_str}): whole-sign "
+        f"{_ordinal(profected_house)} house ({profected_sign}) activated, "
+        f"ruled by {lord} as Lord of the Year.")
+    return entry
+
+
+# --------------------------------------------------------------------------- #
 # Confidence rules
 # --------------------------------------------------------------------------- #
 
@@ -801,6 +993,173 @@ def build_chart(cfg: dict) -> dict:
             lot = compute_lot_of_fortune(asc_abs, sun_abs, moon_abs, is_day, cusps)
             chart_data["lots"] = [lot]
 
+    # --- Timing-type overlays ----------------------------------------------
+    # solar_return / annual_profection / transit ADD structured timing data on
+    # top of the natal chart (always the base). Geometry only — the skill
+    # interprets. ``reading_type`` is resolved here so the envelope below is
+    # stable regardless of reading type.
+    reading_type = cfg.get("reading_type", "natal")
+    timing_factors: list[dict] = []
+
+    if reading_type == "annual_profection":
+        target_date = cfg.get("target_date")
+        if not target_date:
+            raise ConfigError(
+                "--reading-type annual_profection requires --target-date "
+                "(YYYY-MM-DD) for the profection year.")
+        age = _completed_years(cfg["date"], target_date)
+        asc_sign = asc["sign"] if asc_abs is not None else None
+        timing_factors.append(compute_annual_profection(
+            asc_sign, age, target_date, placements))
+
+    elif reading_type in ("solar_return", "transit"):
+        target_date = cfg.get("target_date")
+        if not target_date:
+            raise ConfigError(
+                f"--reading-type {reading_type} requires --target-date "
+                f"(YYYY-MM-DD).")
+        ty, tm, td = parse_date(target_date)
+        target_time = cfg.get("target_time")
+        if target_time:
+            thh, tmm, tss = parse_time(target_time)
+        else:
+            thh, tmm, tss = 12, 0, 0
+            extra_notes.append(
+                f"No target time supplied for the {reading_type} chart; the "
+                f"target instant defaults to noon on {target_date} (transit "
+                f"Moon and any angle-based timing are provisional).")
+        t_tz_spec = cfg.get("target_tz") or cfg.get("tz")
+        t_tz, t_tz_label, _t_kind = resolve_timezone(
+            t_tz_spec, cfg.get("target_lmt", False), lon)
+        target_ut = wallclock_to_ut(ty, tm, td, thh, tmm, tss, t_tz)
+        target_jd = ut_to_jd(target_ut)
+
+        # The natal side of every cross-chart aspect is treated as stationary
+        # (speed None) so applying/separating reflects the moving body alone.
+        natal_bodies: list[tuple[str, float, float | None, str]] = [
+            (p["body"], p["absolute_degree"], None, _infer_class(p["body"]))
+            for p in placements]
+        if asc_abs is not None:
+            natal_bodies.append(("Ascendant", asc_abs, None, "angle"))
+            natal_bodies.append(("Midheaven", mc["absolute_degree"], None, "angle"))
+
+        if reading_type == "transit":
+            t_placements, _ = compute_positions(
+                target_jd, body_list, flags,
+                topocentric_moon=topocentric_moon, elevation=elevation)
+            if cusps is not None:
+                # Transits are read against the NATAL houses.
+                assign_houses(t_placements, cusps)
+            contacts = compute_cross_aspects(
+                _placement_bodies(t_placements), natal_bodies, include_minor)
+            if not cfg.get("verbose"):
+                for p in t_placements:
+                    p.pop("speed_deg_per_day", None)
+            chart_data["transit_chart"] = {
+                "date_time": _iso_z(target_ut),
+                "timezone": t_tz_label,
+                "house_system": house_system,
+                "placements": t_placements,
+                "natal_contacts": contacts,
+            }
+            for c in contacts:
+                tf: dict = {
+                    "technique": "transit",
+                    "date_time": _iso_z(target_ut),
+                    "triggering_body": c["triggering_body"],
+                    "natal_body": c["natal_body"],
+                    "aspect": c["aspect"],
+                    "orb_degrees": c["orb_degrees"],
+                    "exact": c.get("exact", False),
+                    "description": (
+                        f"Transiting {c['triggering_body']} {c['aspect']} natal "
+                        f"{c['natal_body']} (orb {c['orb_degrees']}°)."),
+                }
+                if c.get("applying"):
+                    tf["applying"] = True
+                elif c.get("separating"):
+                    tf["separating"] = True
+                timing_factors.append(tf)
+
+        else:  # solar_return
+            if not time_known or sun_abs is None:
+                raise ConfigError(
+                    "--reading-type solar_return requires a known birth time "
+                    "to anchor the natal Sun; pass --time (or a timed chart).")
+            ret_lat = cfg.get("return_lat")
+            ret_lon = cfg.get("return_lon")
+            if ret_lat is None or ret_lon is None:
+                ret_lat, ret_lon = lat, lon
+                loc_note = "Return location defaults to the birth location."
+            else:
+                if not -90.0 <= ret_lat <= 90.0:
+                    raise ConfigError(
+                        f"--return-lat must be within [-90, 90], got {ret_lat}")
+                if not -180.0 <= ret_lon <= 180.0:
+                    raise ConfigError(
+                        f"--return-lon must be within [-180, 180], got {ret_lon}")
+                loc_note = (f"Return location: lat {ret_lat}, lon {ret_lon}"
+                            + (f" ({cfg['return_place']})."
+                               if cfg.get("return_place") else "."))
+            by, bm, bd = parse_date(cfg["date"])
+            bday_year = ty if (tm, td) >= (bm, bd) else ty - 1
+            seed_jd = swe.julday(bday_year, bm, bd, 12.0)
+            ret_jd = solar_return_moment(sun_abs, seed_jd)
+            ret_ut = _jd_to_utc(ret_jd)
+            sr_asc, sr_mc, sr_cusps_list, sr_armc, sr_raw_cusps = \
+                compute_angles_and_houses(
+                    ret_jd, ret_lat, ret_lon, hsys_letter, sidereal)
+            sr_placements, _ = compute_positions(
+                ret_jd, body_list, flags,
+                topocentric_moon=topocentric_moon, elevation=elevation)
+            assign_houses(sr_placements, sr_raw_cusps)
+            sr_angles = {
+                "Ascendant": (sr_asc["absolute_degree"], None, "angle"),
+                "Midheaven": (sr_mc["absolute_degree"], None, "angle"),
+            }
+            sr_aspects = compute_aspects(
+                sr_placements,
+                sr_angles if not cfg.get("no_angle_aspects") else {},
+                include_minor=include_minor)
+            sr_contacts = compute_cross_aspects(
+                _placement_bodies(sr_placements, sr_angles),
+                natal_bodies, include_minor)
+            sr_chart_ruler = SIGN_DOMICILE_RULER[sr_asc["sign"]]
+            trop_sun_ret, _ = swe.calc_ut(ret_jd, swe.SUN, swe.FLG_SWIEPH)
+            if not cfg.get("verbose"):
+                for p in sr_placements:
+                    p.pop("speed_deg_per_day", None)
+            chart_data["solar_return"] = {
+                "return_year": bday_year,
+                "return_moment_utc": _iso_z(ret_ut),
+                "return_location": {"lat": ret_lat, "lon": ret_lon},
+                "house_system": house_system,
+                "ascendant": sr_asc,
+                "midheaven": sr_mc,
+                "house_cusps": sr_cusps_list,
+                "chart_ruler": sr_chart_ruler,
+                "sect": compute_sect(ret_jd, trop_sun_ret[0], ret_lat, sr_armc),
+                "placements": sr_placements,
+                "aspects": sr_aspects,
+                "natal_contacts": sr_contacts,
+                "notes": loc_note,
+            }
+            timing_factors.append({
+                "technique": "solar_return",
+                "date_time": _iso_z(ret_ut),
+                "time_lord": sr_chart_ruler,
+                "description": (
+                    f"Solar return for {bday_year} (age "
+                    f"{_completed_years(cfg['date'], target_date)}) cast at "
+                    f"lat {ret_lat}, lon {ret_lon}; SR Ascendant "
+                    f"{sr_asc['sign']} {sr_asc['degree']}°, chart ruler "
+                    f"{sr_chart_ruler}."),
+                "notes": loc_note,
+            })
+
+    if timing_factors:
+        chart_data["timing_factors"] = timing_factors
+
     # --- Provenance ---------------------------------------------------------
     source_notes = build_source_notes(
         swisseph_version=swe.version,
@@ -825,7 +1184,6 @@ def build_chart(cfg: dict) -> dict:
     chart_data["birth_time_confidence"] = confidence
 
     # --- Top-level envelope (enum-validated so --input can't emit bad values) -
-    reading_type = cfg.get("reading_type", "natal")
     tradition_mode = cfg.get("tradition_mode", "blended")
     tone = cfg.get("tone", "practical")
     _enforce_enum("reading_type", reading_type,
@@ -931,6 +1289,27 @@ def build_arg_parser() -> argparse.ArgumentParser:
                             "beginner-friendly"])
     g.add_argument("--user-question", help="Optional querent focus.")
 
+    g = p.add_argument_group(
+        "timing chart options (solar_return / annual_profection / transit)")
+    g.add_argument("--target-date",
+                   help="Date the reading concerns (YYYY-MM-DD). Required for "
+                        "solar_return (sets the return year), annual_profection "
+                        "(sets the age), and transit (the transit date).")
+    g.add_argument("--target-time",
+                   help="Time for the target instant, HH:MM[:SS] (24h). "
+                        "Transit/SR default to noon if omitted.")
+    g.add_argument("--target-tz",
+                   help="Timezone for --target-time (IANA or +HH:MM). Defaults "
+                        "to the birth --tz.")
+    g.add_argument("--target-lmt", action="store_true",
+                   help="Use Local Mean Time (from --lon) for the target instant.")
+    g.add_argument("--return-lat", type=float,
+                   help="Solar-return location latitude. Defaults to --lat.")
+    g.add_argument("--return-lon", type=float,
+                   help="Solar-return location longitude. Defaults to --lon.")
+    g.add_argument("--return-place",
+                   help="Free-text label for the solar-return location.")
+
     g = p.add_argument_group("confidence (see birth_time_uncertainty.md)")
     g.add_argument("--confidence", choices=["timed", "approximate", "rectified",
                                             "unknown"],
@@ -1020,6 +1399,10 @@ def args_to_cfg(ns: argparse.Namespace) -> dict:
         "house_system": ns.house_system, "reading_type": ns.reading_type,
         "tradition_mode": ns.tradition_mode, "tone": ns.tone,
         "user_question": ns.user_question,
+        "target_date": ns.target_date, "target_time": ns.target_time,
+        "target_tz": ns.target_tz, "target_lmt": ns.target_lmt,
+        "return_lat": ns.return_lat, "return_lon": ns.return_lon,
+        "return_place": ns.return_place,
         "confidence": ns.confidence, "approximate": ns.approximate,
         "rectified": ns.rectified, "noon_for_unknown": ns.noon_for_unknown,
         "confidence_notes": ns.confidence_notes,
