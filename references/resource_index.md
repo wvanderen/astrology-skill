@@ -193,8 +193,15 @@ relationships, consulting, and professional collaboration) carry classical and
 modern synthesis paths, mixed-testimony resolution, and incomplete-birth-time
 guidance; the narrower patterns (strengths, conflict, timing) stay compact.
 `timing.md` also separates supplied timing data from derived calculation.
+The `mundane_`-prefixed patterns (governance, markets, conflict) are
+collective-scoped: load them after `references/reading_types/mundane.md` for
+mundane readings on those topics; they carry the same enriched structure with
+missing-location guidance replacing incomplete-birth-time guidance.
 
 - `references/synthesis_patterns/conflict.md`
+- `references/synthesis_patterns/mundane_governance.md` for collective governance, leadership, the executive, heads of state, legitimacy, and institutions of authority, with classical and modern synthesis paths, mixed-testimony resolution, missing-location guidance, and strong event-certainty and fear-based-language cautions. Load after `references/reading_types/mundane.md`.
+- `references/synthesis_patterns/mundane_markets.md` for collective resources, treasuries, revenue, currency, debt, commodities, trade, and markets, with classical and modern synthesis paths, mixed-testimony resolution, missing-location guidance, and strong event-certainty and fear-based-language cautions. Load after `references/reading_types/mundane.md`.
+- `references/synthesis_patterns/mundane_conflict.md` for foreign relations, diplomacy, alliances, open adversaries, war, covert hostility, and relations between nations and institutions, with classical and modern synthesis paths, mixed-testimony resolution, missing-location guidance, and strong event-certainty and fear-based-language cautions. Load after `references/reading_types/mundane.md`.
 - `references/synthesis_patterns/consulting_advisory_vocation.md`
 - `references/synthesis_patterns/creative_work.md`
 - `references/synthesis_patterns/health_routines.md`
@@ -442,8 +449,8 @@ Synthesis pattern modules describe how to combine repeated chart factors around 
 
 - Directory: `references/synthesis_patterns/`
 - Pattern: `references/synthesis_patterns/{topic}.md`
-- Examples: `references/synthesis_patterns/vocation.md`, `references/synthesis_patterns/consulting_advisory_vocation.md`, `references/synthesis_patterns/professional_collaboration.md`, `references/synthesis_patterns/relationships.md`, `references/synthesis_patterns/resources.md`
-- Naming: lowercase snake_case topic name.
+- Examples: `references/synthesis_patterns/vocation.md`, `references/synthesis_patterns/consulting_advisory_vocation.md`, `references/synthesis_patterns/professional_collaboration.md`, `references/synthesis_patterns/relationships.md`, `references/synthesis_patterns/resources.md`, `references/synthesis_patterns/mundane_governance.md`, `references/synthesis_patterns/mundane_markets.md`, `references/synthesis_patterns/mundane_conflict.md`
+- Naming: lowercase snake_case topic name. Collective or mundane-scoped patterns use a `mundane_` prefix to distinguish them from individual-scope patterns that share a root topic (`mundane_markets.md` vs `resources.md`; `mundane_conflict.md` vs `conflict.md`).
 
 ## Naming rules
 

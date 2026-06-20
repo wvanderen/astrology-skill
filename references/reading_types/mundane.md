@@ -434,6 +434,15 @@ archetypal language and add the outer planets.
   questions, retrieve the matching mundane house and ruler modules before adding
   minor testimony. Add minor points only when supplied, exact, angular, and
   clearly tied to the question.
+- For high-value mundane topics, retrieve the matching collective synthesis
+  pattern after this module: `references/synthesis_patterns/mundane_governance.md`
+  for government, leadership, legitimacy, and institutions of authority;
+  `references/synthesis_patterns/mundane_markets.md` for treasuries, revenue,
+  currency, debt, commodities, trade, and markets;
+  `references/synthesis_patterns/mundane_conflict.md` for foreign relations,
+  diplomacy, alliances, open adversaries, war, and covert hostility. Each pattern
+  carries primary and secondary testimony, classical and modern paths, and the
+  event-certainty and fear-based-language limits above.
 - When exact modules are missing, fall back to broader planet, house, aspect
   type, tradition, ethics, and synthesis resources rather than inventing missing
   mundane rules, correspondences, or timing conventions.

@@ -59,6 +59,11 @@ Entry commands — one prompt template per `reading_type`, plus a canonical gene
    - For mundane readings, load `references/reading_types/mundane_examples.md`
      when the supplied chart is an Aries ingress (or another cardinal ingress)
      or a Jupiter-Saturn great conjunction.
+   - For mundane readings on governance, markets and resources, or conflict and
+     foreign relations, load the matching collective synthesis pattern after
+     the mundane module: `references/synthesis_patterns/mundane_governance.md`,
+     `references/synthesis_patterns/mundane_markets.md`, or
+     `references/synthesis_patterns/mundane_conflict.md`.
    - For transit readings, load `references/reading_types/transit_examples.md`
      when the supplied timing factors include Saturn to the Moon, Jupiter to
      the Sun, Mars to the Ascendant, or Pluto to an angle.
