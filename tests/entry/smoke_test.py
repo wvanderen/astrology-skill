@@ -76,7 +76,7 @@ def test_schema_enum() -> list[str]:
     enum = schema["properties"]["reading_type"]["enum"]
     expected = {
         "natal", "transit", "synastry", "solar_return",
-        "annual_profection", "horary", "electional",
+        "annual_profection", "horary", "electional", "mundane",
     }
     _check(set(enum) == expected, f"schema enum is {sorted(enum)}")
     return enum
@@ -142,20 +142,25 @@ def test_route_stdin() -> None:
 
 def test_enum_driven_new_type() -> None:
     """A new enum value is invocable with NO change to entry_commands.py."""
+    # Placeholder for a type that is genuinely not in the real enum, used to
+    # prove the surface is enum-driven. Update if this token ever ships.
+    future_type = "__future_type__"
+
     sys.path.insert(0, str(ROOT))
     import entry_commands  # type: ignore  # noqa: PLC0415
 
     real_schema = entry_commands.load_schema()
     real_types = entry_commands.reading_types(real_schema)
-    _check("mundane" not in real_types, "mundane is not yet in the real enum")
+    _check(future_type not in real_types,
+           f"{future_type} is not yet in the real enum")
 
     mutated = json.loads(json.dumps(real_schema))
-    mutated["properties"]["reading_type"]["enum"].append("mundane")
+    mutated["properties"]["reading_type"]["enum"].append(future_type)
 
-    _check("mundane" in entry_commands.reading_types(mutated),
+    _check(future_type in entry_commands.reading_types(mutated),
            "reading_types() picks up the new enum value")
 
-    new_chart = {"reading_type": "mundane", "chart_data": {}}
+    new_chart = {"reading_type": future_type, "chart_data": {}}
     try:
         entry_commands.validate_chart(new_chart, mutated)
         accepted = True

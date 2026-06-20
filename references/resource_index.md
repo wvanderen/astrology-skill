@@ -179,6 +179,10 @@ Use the module matching the requested `reading_type` when it exists.
   conjunctions, outer-planet ingresses and transits, the collective entity's
   chart ruler and angular planets, classical and modern synthesis paths, and
   strong event-certainty and fear-based-language guardrails.
+- `references/reading_types/mundane_examples.md` for Aries ingress and
+  Jupiter-Saturn great conjunction synthesis language, with classical and
+  modern paths, mixed-testimony resolution, and grounded uncertainty and scope
+  language.
 
 ### Synthesis patterns
 
@@ -427,6 +431,8 @@ Reading type modules define retrieval priorities, uncertainty rules, and synthes
   synthesis paths, and strong event-certainty and fear-based-language
   guardrails.
 - Implemented focused examples: `references/reading_types/transit_examples.md`
+- Implemented focused examples: `references/reading_types/mundane_examples.md`
+  for Aries ingress and Jupiter-Saturn great conjunction synthesis language.
 - Planned: none
 - Naming: lowercase snake_case reading type.
 

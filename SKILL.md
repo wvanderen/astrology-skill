@@ -56,6 +56,9 @@ Entry commands — one prompt template per `reading_type`, plus a canonical gene
      claims within the Output Guardrails and the always-loaded ethics and
      scope foundation; `references/reading_types/mundane.md` governs retrieval
      when it exists.
+   - For mundane readings, load `references/reading_types/mundane_examples.md`
+     when the supplied chart is an Aries ingress (or another cardinal ingress)
+     or a Jupiter-Saturn great conjunction.
    - For transit readings, load `references/reading_types/transit_examples.md`
      when the supplied timing factors include Saturn to the Moon, Jupiter to
      the Sun, Mars to the Ascendant, or Pluto to an angle.
