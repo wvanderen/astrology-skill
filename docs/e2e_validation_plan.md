@@ -35,7 +35,7 @@ single-walkthrough missed").
 | Check | Result |
 |---|---|
 | `python3 quick_validate.py` | PASS — SKILL.md metadata + entry parity |
-| `python3 entry_commands.py --check` | PASS — 8 reading types, enum-driven (1 silent gap, see B1) |
+| `python3 entry_commands.py --check` | PASS — 8 reading types, enum-driven (the B.1 silent gap is now closed: `prompts/entry/mundane.md` exists) |
 | `python3 tests/entry/smoke_test.py` | PASS — full entry-surface parity |
 | `.venv/bin/python3 tests/entry/end_to_end_test.py` | PASS — calculator-backed stages included (pipe + file modes) |
 | `.venv/bin/python3 tools/smoke_test.py` | PASS — 3 fixtures, Asc/MC within ±0.05° |
@@ -108,19 +108,20 @@ It runs every deterministic surface and prints one green/red matrix:
 
 - **A.2.1 gap-matrix drift** (`tests/structure/gap_matrix_drift.py`):
   four signal kinds — schema-enum coverage, per-category module-count parity,
-  absence-claim contradictions, and depth-floor contradictions. Today this is
-  **expected RED with 8 findings** (mundane absent from the matrix; Reading
-  types 9 vs 11 and Synthesis patterns 12 vs 15; Signs/Houses/Conditions rows
-  contradict on-disk `## Classical` sections). It drives Phase B.2 and goes
-  green once `td-76f5e0` refreshes the matrix.
+  absence-claim contradictions, and depth-floor contradictions. This was the
+drift Phase B.2 fixed (mundane absent from the matrix; Reading types 9 vs 11
+  and Synthesis patterns 12 vs 15; Signs/Houses/Conditions rows contradicting
+  on-disk `## Classical` sections); it is now **GREEN (0 findings)** and
+  regression-protects the refreshed matrix.
 
 - **A.2.2 source-notes pointers** (`tests/structure/source_notes_pointers.py`):
   verifies every backtick-quoted `references/...` target named in a
   `## Source notes` section exists. **GREEN** (128 pointers across 96 files;
   no regression from Phase 8).
 
-The matrix exits 0 only when every check is PASS. It is red today on exactly
-the `A.2.1` row, which is the drift Phase B fixes.
+The matrix exits 0 only when every check is PASS. As of `td-76f5e0`
+(Phase B) it is **fully green**; the previously-red `A.2.1` row is now a
+regression guard.
 
 ---
 
@@ -128,32 +129,40 @@ the `A.2.1` row, which is the drift Phase B fixes.
 
 Concrete fixes Phase A.2 surfaces. Each is small and doctrine-free.
 
-### B.1 Add `prompts/entry/mundane.md`
+### B.1 Add `prompts/entry/mundane.md` (delivered)
 
-The entry surface lists `mundane` as `[fragment: no]` — the only reading type
-without a per-type entry fragment. This is silent in `--check` because
+The entry surface listed `mundane` as `[fragment: no]` — the only reading type
+without a per-type entry fragment. This was silent in `--check` because
 `_collect_parity_issues` only hard-fails on a fragment whose type is
 **absent** from the enum, not on an enum value lacking a fragment. So a
-mundane chart currently routes only through the canonical template, missing
+mundane chart previously routed only through the canonical template, missing
 the per-type framing the other seven types get.
 
 ROADMAP TD P6-E1-TD3 anticipated this ("`mundane` once the mundane epic
-lands") — the mundane epic (Phase 7) has landed. Add the fragment matching
-the seven existing per-type fragments so enum↔fragment parity is complete.
-No doctrine; routing only.
+lands") — the mundane epic (Phase 7) has landed. `prompts/entry/mundane.md`
+now exists, matching the seven existing per-type fragments so enum↔fragment
+parity is complete. Framing only; no doctrine. `entry_commands.py --check`
+and the entry smoke test stay green.
 
-### B.2 Refresh `references/reference_gap_matrix.md`
+### B.2 Refresh `references/reference_gap_matrix.md` (delivered)
 
-Update the summary table and per-category sections to reflect Phase 5/6/7
-enrichment that has landed, and add a mundane row. This is a planning
-artifact; research = re-read the enriched modules and reconcile Depth /
-Coverage / Headline-gap columns against what is on disk. Do **not** author
-new doctrine here.
+The summary table and every per-category section were reconciled against the
+post-Phase-5/6/7 on-disk modules, and a mundane row was added (reflected in
+the Reading-types count going 9 → 11). The reconciliation confirmed the
+landed enrichment sections and adjusted Depth / Coverage / Headline-gap /
+Priority accordingly: Signs, Houses, Conditions, Planets, and Aspect types
+moved from `Starter`/`Moderate` to `Rich`; the P0/P1 priority tiers retired
+in favour of `P2 on-demand` / `P3 keep-compact`; the "First enrichment wave"
+section became "Enrichment waves (landed)". No new doctrine was authored;
+this is a planning-artifact reconciliation. The drift guard
+(`tests/structure/gap_matrix_drift.py`) went from 8 findings to 0 and now
+regression-protects the matrix.
 
 ### B.3 (Conditional) Source-notes regressions
 
-If A.2 check 2 surfaces any broken pointer, fix it. Expected: none
-(verified green this session), but the guard exists to catch future drift.
+If A.2 check 2 surfaced any broken pointer, fix it. Expected: none —
+verified green this session (128 distinct pointers across 96 files), so no
+work was needed here. The guard remains in place to catch future drift.
 
 ---
 

@@ -8,9 +8,9 @@ contradict the on-disk modules they describe, and it has no row for the
 ``mundane`` reading type added in Phase 7.
 
 This script asserts four kinds of consistency between the matrix and the
-on-disk reference library. It is a **regression guard**: it is *expected to
-fail* until td-76f5e0 (Phase B.2) refreshes the matrix, and to stay green
-thereafter so the matrix cannot silently drift again.
+on-disk reference library. It is a **regression guard**: it was red until
+td-76f5e0 (Phase B.2) refreshed the matrix, and stays green thereafter so the
+matrix cannot silently drift again.
 
 Checks
 ------
@@ -338,9 +338,10 @@ def main() -> int:
         print("  " + f.render())
     print()
     print(
-        "Expected to fail until td-76f5e0 (Phase B.2) refreshes "
-        "references/reference_gap_matrix.md for Phase 5/6/7 enrichment and "
-        "adds a mundane row."
+        "Regression guard: this check was red until td-76f5e0 (Phase B.2) "
+        "refreshed references/reference_gap_matrix.md for Phase 5/6/7 "
+        "enrichment and added a mundane row; keep it green so the matrix "
+        "cannot silently drift again."
     )
     return 1
 

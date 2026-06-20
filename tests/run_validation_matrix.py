@@ -10,11 +10,10 @@ The matrix is the honest snapshot: a check is ``PASS`` (exit 0), ``FAIL``
 (non-zero), or ``SKIP`` (a venv-only check when ``.venv`` is absent). The
 script exits 0 only when every check is ``PASS``.
 
-Today the matrix is **expected to be red on exactly one row** —
-``A.2.1 gap-matrix drift`` — because ``references/reference_gap_matrix.md`` is
-a pre-Phase-5/6/7 snapshot that td-76f5e0 (Phase B.2) will refresh. That row's
-``note`` points at the fixing task. Once B.2 lands, the matrix goes fully
-green and this script guards against regression.
+Today the matrix is **fully green**: ``A.2.1`` (gap-matrix drift) was the
+last red row and went green once ``td-76f5e0`` (Phase B.2) refreshed
+``references/reference_gap_matrix.md`` for Phase 5/6/7 enrichment and added a
+mundane row. It now guards against regression.
 
 Checks
 ------
@@ -86,7 +85,7 @@ CHECKS: list[Check] = [
           "ROADMAP Phase 5 static-asset guard"),
     Check("A.2.1", "A.2", "tests/structure/gap_matrix_drift.py",
           "system", ["tests/structure/gap_matrix_drift.py"],
-          "EXPECTED FAIL until td-76f5e0 refreshes the gap matrix"),
+          "gap matrix vs on-disk modules (regression guard)"),
     Check("A.2.2", "A.2", "tests/structure/source_notes_pointers.py",
           "system", ["tests/structure/source_notes_pointers.py"],
           "Source-notes pointer targets exist"),
@@ -201,9 +200,9 @@ def main() -> int:
             print(f"  - [{c.cid}] {c.label}: {c.detail}")
     print()
     print(
-        "Note: A.2.1 (gap-matrix drift) is EXPECTED to fail until td-76f5e0 "
-        "(Phase B.2) refreshes references/reference_gap_matrix.md. All other "
-        "rows should be green."
+        "Note: A.2.1 (gap-matrix drift) is a regression guard. It was red "
+        "until td-76f5e0 (Phase B.2) refreshed references/reference_gap_matrix.md; "
+        "it should now stay green so the matrix cannot silently drift again."
     )
     return 1
 
