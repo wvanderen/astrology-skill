@@ -12,7 +12,9 @@ from pathlib import Path
 REQUIRED_FIELDS = {"name", "description"}
 OPTIONAL_FIELDS = {"license", "compatibility", "metadata", "allowed-tools"}
 ALLOWED_FIELDS = REQUIRED_FIELDS | OPTIONAL_FIELDS
-NAME_RE = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$")
+NAME_RE = re.compile(r"^[a-z0-9-]+$")
+NAME_MAX_LENGTH = 64
+DESCRIPTION_MAX_LENGTH = 1024
 TRIGGER_WORDS = ("use when", "trigger", "use this skill")
 PURPOSE_WORDS = ("interpret", "interpretation", "reading", "synthesize", "synthesis")
 
@@ -35,8 +37,14 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
         fail("SKILL.md frontmatter must end with ---")
 
     metadata: dict[str, str] = {}
+    current_key: str | None = None
     for line_number, line in enumerate(lines[1:end], start=2):
         if not line.strip():
+            continue
+        if line[0].isspace():
+            if current_key is None:
+                fail(f"frontmatter line {line_number} is indented without a field")
+            metadata[current_key] = f"{metadata[current_key]}\n{line}".rstrip()
             continue
         if ":" not in line:
             fail(f"frontmatter line {line_number} must be a key: value pair")
@@ -50,11 +58,30 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
         if key in metadata:
             fail(f"frontmatter field {key!r} is duplicated")
         metadata[key] = value
+        current_key = key
 
     return metadata
 
 
-def validate_metadata(metadata: dict[str, str]) -> None:
+def validate_skill_name(name: str, expected_name: str) -> None:
+    if not name:
+        fail("skill name must be non-empty")
+    if len(name) > NAME_MAX_LENGTH:
+        fail(f"skill name must be <= {NAME_MAX_LENGTH} characters")
+    if not NAME_RE.fullmatch(name):
+        fail("skill name must contain only lowercase letters, numbers, and hyphens")
+    if name.startswith("-") or name.endswith("-"):
+        fail("skill name must not start or end with a hyphen")
+    if "--" in name:
+        fail("skill name must not contain consecutive hyphens")
+    if name != expected_name:
+        fail(
+            "skill name must match parent directory "
+            f"({name!r} != {expected_name!r})"
+        )
+
+
+def validate_metadata(metadata: dict[str, str], skill_path: Path) -> None:
     fields = set(metadata)
     extra_fields = fields - ALLOWED_FIELDS
     missing_fields = REQUIRED_FIELDS - fields
@@ -64,13 +91,13 @@ def validate_metadata(metadata: dict[str, str]) -> None:
     if missing_fields:
         fail(f"frontmatter is missing required fields: {', '.join(sorted(missing_fields))}")
 
-    name = metadata["name"]
-    if not NAME_RE.fullmatch(name):
-        fail("skill name must use lowercase hyphen-case")
+    validate_skill_name(metadata["name"], skill_path.parent.name)
 
     description = metadata["description"]
-    if len(description) < 80:
-        fail("description must clearly describe the skill and when it should trigger")
+    if not description:
+        fail("description must be non-empty")
+    if len(description) > DESCRIPTION_MAX_LENGTH:
+        fail(f"description must be <= {DESCRIPTION_MAX_LENGTH} characters")
 
     normalized_description = description.lower()
     if not any(word in normalized_description for word in PURPOSE_WORDS):
@@ -147,7 +174,7 @@ def main() -> None:
         fail("SKILL.md not found")
 
     metadata = parse_frontmatter(skill_path)
-    validate_metadata(metadata)
+    validate_metadata(metadata, skill_path)
     print("PASS: SKILL.md metadata is valid")
 
     validate_entry_surface()
