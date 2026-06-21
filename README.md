@@ -116,12 +116,20 @@ leftover symlink from a manual install is replaced with a real copy.
 ./install.sh --target agents      # $AGENTS_HOME/skills/       (default ~/.agents/skills, harness-neutral)
 ./install.sh --target all         # install into all three (default)
 ./install.sh --dry-run            # show what would happen; copy nothing
+./install.sh --smoke-test         # stage the published bundle and run --check
 ./install.sh --force              # overwrite a destination that belongs to another skill
 ```
 
 Run `./install.sh --help` for the full reference. Re-running it after a `git pull`
 updates every installed copy. Override the default locations with the
 `CODEX_HOME`, `PI_HOME`, or `AGENTS_HOME` environment variables.
+
+The installer publishes a lean bundle profile documented in
+[`docs/bundle_profile.md`](docs/bundle_profile.md): `SKILL.md`, runtime
+references, schemas, entry prompts, `entry_commands.py`, `agents/openai.yaml`,
+and necessary docs/templates. Repository-only context such as `AGENTS.md`,
+`ROADMAP.md`, `tests/`, `.todos`, forward-testing artifacts, and non-runtime
+docs/tooling is not copied.
 
 > **The AGPL calculator (`tools/`) is intentionally not copied.** The skill
 > package an agent loads is kept dependency-free and AGPL-free per
@@ -161,8 +169,7 @@ project root (discovered by Pi and other standard-compliant harnesses). Copy
 
 ```bash
 mkdir -p .agents/skills
-./install.sh --target agents   # with AGENTS_HOME set to the project, or copy by hand:
-rsync -a --exclude tools --exclude .git --exclude .venv ./ .agents/skills/astrology-skill/
+AGENTS_HOME="$PWD/.agents" ./install.sh --target agents
 ```
 
 Claude Code and Pi also read their own project dirs (`.claude/skills/`,
@@ -171,11 +178,14 @@ Claude Code and Pi also read their own project dirs (`.claude/skills/`,
 ### Manual install (if you prefer not to use the script)
 
 Copy the skill directory into a target's skills directory (see table above).
-Exclude `tools/` to keep the AGPL boundary, and `__pycache__`/`.venv`/`.git`:
+Use the published bundle profile from
+[`docs/bundle_profile.md`](docs/bundle_profile.md). At minimum, copy
+`SKILL.md`, `LICENSE`, `README.md`, `entry_commands.py`, `agents/openai.yaml`,
+`assets/schemas/`, `prompts/entry/`, `references/`, and the listed runtime
+docs:
 
 ```bash
-rsync -a --exclude tools --exclude .git --exclude .venv --exclude __pycache__ \
-  /path/to/astrology-skill/ ~/.codex/skills/astrology-skill/
+./install.sh --dry-run   # prints the exact allowlist
 ```
 
 Avoid symlinks for skill discovery — some harnesses (notably Codex) do not
@@ -186,6 +196,7 @@ follow them reliably, which is why `install.sh` copies instead.
 ```bash
 # The installed copy is a real directory and still passes its own checks:
 python3 ~/.codex/skills/astrology-skill/entry_commands.py --check
+./install.sh --smoke-test
 ls ~/.pi/agent/skills ~/.agents/skills    # astrology-skill present
 ```
 
@@ -360,6 +371,9 @@ docs/                     design notes + end-to-end walkthroughs
 tests/                    entry, structure, and forward-testing suites + validation matrix
 ```
 
+Only the published bundle profile is copied into agent skill directories; see
+[`docs/bundle_profile.md`](docs/bundle_profile.md).
+
 ---
 
 ## Documentation
@@ -367,14 +381,15 @@ tests/                    entry, structure, and forward-testing suites + validat
 - [`SKILL.md`](SKILL.md) — the skill itself (start here).
 - [`docs/end_to_end.md`](docs/end_to_end.md) — the full birth-data → reading walkthrough.
 - [`docs/entry_commands.md`](docs/entry_commands.md) — entry-command surface design.
+- [`docs/bundle_profile.md`](docs/bundle_profile.md) — files included in installed skill bundles.
 - [`docs/birth_to_chart_design.md`](docs/birth_to_chart_design.md) — calculator design + boundary rationale.
 - [`tools/README.md`](tools/README.md) — every `birth_to_chart.py` flag.
 - [`ROADMAP.md`](ROADMAP.md) — roadmap and phase history.
 
 ## License
 
-- The **skill package** (`SKILL.md`, `references/`, `assets/schemas/`,
-  `prompts/`, `entry_commands.py`, docs, install metadata, and tests) is
+- The **published skill bundle** (`SKILL.md`, `references/`, `assets/schemas/`,
+  `prompts/entry/`, `entry_commands.py`, `agents/openai.yaml`, and necessary docs/templates) is
   licensed under the **MIT License**. See [`LICENSE`](LICENSE). `SKILL.md`
   also declares `license: MIT` in frontmatter for package metadata consumers.
 - No `compatibility` frontmatter is declared yet: the runtime skill remains
