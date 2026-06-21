@@ -122,7 +122,7 @@ Emitted object uses the schema's top-level shape
 | `birth_time_confidence` | always | `Timed` / `Approximate` / `Unknown` / `Rectified` — the labels defined in `references/foundations/birth_time_uncertainty.md`. Rules in §7. |
 | `house_system` | when time known | The system name string. |
 | `ascendant`, `midheaven` | when time known | `{sign, degree, absolute_degree}` via `swe_houses`. |
-| `placements` | always | Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, True Node. Each: `body`, `sign`, `degree`, `absolute_degree` (from `swe_calc_ut`), `house` (only when time known, via cusp membership), `motion` (`direct`/`retrograde`/`stationary` from the SE return flags). `condition` and `dignity` arrays are emitted **empty** — those are interpretive and belong to the skill. |
+| `placements` | always | Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, True Node. Each: `body`, `sign`, `degree`, `absolute_degree` (from `swe_calc_ut`), `house` (only when time known, via cusp membership), `motion` (`direct`/`retrograde`/`stationary` from the SE return flags), and **major essential dignity** in `dignity` for the seven classical planets (`domicile`/`exaltation`/`detriment`/`fall`, derived from planet+sign). The minor essential dignities and `condition` are emitted **empty** — those are interpretive and belong to the skill. |
 | `house_cusps` (extra prop) | when time known | Array of `{house:1..12, sign, degree, absolute_degree}` from `swe_houses`. Allowed because `chart_data` is `additionalProperties: true`. |
 | `aspects` | always | Major Ptolemaic (conjunction, opposition, trine, square, sextile) plus optional semisextile/quincunx, between planets (and to Asc/MC when known). Each carries `orb_degrees`, `applying`/`separating` (from velocity comparison), and `exact`. Orb table is documented and configurable. |
 | `lots` | default on | Lot of Fortune: day formula `Asc + Moon − Sun`, night formula `Asc + Sun − Moon` (sect-aware). `{name, sign, degree, absolute_degree, house, formula}`. |
@@ -138,7 +138,8 @@ Emitted object uses the schema's top-level shape
 | Sect day/night status | Sect *weighting* on each planet |
 | Aspect geometry, orbs, applying/separating | Aspect *interpretation* |
 | Lot of Fortune position | Lot *significance* |
-| Motion (direct/retrograde) | Essential/accidental **dignity**, **condition** (cazimi, combust, term, face, triplicity, detriment, fall) |
+| Motion (direct/retrograde) | **Minor** essential **dignity** (triplicity / term / face) and accidental **condition** (cazimi, combust, under the beams, bonification/maltreatment, reception) |
+| **Major** essential **dignity** (domicile / exaltation / detriment / fall) for the seven classical planets — derived from planet+sign | |
 
 This is what keeps the script a faithful pre-processor: it emits geometry and
 provenance; the skill supplies doctrine.

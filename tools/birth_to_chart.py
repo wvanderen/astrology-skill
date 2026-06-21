@@ -54,7 +54,11 @@ import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+from zoneinfo import (
+    ZoneInfo,
+    ZoneInfoNotFoundError,
+    available_timezones,
+)
 
 import swisseph as swe
 
@@ -84,6 +88,63 @@ SIGN_DOMICILE_RULER: dict[str, str] = {
 SIGN_MODERN_CORULER: dict[str, str] = {
     "Scorpio": "Pluto", "Aquarius": "Uranus", "Pisces": "Neptune",
 }
+
+# Classical exaltations (planet -> sign), citing Ptolemy, Tetrabiblos I.19.
+# Depression (fall) is the sign directly opposite the exaltation. Together with
+# SIGN_DOMICILE_RULER (whose opposite signs give detriment) this is the full
+# MAJOR essential dignity scheme. Minor essential dignity (triplicity / term /
+# face) is table- and sect-dependent and stays the skill's job, so it is never
+# emitted here. Only the seven classical planets have traditional major
+# essential dignity in this doctrine; the outer planets and points get [].
+EXALTATION_BY_PLANET: dict[str, str] = {
+    "Sun": "Aries", "Moon": "Taurus", "Jupiter": "Cancer",
+    "Mercury": "Virgo", "Venus": "Pisces", "Mars": "Capricorn",
+    "Saturn": "Libra",
+}
+# Canonical emission order for the four major dignities/debilities.
+_MAJOR_DIGNITY_ORDER = ("domicile", "exaltation", "detriment", "fall")
+
+
+def _opposite_sign(sign: str) -> str:
+    """Return the sign 180° opposite ``sign`` (same mod-12 index + 6)."""
+    return SIGN_NAMES[(SIGN_NAMES.index(sign) + 6) % 12]
+
+
+def _build_major_dignity_index() -> dict[tuple[str, str], set[str]]:
+    """(planet, sign) -> set of major dignity tags, derived from the tables.
+
+    Single source of truth: SIGN_DOMICILE_RULER gives domicile (and detriment
+    by opposition); EXALTATION_BY_PLANET gives exaltation (and fall by
+    opposition). No second table to keep in sync.
+    """
+    index: dict[tuple[str, str], set[str]] = {}
+    for sign, ruler in SIGN_DOMICILE_RULER.items():
+        index.setdefault((ruler, sign), set()).add("domicile")
+        index.setdefault((ruler, _opposite_sign(sign)), set()).add("detriment")
+    for planet, exalt in EXALTATION_BY_PLANET.items():
+        index.setdefault((planet, exalt), set()).add("exaltation")
+        index.setdefault((planet, _opposite_sign(exalt)), set()).add("fall")
+    return index
+
+
+_MAJOR_DIGNITY_INDEX = _build_major_dignity_index()
+
+
+def major_essential_dignity(planet: str, sign: str | None) -> list[str]:
+    """Major essential dignity for a (planet, sign) pair, in canonical order.
+
+    Deterministic function of geometry the tool already computes (the same
+    ``sign`` it emits). Returns [] for the outer planets / points / a sign with
+    none of the four, matching the traditional scheme. Minor essential dignity
+    and accidental condition are never produced here.
+    """
+    if sign is None:
+        return []
+    tags = _MAJOR_DIGNITY_INDEX.get((planet, sign))
+    if not tags:
+        return []
+    return [d for d in _MAJOR_DIGNITY_ORDER if d in tags]
+
 
 SPEED_LUMINARY = "luminary"
 SPEED_FAST = "fast"
@@ -262,23 +323,97 @@ def resolve_timezone(tz_spec: str | None, use_lmt: bool, lon: float | None):
             "'America/New_York' or a fixed offset like '+05:30') or --lmt. "
             "Birth-time uncertainty must be made explicit, never guessed."
         )
-    # IANA first.
+    # IANA first. zoneinfo consults the system tzdb and then (cross-platform,
+    # not just Windows) the PyPI ``tzdata`` package when installed, so any real
+    # IANA zone resolves regardless of host OS once ``tzdata`` is a dependency.
     try:
         return ZoneInfo(tz_spec), tz_spec, "iana"
     except (ZoneInfoNotFoundError, ValueError):
         pass
     m = _OFFSET_RE.match(tz_spec)
-    if not m:
-        raise ConfigError(
-            f"--tz {tz_spec!r} is neither a known IANA zone nor a fixed "
-            f"offset like '+05:30'."
-        )
-    sign = 1 if m.group(1) == "+" else -1
-    hh = int(m.group(2))
-    mm = int(m.group(3))
-    ss = int(m.group(4) or 0)
-    off = sign * (hh * 3600 + mm * 60 + ss)
-    return timezone(timedelta(seconds=off)), tz_spec, "offset"
+    if m:
+        sign = 1 if m.group(1) == "+" else -1
+        hh = int(m.group(2))
+        mm = int(m.group(3))
+        ss = int(m.group(4) or 0)
+        off = sign * (hh * 3600 + mm * 60 + ss)
+        return timezone(timedelta(seconds=off)), tz_spec, "offset"
+    raise ConfigError(_bad_tz_message(tz_spec))
+
+
+# Max ``did-you-mean`` zone suggestions shown for an unresolved IANA-shaped --tz.
+_MAX_TZ_HINTS = 6
+
+
+def _iana_hint(tz_spec: str) -> str:
+    """Build a helpful suffix for an unresolved IANA-shaped ``--tz`` token.
+
+    Suggests real IANA zones sharing the token's parent region or leaf name
+    (e.g. ``America/Kentucky/Lexington`` → the valid ``America/Kentucky/*``
+    zones) and notes that ``tzdata`` supplies complete coverage, so the user can
+    tell a misspelled/imaginary zone apart from a host-tzdb gap.
+    """
+    try:
+        known = available_timezones()
+    except Exception:
+        return ""
+    token = tz_spec.strip()
+    if not token:
+        return ""
+    parts = token.split("/")
+    candidates: list[str] = []
+    seen: set[str] = set()
+    if len(parts) > 1:
+        # Sibling zones under the same parent region.
+        prefix = "/".join(parts[:-1]) + "/"
+        leaf = parts[-1]
+        for z in sorted(known):
+            if z.startswith(prefix) and z != token:
+                candidates.append(z)
+                seen.add(z)
+            if len(candidates) >= _MAX_TZ_HINTS:
+                break
+        # Then any zone whose final component matches the typed leaf.
+        if len(candidates) < _MAX_TZ_HINTS:
+            for z in sorted(known):
+                if z.split("/")[-1] == leaf and z != token and z not in seen:
+                    candidates.append(z)
+                    seen.add(z)
+                if len(candidates) >= _MAX_TZ_HINTS:
+                    break
+    else:
+        # Bare token: match anywhere, case-insensitively.
+        low = token.lower()
+        for z in sorted(known):
+            if low in z.lower() and z != token:
+                candidates.append(z)
+            if len(candidates) >= _MAX_TZ_HINTS:
+                break
+    bits: list[str] = []
+    if candidates:
+        bits.append("Did you mean one of: " + ", ".join(candidates) + "?")
+    else:
+        bits.append(
+            f"No IANA zone shares the region {parts[0]!r} on this system.")
+    bits.append(
+        "Any real IANA zone resolves here (the 'tzdata' package is a runtime "
+        "dependency for complete, host-independent coverage); for a fixed "
+        "offset use the form '+05:30'.")
+    return " " + " ".join(bits)
+
+
+def _bad_tz_message(tz_spec: str) -> str:
+    """Error copy for a ``--tz`` that is neither a known zone nor an offset."""
+    if "/" in tz_spec:
+        head = (
+            f"--tz {tz_spec!r} looks like an IANA zone name, but no such zone "
+            f"is resolvable on this host (it may be misspelled, retired, or "
+            f"simply not a real IANA zone).")
+    else:
+        head = (
+            f"--tz {tz_spec!r} is neither a known IANA zone nor a fixed offset "
+            f"like '+05:30'.")
+    return head + _iana_hint(tz_spec)
 
 
 def wallclock_to_ut(
@@ -324,7 +459,9 @@ def compute_positions(
     """Return (placements, ephemeris_mode_label).
 
     Each placement carries body, sign, degree, absolute_degree, motion,
-    condition [], dignity []. House assignment is added later when a time is
+    condition [], and dignity (major essential dignity only: domicile /
+    exaltation / detriment / fall for the seven classical planets, derived
+    from planet+sign). House assignment is added later when a time is
     known. ``topocentric_moon`` applies parallax to the Moon only.
     """
     placements: list[dict] = []
@@ -356,7 +493,7 @@ def compute_positions(
             "motion": _motion_from_speed(lon_speed),
             "speed_deg_per_day": round(lon_speed, 6),  # provenance extra-prop
             "condition": [],
-            "dignity": [],
+            "dignity": major_essential_dignity(name, sign),
         })
     if topocentric_moon:
         swe.set_topo(0.0, 0.0, 0.0)
@@ -816,6 +953,11 @@ def build_source_notes(
     parts.append(f"Topocentric Moon: {'on' if topocentric_moon else 'off'}"
                  + (f" (elevation {elevation} m)." if topocentric_moon else "."))
     parts.append(f"Birth-time confidence: {confidence}.")
+    parts.append(
+        "Major essential dignity (domicile/exaltation/detriment/fall) for the "
+        "seven classical planets is derived from planet+sign (Ptolemy I.17, "
+        "I.19); minor essential dignity and `condition` remain interpretive "
+        "and are emitted empty.")
     parts.append(
         f"Input: date {date_str}, time {time_str or '(none)'}, "
         f"tz {tz_label} ({tz_kind}), lat {lat}, lon {lon}.")

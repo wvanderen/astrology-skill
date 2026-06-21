@@ -23,11 +23,12 @@ virtualenv of your own:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r tools/requirements.txt          # runtime: pyswisseph
+pip install -r tools/requirements.txt          # runtime: pyswisseph, tzdata
 pip install -r tools/requirements-dev.txt      # adds jsonschema for --validate
 ```
 
-Requirements: Python 3.10+ (uses stdlib `zoneinfo`).
+Requirements: Python 3.10+ (uses stdlib `zoneinfo` + the `tzdata`
+package for complete, host-independent IANA timezone coverage).
 
 **No ephemeris data files required.** The script uses the built-in Moshier
 ephemeris by default (planets ≈ 0.1″, Moon ≈ 3″ — far inside any natal orb). It
@@ -141,7 +142,7 @@ bad/missing input or validation failure, with a message naming the field.
 | `--date` | yes | ISO `YYYY-MM-DD`. |
 | `--time` | see below | `HH:MM` or `HH:MM:SS` (24h). |
 | `--lat`, `--lon` | yes | Decimal degrees. `--elevation` (m) enables topocentric Moon. |
-| `--tz` | conditional | IANA name (`America/New_York`) **or** fixed offset (`+05:30`). Required unless `--lmt`. |
+| `--tz` | conditional | IANA name (`America/New_York`) **or** fixed offset (`+05:30`). Required unless `--lmt`. See [Timezone resolution](#timezone-resolution) for how zones are looked up and how errors are reported. |
 | `--lmt` | optional | Local Mean Time offset derived from `--lon`. |
 | `--place`, `--name` | optional | Free-text labels for `source_notes`. **Coordinates are authoritative** — no network geocoding (deterministic/offline). |
 | `--house-system` | optional | Default **`Whole Sign`** (robust to birth-time uncertainty). Also: Placidus, Regiomontanus, Koch, Equal, Campanus, Porphyrius, Morinus, Alcabitius, Topocentric. |
@@ -181,6 +182,33 @@ provisional (the Moon can move ~13°/day). This matches
 `references/foundations/birth_time_uncertainty.md`. When **Approximate**, angles
 and houses are still computed but `source_notes` labels them provisional.
 
+### Timezone resolution
+
+`--tz` accepts either an **IANA zone** (`America/New_York`, `Asia/Kolkata`,
+`Europe/London`) or a **fixed offset** (`+05:30`, `-04:00`). Lookup is
+non-guessing: a missing zone is a hard error.
+
+Resolution order:
+
+1. **System timezone database** (`/usr/share/zoneinfo` on Unix). Some hosts
+   ship an incomplete or stale system db (macOS and minimal containers are the
+   usual culprits), so a valid IANA zone can be absent here.
+2. **`tzdata` package fallback.** stdlib `zoneinfo` automatically consults the
+   PyPI [`tzdata`](https://pypi.org/project/tzdata/) package when the system db
+   lacks a zone — cross-platform, not Windows-only. `tzdata` is a runtime
+   dependency of this tool, so **every real IANA zone resolves identically on
+   every host.** (Set `PYTHONTZPATH` to override the system search path.)
+3. **Fixed offset** (`+HH:MM[:SS]`) when the token is not an IANA zone.
+
+If a token looks like an IANA name but no such zone exists anywhere (for
+example `America/Kentucky/Lexington` — Lexington, KY is served by
+`America/New_York` / `America/Kentucky/Louisville`; there is no `Lexington`
+zone in the IANA database), the error names it as IANA-shaped and suggests the
+valid sibling zones under the same region ("Did you mean …?") plus the
+corresponding offset form. This lets you tell a misspelled or imagined zone
+apart from a host-tzdb gap. (`--lmt` derives Local Mean Time from `--lon`
+instead.)
+
 ---
 
 ## Output shape
@@ -196,8 +224,12 @@ Conforms to `chart_input_schema.json` (top-level `reading_type`,
 - `placements` — Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus,
   Neptune, Pluto, True Node (+ extras). Each: `body`, `sign`, `degree`,
   `absolute_degree`, `motion` (`direct`/`retrograde`/`stationary`), `house`
-  (when known), and empty `condition` / `dignity` arrays — those are
-  **interpretive** and belong to the skill.
+  (when known), and **major essential dignity** in `dignity` for the seven
+  classical planets — `domicile` / `exaltation` / `detriment` / `fall`,
+  derived deterministically from planet+sign (Ptolemy I.17, I.19). The outer
+  planets, points, and signs with none of the four get `dignity: []`. `condition`
+  and the minor essential dignities (triplicity / term / face) stay **empty /
+  interpretive** — they belong to the skill.
 - `aspects` — major Ptolemaic aspects (conjunction, opposition, trine, square,
   sextile) between planets **and** to the Asc/MC when known; `orb_degrees`,
   `applying`/`separating` (from daily-speed comparison), and `exact`. Minor
@@ -248,7 +280,8 @@ the pair orb uncapped. An aspect is `exact` when its orb is below 0.05°
 | Sect day/night status | Sect *weighting* |
 | Aspect geometry, orbs, applying/separating | Aspect *interpretation* |
 | Lot of Fortune position | Lot *significance* |
-| Motion (direct/retrograde) | Essential/accidental **dignity**, **condition** |
+| Motion (direct/retrograde) | Accidental strength, **condition** (combustion severity, bonification/maltreatment, reception) |
+| **Major essential dignity** (domicile / exaltation / detriment / fall) for the seven classical planets — derived from planet+sign | **Minor essential dignity** (triplicity / term / face) — table- and sect-dependent |
 | Solar-return moment, SR chart (Asc/MC/houses/placements/aspects), SR→natal contacts | SR *meaning*, annual-emphasis synthesis |
 | Annual profection (profected house/sign, Lord of the Year, Lord's natal placement) | Profection *interpretation*, topic synthesis |
 | Transiting positions, transit→natal aspect geometry | Transit *interpretation*, timing-window synthesis |
@@ -278,6 +311,8 @@ See [`docs/end_to_end.md`](../docs/end_to_end.md) for the full walkthrough
 ```bash
 python tools/smoke_test.py          # natal Asc/MC vs independent stdlib recomputation
 python tools/timing_smoke_test.py   # solar_return / annual_profection / transit
+python tools/tz_smoke_test.py       # IANA zone resolution + tz fallback / error copy
+python tools/dignity_smoke_test.py  # major essential dignity (domicile/exalt/detriment/fall)
 ```
 
 `smoke_test.py` runs three documented birth-data sets (different years, hemispheres, IANA
@@ -286,3 +321,17 @@ agree to **±0.05°** with an **independent** from-scratch recomputation
 (IAU 1982 GMST + IAU 1980 obliquity, stdlib only — no Swiss Ephemeris), and
 that each output passes `--validate`. Run with the interpreter that has
 `pyswisseph` installed.
+
+`dignity_smoke_test.py` checks that major essential dignity is surfaced
+objectively: for the documented 1992-10-28 chart it asserts Mars-in-Cancer =
+`fall`, Saturn-in-Aquarius = `domicile`, and Sun-in-Scorpio = `[]`; it also
+runs the full table (every classical planet × every sign, reconstructed from
+`references/classical_doctrine_notes.md`) and guards that `condition` stays
+empty and no minor-dignity tag (triplicity/term/face) leaks into `dignity`.
+
+`tz_smoke_test.py` checks timezone resolution: it forces `PYTHONTZPATH` at an
+empty directory (simulating a host with no system tzdb) and confirms real IANA
+zones still resolve end-to-end via the `tzdata` package fallback, and that an
+IANA-shaped-but-invalid zone (`America/Kentucky/Lexington`) exits 2 with a
+message that names the token as IANA-shaped, suggests the valid
+`America/Kentucky/*` zones, and mentions `tzdata`.

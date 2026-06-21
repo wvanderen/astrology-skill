@@ -55,8 +55,13 @@ Stages 2–3 use **only the Python standard library** (system `python3` is fine)
 conforms to [`assets/schemas/chart_input_schema.json`](../assets/schemas/chart_input_schema.json).
 The output is **geometry + provenance only** (positions, Asc/MC, houses,
 aspects, sect, Lot of Fortune, `source_notes`, `birth_time_confidence`);
-condition/dignity arrays are emitted empty — those are interpretive and belong
-to the skill.
+`dignity` now carries the four **major essential dignities**
+(`domicile` / `exaltation` / `detriment` / `fall`) for the seven classical
+planets — a deterministic function of planet+sign (Ptolemy I.17, I.19) — so
+the skill's `references/placements/planet_condition/{condition}.md` retrieval
+path is live for every computed chart. The minor essential dignities
+(triplicity / term / face) and `condition` stay **empty / interpretive** and
+belong to the skill.
 
 ```bash
 python3 tools/birth_to_chart.py \

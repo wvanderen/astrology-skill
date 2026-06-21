@@ -136,7 +136,9 @@
         "absolute_degree": 112.0205,
         "motion": "direct",
         "condition": [],
-        "dignity": [],
+        "dignity": [
+          "fall"
+        ],
         "house": 1
       },
       {
@@ -156,7 +158,9 @@
         "absolute_degree": 311.9645,
         "motion": "direct",
         "condition": [],
-        "dignity": [],
+        "dignity": [
+          "domicile"
+        ],
         "house": 8
       },
       {
@@ -390,7 +394,7 @@
         "formula": "Asc + Sun − Moon (night sect)"
       }
     ],
-    "source_notes": "Computed by pyswisseph/Swiss Ephemeris 2.10.03. Frame: tropical. House system: Whole Sign. Ephemeris mode: Moshier (built-in). Topocentric Moon: off. Birth-time confidence: Timed. Input: date 1992-10-28, time 22:30, tz America/New_York (iana), lat 38.0406, lon -84.5034. Place (label only; coordinates are authoritative): Lexington, KY, USA (tz resolved via America/New_York; identical US Eastern rules).",
+    "source_notes": "Computed by pyswisseph/Swiss Ephemeris 2.10.03. Frame: tropical. House system: Whole Sign. Ephemeris mode: Moshier (built-in). Topocentric Moon: off. Birth-time confidence: Timed. Major essential dignity (domicile/exaltation/detriment/fall) for the seven classical planets is derived from planet+sign (Ptolemy I.17, I.19); minor essential dignity and `condition` remain interpretive and are emitted empty. Input: date 1992-10-28, time 22:30, tz America/New_York (iana), lat 38.0406, lon -84.5034. Place (label only; coordinates are authoritative): Lexington, KY, USA (tz resolved via America/New_York; identical US Eastern rules).",
     "birth_time_confidence": "Timed"
   }
 }
