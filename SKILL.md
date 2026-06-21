@@ -1,6 +1,7 @@
 ---
 name: astrology-skill
 description: Retrieval-first astrological interpretation for already-calculated chart data. Use when the user provides placements, houses, aspects, dignities, sect, rulerships, transits, synastry factors, profections, solar returns, horary details, electional constraints, or a structured astrology reading request and wants a synthesized reading rather than chart calculation.
+license: MIT
 ---
 
 # Astrology Skill

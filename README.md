@@ -373,8 +373,13 @@ tests/                    entry, structure, and forward-testing suites + validat
 
 ## License
 
-- The **skill** (`SKILL.md`, `references/`, `prompts/`, `entry_commands.py`,
-  schemas, docs) has no bundled license file at the repository root.
-- The **calculator** under [`tools/`](tools) is **AGPL-3.0** because it uses
-  `pyswisseph` (Swiss Ephemeris). See [`tools/NOTICE.md`](tools/NOTICE.md).
-  That AGPL boundary is confined to `tools/` and does not extend to the skill.
+- The **skill package** (`SKILL.md`, `references/`, `assets/schemas/`,
+  `prompts/`, `entry_commands.py`, docs, install metadata, and tests) is
+  licensed under the **MIT License**. See [`LICENSE`](LICENSE). `SKILL.md`
+  also declares `license: MIT` in frontmatter for package metadata consumers.
+- No `compatibility` frontmatter is declared yet: the runtime skill remains
+  dependency-free and targets the standard `SKILL.md` loader shape.
+- The **calculator** under [`tools/`](tools) remains a separate **AGPL-3.0**
+  unit because it uses `pyswisseph` (Swiss Ephemeris). See
+  [`tools/NOTICE.md`](tools/NOTICE.md). That AGPL boundary is confined to
+  `tools/` and does not extend to the skill package installed by `install.sh`.

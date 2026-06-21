@@ -9,7 +9,9 @@ import sys
 from pathlib import Path
 
 
-ALLOWED_FIELDS = {"name", "description"}
+REQUIRED_FIELDS = {"name", "description"}
+OPTIONAL_FIELDS = {"license", "compatibility", "metadata", "allowed-tools"}
+ALLOWED_FIELDS = REQUIRED_FIELDS | OPTIONAL_FIELDS
 NAME_RE = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$")
 TRIGGER_WORDS = ("use when", "trigger", "use this skill")
 PURPOSE_WORDS = ("interpret", "interpretation", "reading", "synthesize", "synthesis")
@@ -55,7 +57,7 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
 def validate_metadata(metadata: dict[str, str]) -> None:
     fields = set(metadata)
     extra_fields = fields - ALLOWED_FIELDS
-    missing_fields = ALLOWED_FIELDS - fields
+    missing_fields = REQUIRED_FIELDS - fields
 
     if extra_fields:
         fail(f"frontmatter contains unsupported fields: {', '.join(sorted(extra_fields))}")
