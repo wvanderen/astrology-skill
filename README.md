@@ -127,9 +127,9 @@ updates every installed copy. Override the default locations with the
 The installer publishes a lean bundle profile documented in
 [`docs/bundle_profile.md`](docs/bundle_profile.md): `SKILL.md`, runtime
 references, schemas, entry prompts, `entry_commands.py`, `agents/openai.yaml`,
-and necessary docs/templates. Repository-only context such as `AGENTS.md`,
-`ROADMAP.md`, `tests/`, `.todos`, forward-testing artifacts, and non-runtime
-docs/tooling is not copied.
+and necessary docs/templates, including the calculator boundary rationale.
+Repository-only context such as `AGENTS.md`, `ROADMAP.md`, `tests/`, `.todos`,
+forward-testing artifacts, and non-runtime docs/tooling is not copied.
 
 > **The AGPL calculator (`tools/`) is intentionally not copied.** The skill
 > package an agent loads is kept dependency-free and AGPL-free per

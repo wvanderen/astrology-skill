@@ -15,6 +15,7 @@ user-facing documentation needed to understand and verify the entry surface.
 - `prompts/entry/`
 - `references/`
 - `docs/bundle_profile.md`
+- `docs/birth_to_chart_design.md`
 - `docs/entry_commands.md`
 - `docs/end_to_end.md`
 - `docs/report_format.md`
@@ -31,8 +32,9 @@ Development-only repository context is not copied into Codex, Pi, or
 tooling such as `tools/`.
 
 The `tools/` calculator remains opt-in and separate from the agent-loaded skill
-bundle. See `docs/birth_to_chart_design.md` and `tools/README.md` in the
-development repository when working on calculator behavior.
+bundle. `docs/birth_to_chart_design.md` is included because installed metadata
+points at its boundary rationale; calculator implementation docs remain in the
+development repository.
 
 ## Verification
 

@@ -63,6 +63,7 @@ BUNDLE_ENTRIES=(
 
 BUNDLE_DOCS=(
   'docs/bundle_profile.md'
+  'docs/birth_to_chart_design.md'
   'docs/entry_commands.md'
   'docs/end_to_end.md'
   'docs/report_format.md'
