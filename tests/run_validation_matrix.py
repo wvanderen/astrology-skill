@@ -26,6 +26,7 @@ A.1 deterministic suite (must be green before B–D proceed):
   6. schema + agents/openai.yaml parse (.venv; ROADMAP Phase 5 static guard)
   7. tests/entry/report_test.py   (system python3; report gate --report)
   8. tools/timing_smoke_test.py   (.venv; solar_return/annual_profection/transit)
+  9. tests/trigger/run_trigger_eval.py (system python3; trigger eval fixtures)
 
 A.2 structural-drift guards (new in td-3b7112):
   7. tests/structure/gap_matrix_drift.py        (system python3)
@@ -91,6 +92,9 @@ CHECKS: list[Check] = [
     Check("A.1.8", "A.1", "tools/timing_smoke_test.py",
           "venv", ["tools/timing_smoke_test.py"],
           "solar_return / annual_profection / transit computation (td-9dfe2c)"),
+    Check("A.1.9", "A.1", "tests/trigger/run_trigger_eval.py",
+          "system", ["tests/trigger/run_trigger_eval.py"],
+          "SKILL.md trigger eval fixture structure (td-4aea8b)"),
     Check("A.2.1", "A.2", "tests/structure/gap_matrix_drift.py",
           "system", ["tests/structure/gap_matrix_drift.py"],
           "gap matrix vs on-disk modules (regression guard)"),
