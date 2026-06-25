@@ -64,6 +64,7 @@ class Check:
     interpreter: str  # "system" or "venv"
     argv: list[str]
     note: str
+    required: bool = True
     # Populated by run().
     status: str = "SKIP"
     detail: str = field(default="")
@@ -106,6 +107,10 @@ CHECKS: list[Check] = [
     Check("A.2.2", "A.2", "tests/structure/source_notes_pointers.py",
           "system", ["tests/structure/source_notes_pointers.py"],
           "Source-notes pointer targets exist"),
+    Check("A.3.1", "A.3", "skills-ref validate",
+          "system", ["tests/structure/skills_ref_validate.py"],
+          "optional official Agent Skills validator; SKIP when absent",
+          required=False),
 ]
 
 
@@ -151,6 +156,8 @@ def run_check(check: Check) -> None:
         check.detail = "timed out after 120s"
         return
     check.status = "PASS" if proc.returncode == 0 else "FAIL"
+    if not check.required and proc.returncode == 77:
+        check.status = "SKIP"
     check.detail = _last_meaningful_line(proc.stdout, proc.stderr)
 
 
@@ -202,18 +209,28 @@ def main() -> int:
         print(f"  {gid} ({len(row)} checks): {tag}")
 
     fails = [c for c in CHECKS if c.status == "FAIL"]
-    skips = [c for c in CHECKS if c.status == "SKIP"]
+    required_skips = [c for c in CHECKS if c.status == "SKIP" and c.required]
+    optional_skips = [c for c in CHECKS if c.status == "SKIP" and not c.required]
     print()
-    if not fails and not skips:
+    if not fails and not required_skips:
         print("MATRIX GREEN: every deterministic check passed.")
+        if optional_skips:
+            print(
+                f"MATRIX OPTIONAL: {len(optional_skips)} optional check(s) skipped "
+                "without failing offline validation."
+            )
         return 0
     if fails:
         print(f"MATRIX RED: {len(fails)} check(s) failed:")
         for c in fails:
             print(f"  - [{c.cid}] {c.label}: {c.detail}")
-    if skips:
-        print(f"MATRIX AMBER: {len(skips)} check(s) skipped:")
-        for c in skips:
+    if required_skips:
+        print(f"MATRIX AMBER: {len(required_skips)} required check(s) skipped:")
+        for c in required_skips:
+            print(f"  - [{c.cid}] {c.label}: {c.detail}")
+    if optional_skips:
+        print(f"MATRIX OPTIONAL: {len(optional_skips)} optional check(s) skipped:")
+        for c in optional_skips:
             print(f"  - [{c.cid}] {c.label}: {c.detail}")
     print()
     print(

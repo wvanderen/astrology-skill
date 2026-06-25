@@ -53,3 +53,17 @@ runs the installed copy's entry parity check:
 
 Real installs also run `python3 entry_commands.py --check` from the destination
 after copying.
+
+If the official Agent Skills reference validator is installed, the development
+matrix can validate either this repository root or a staged/published bundle:
+
+```bash
+python3 tests/run_validation_matrix.py
+SKILLS_REF_TARGET=/path/to/published/astrology-skill \
+  python3 tests/structure/skills_ref_validate.py
+```
+
+When `skills-ref` is absent, the wrapper reports `SKIP` with install guidance
+instead of failing. Treat any installed-validator finding as actionable: either
+teach `quick_validate.py` the same local rule or record why the official and
+local checks intentionally differ.

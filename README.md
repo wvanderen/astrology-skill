@@ -347,9 +347,19 @@ Individual checks:
 | `python3 tools/smoke_test.py` | `.venv` | Asc/MC within ±0.05° on 3 fixtures (independent recomputation) |
 | `python3 tests/structure/gap_matrix_drift.py` | system `python3` | reference-gap regression guard |
 | `python3 tests/structure/schema_and_agents_parse.py` | `.venv` | schema + `agents/openai.yaml` parse |
+| `python3 tests/structure/skills_ref_validate.py` | optional `skills-ref` | official Agent Skills validation; reports `SKIP` with install guidance when absent |
 
 See [`docs/e2e_validation_plan.md`](docs/e2e_validation_plan.md) for the full
 plan.
+
+The official Agent Skills reference validator is opportunistic: local checks do
+not install it or require network access. If `skills-ref` is on `PATH`, the
+matrix runs `skills-ref validate` against the repository skill root. To validate
+a staged or published bundle instead, set `SKILLS_REF_TARGET=/path/to/bundle`;
+to use a non-`PATH` binary, set `SKILLS_REF_BIN=/path/to/skills-ref`. Any
+official finding should be resolved by updating `quick_validate.py` when the
+local validator is missing a real rule, or by documenting an intentional
+official/local difference so the two checks do not disagree silently.
 
 ---
 
