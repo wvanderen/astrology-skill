@@ -6,11 +6,11 @@ transits, synastry factors, lots, and timing factors. Preferred input is chart
 data that has already been calculated, but the repository also includes an
 opt-in raw-birth-data → chart JSON calculator for hosts that can run it.
 
-The skill package itself is **dependency-free** (Python standard library only).
-The bundled birth-data → chart calculator is an **opt-in, separate-process**
-developer utility that is never imported by the skill runtime. The reading
-workflow consumes its output; it does not freehand-calculate or invent missing
-chart factors.
+The interpretive skill runtime is **dependency-free** (Python standard library
+only). The bundled birth-data → chart calculator is an **opt-in,
+separate-process** support script that is never imported by the skill runtime.
+The reading workflow consumes its output; it does not freehand-calculate or
+invent missing chart factors.
 
 > **Skill doctrine lives in [`SKILL.md`](SKILL.md).** That file defines the
 > input contract, the retrieval workflow, the weighting hierarchy, the output
@@ -129,19 +129,20 @@ updates every installed copy. Override the default locations with the
 The installer publishes a lean bundle profile documented in
 [`docs/bundle_profile.md`](docs/bundle_profile.md): `SKILL.md`, runtime
 references, schemas, entry prompts, `entry_commands.py`, `agents/openai.yaml`,
-and necessary docs/templates, including the calculator boundary rationale.
+necessary docs/templates, and the opt-in calculator support script.
 Repository-only context such as `AGENTS.md`, `ROADMAP.md`, `tests/`, `.todos`,
 forward-testing artifacts, and non-runtime docs/tooling is not copied.
 
-> **The AGPL calculator (`tools/`) is intentionally not copied.** The skill
-> package an agent loads is kept dependency-free and AGPL-free per
-> [`docs/birth_to_chart_design.md`](docs/birth_to_chart_design.md) §7. The
-> calculator is opt-in and installed separately into a venv of your own:
+> **The AGPL calculator (`tools/birth_to_chart.py`) is included but opt-in.**
+> Agent Skills harnesses resolve bundled scripts by relative path from the
+> installed skill root; including the script keeps the advertised
+> `tools/birth_to_chart.py` path usable after install. Dependencies are not
+> vendored. Install them into a venv of your own:
 > ```bash
 > python3 -m venv .venv && . .venv/bin/activate \
 >   && pip install -r tools/requirements.txt -r tools/requirements-dev.txt
 > ```
-> See [`tools/README.md`](tools/README.md).
+> See [`tools/README.md`](tools/README.md) and [`tools/NOTICE.md`](tools/NOTICE.md).
 
 ### Target locations
 
@@ -400,13 +401,14 @@ Only the published bundle profile is copied into agent skill directories; see
 
 ## License
 
-- The **published skill bundle** (`SKILL.md`, `references/`, `assets/schemas/`,
-  `prompts/entry/`, `entry_commands.py`, `agents/openai.yaml`, and necessary docs/templates) is
-  licensed under the **MIT License**. See [`LICENSE`](LICENSE). `SKILL.md`
-  also declares `license: MIT` in frontmatter for package metadata consumers.
+- The **interpretive skill runtime** (`SKILL.md`, `references/`,
+  `assets/schemas/`, `prompts/entry/`, `entry_commands.py`,
+  `agents/openai.yaml`, and necessary docs/templates) is licensed under the
+  **MIT License**. See [`LICENSE`](LICENSE). `SKILL.md` also declares
+  `license: MIT` in frontmatter for package metadata consumers.
 - No `compatibility` frontmatter is declared yet: the runtime skill remains
   dependency-free and targets the standard `SKILL.md` loader shape.
-- The **calculator** under [`tools/`](tools) remains a separate **AGPL-3.0**
-  unit because it uses `pyswisseph` (Swiss Ephemeris). See
-  [`tools/NOTICE.md`](tools/NOTICE.md). That AGPL boundary is confined to
-  `tools/` and does not extend to the skill package installed by `install.sh`.
+- The **calculator** under [`tools/`](tools) is bundled as a separate
+  **AGPL-3.0** support-script unit because it uses `pyswisseph` (Swiss
+  Ephemeris). See [`tools/NOTICE.md`](tools/NOTICE.md). It is a separate
+  process and is not imported by the MIT runtime.

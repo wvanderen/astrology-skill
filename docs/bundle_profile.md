@@ -1,8 +1,9 @@
 # Published skill bundle profile
 
 `install.sh` publishes a lean agent-loaded bundle by allowlist. The installed
-copy is meant to contain only runtime skill material plus the small amount of
-user-facing documentation needed to understand and verify the entry surface.
+copy contains runtime skill material, the small amount of user-facing
+documentation needed to understand and verify the entry surface, and the
+separate opt-in calculator script advertised by the skill metadata.
 
 ## Included
 
@@ -14,6 +15,12 @@ user-facing documentation needed to understand and verify the entry surface.
 - `assets/schemas/`
 - `prompts/entry/`
 - `references/`
+- `tools/birth_to_chart.py`
+- `tools/README.md`
+- `tools/NOTICE.md`
+- `tools/LICENSE`
+- `tools/requirements.txt`
+- `tools/requirements-dev.txt`
 - `docs/bundle_profile.md`
 - `docs/birth_to_chart_design.md`
 - `docs/entry_commands.md`
@@ -22,19 +29,23 @@ user-facing documentation needed to understand and verify the entry surface.
 
 These paths cover the files referenced by `SKILL.md`, the entry-command
 metadata consumed by agent hosts, the schemas used by the entry/report gates,
-and the report template under `references/templates/`.
+the report template under `references/templates/`, and the bundled support
+script path named by `agents/openai.yaml`.
 
 ## Excluded
 
 Development-only repository context is not copied into Codex, Pi, or
 `~/.agents` targets. That includes `AGENTS.md`, `ROADMAP.md`, `tests/`,
-`tests/forward_testing/`, `.todos`, VCS/editor/cache files, and non-runtime
-tooling such as `tools/`.
+`tests/forward_testing/`, `.todos`, VCS/editor/cache files, and tool smoke
+tests.
 
-The `tools/` calculator remains opt-in and separate from the agent-loaded skill
-bundle. `docs/birth_to_chart_design.md` is included because installed metadata
-points at its boundary rationale; calculator implementation docs remain in the
-development repository.
+The `tools/` calculator is included as an opt-in support-script unit so agents
+can resolve `tools/birth_to_chart.py` relative to the installed skill root, as
+described by the Agent Skills scripts convention. Its dependencies are not
+vendored; install them from `tools/requirements.txt`, or run the script with a
+runner that honors its inline metadata. The MIT interpretive runtime does not
+import the calculator. The calculator remains AGPL-3.0 unless the user has a
+Swiss Ephemeris Professional License; see `tools/NOTICE.md`.
 
 ## Verification
 
@@ -44,8 +55,9 @@ Dry-run mode prints the publish allowlist without copying files:
 ./install.sh --dry-run
 ```
 
-Smoke-test mode stages the same bundle profile in a temporary directory and
-runs the installed copy's entry parity check:
+Smoke-test mode stages the same bundle profile in a temporary directory,
+asserts the calculator support files are present, and runs the installed copy's
+entry parity check:
 
 ```bash
 ./install.sh --smoke-test

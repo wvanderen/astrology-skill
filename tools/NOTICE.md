@@ -1,10 +1,11 @@
 # NOTICE — `tools/` birth-data pre-processor
 
-This `tools/` directory is an **opt-in developer utility**. It is not part of
-the astrology skill that an agent loads, and nothing in `SKILL.md` or
-`references/` imports, calls, or links to it. See
-`docs/birth_to_chart_design.md` §1 for the no-calculation boundary this
-preserves.
+This `tools/` directory is an **opt-in support-script unit** bundled alongside
+the astrology skill so agents can resolve `tools/birth_to_chart.py` by relative
+path from the installed skill root. Nothing in `SKILL.md` or `references/`
+imports, calls, or links to it; agents run it only as a separate process when
+raw birth data needs preprocessing. See `docs/birth_to_chart_design.md` §1 for
+the no-calculation boundary this preserves.
 
 ## Licensing — read before use
 
@@ -16,10 +17,9 @@ preserves.
    (https://www.astro.com/swisseph/) — the paid, commercial option.
 
 Accordingly, **this `tools/` unit is licensed AGPL-3.0** (see `LICENSE`).
-Because the script runs as a separate process and the skill distribution
-contains no pyswisseph and no code link to it, AGPL copyleft does **not**
-propagate into the skill itself. The AGPL boundary is confined to this
-directory.
+Because the script runs as a separate process and the MIT runtime contains no
+pyswisseph and no code link to it, AGPL copyleft does **not** propagate into
+the interpretive runtime. The AGPL boundary is confined to this directory.
 
 ### If you cannot accept AGPL
 

@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#   "pyswisseph>=2.10.3.2",
+#   "tzdata>=2024.1",
+# ]
+# ///
 """Birth-data → chart JSON pre-processor for the astrology skill.
 
 Converts raw birth data into a chart JSON object that conforms to

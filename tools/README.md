@@ -1,6 +1,6 @@
 # `tools/birth_to_chart.py` — Birth-Data → Chart JSON Pre-Processor
 
-A standalone developer utility that converts raw birth data into a chart JSON
+A standalone support script that converts raw birth data into a chart JSON
 object conforming to
 [`assets/schemas/chart_input_schema.json`](../assets/schemas/chart_input_schema.json).
 The output is **geometry + provenance only**; the astrology skill supplies the
@@ -17,8 +17,8 @@ for the full design and the boundary rationale.
 
 ## Install
 
-The skill itself has no dependencies. This tool is opt-in; install it into a
-virtualenv of your own:
+The interpretive skill runtime has no dependencies. This tool is opt-in; install
+it into a virtualenv of your own:
 
 ```bash
 python3 -m venv .venv
@@ -29,6 +29,13 @@ pip install -r tools/requirements-dev.txt      # adds jsonschema for --validate
 
 Requirements: Python 3.10+ (uses stdlib `zoneinfo` + the `tzdata`
 package for complete, host-independent IANA timezone coverage).
+
+The script also includes inline Python script metadata. If your environment has
+`uv`, you can run it from an installed skill bundle without a manual venv:
+
+```bash
+uv run tools/birth_to_chart.py --help
+```
 
 **No ephemeris data files required.** The script uses the built-in Moshier
 ephemeris by default (planets ≈ 0.1″, Moon ≈ 3″ — far inside any natal orb). It

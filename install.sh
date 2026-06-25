@@ -13,10 +13,11 @@
 # that belongs to a DIFFERENT skill. A leftover symlink from a previous manual
 # install is replaced with a real copy. Use --force to override the clobber refusal.
 #
-# AGPL boundary: tools/ (the pyswisseph birth-data calculator) is intentionally
-# NOT copied. The agent-loaded skill package stays dependency-free and AGPL-free
-# per docs/birth_to_chart_design.md §7. Install the calculator separately, into a
-# venv of your own:
+# AGPL boundary: tools/ (the pyswisseph birth-data calculator) is copied as a
+# separate, opt-in support-script unit so Agent-Skills-standard harnesses can
+# resolve it by relative path from the installed skill root. The MIT skill
+# runtime does not import it. Install its dependencies separately, or use a
+# runner that honors the script metadata:
 #     python3 -m venv .venv && . .venv/bin/activate \
 #       && pip install -r tools/requirements.txt -r tools/requirements-dev.txt
 #
@@ -48,7 +49,7 @@ FORCE=0
 OVERALL=0
 
 # Published skill bundle profile. This is intentionally an allowlist so repo-only
-# files such as AGENTS.md, ROADMAP.md, tests/, tools/, .todos, and forward-testing
+# files such as AGENTS.md, ROADMAP.md, tests/, .todos, and forward-testing
 # artifacts are never copied unless they are deliberately promoted here.
 BUNDLE_ENTRIES=(
   'SKILL.md'
@@ -59,6 +60,12 @@ BUNDLE_ENTRIES=(
   'assets/schemas'
   'prompts/entry'
   'references'
+  'tools/birth_to_chart.py'
+  'tools/README.md'
+  'tools/NOTICE.md'
+  'tools/LICENSE'
+  'tools/requirements.txt'
+  'tools/requirements-dev.txt'
 )
 
 BUNDLE_DOCS=(
@@ -166,6 +173,9 @@ print_bundle_profile() {
 smoke_check_bundle() {
   local bundle_dir="$1"
   [ -f "$bundle_dir/entry_commands.py" ] || { err "entry_commands.py missing from bundle"; return 1; }
+  [ -f "$bundle_dir/tools/birth_to_chart.py" ] || { err "tools/birth_to_chart.py missing from bundle"; return 1; }
+  [ -f "$bundle_dir/tools/NOTICE.md" ] || { err "tools/NOTICE.md missing from bundle"; return 1; }
+  [ -f "$bundle_dir/tools/requirements.txt" ] || { err "tools/requirements.txt missing from bundle"; return 1; }
   python3 "$bundle_dir/entry_commands.py" --check >/dev/null
 }
 

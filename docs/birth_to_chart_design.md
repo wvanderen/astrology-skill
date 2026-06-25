@@ -25,8 +25,8 @@ stay that way. The birth-data script is a separate, opt-in developer tool:
 - Calculation logic never lives in `references/` or `SKILL.md`.
 
 This boundary is also the legal firewall for the AGPL dependency (see §3):
-because nothing in the skill links to or distributes pyswisseph, AGPL copyleft
-does not propagate into the skill's distribution unit.
+because the interpretive runtime does not import or link to pyswisseph, AGPL
+copyleft is confined to the separate calculator support-script unit.
 
 ---
 
@@ -65,8 +65,8 @@ does not propagate into the skill's distribution unit.
   license, and must offer source to network users.
 - **Containment strategy (default).** The script ships under AGPL-3.0 as its own
   self-contained unit in `tools/` (see §6), invoked as a separate process. The
-  skill distribution (the package an agent actually loads) contains **no**
-  pyswisseph and no code link to the script, so AGPL does not extend to it.
+  skill runtime contains no pyswisseph import and no code link to the script,
+  so AGPL does not extend to that MIT runtime.
 - **Closed/commercial path (documented alternative).** Users who cannot accept
   AGPL must purchase the Swiss Ephemeris Professional License from Astrodienst
   and then may use pyswisseph under those terms; this is recorded in
@@ -159,12 +159,14 @@ tools/
   requirements-dev.txt   # jsonschema (for --validate self-check)
 ```
 
-**Why `tools/` and not `scripts/` or repo-root:** existing conventions are
-`quick_validate.py` at root and `tests/forward_testing/` for test harnesses.
-A dedicated `tools/` (sibling to `references/`, `assets/`) reads cleanly as
-"support tooling — not doctrine, not skill runtime," and gives the AGPL unit
-its own directory + license file. It aligns with the sibling entry-commands
-task (`td-78486e`), which references a "birth-data entry utility."
+**Why `tools/` and not repo-root:** existing conventions are `quick_validate.py`
+at root and `tests/forward_testing/` for test harnesses. A dedicated `tools/`
+(sibling to `references/`, `assets/`) reads cleanly as "support tooling — not
+doctrine, not skill runtime," and gives the AGPL unit its own directory +
+license file. Agent Skills examples commonly use `scripts/`, but the important
+convention is that bundled helper scripts are referenced by relative path from
+the installed skill root; `tools/birth_to_chart.py` is such a bundled support
+script.
 
 `SKILL.md` is **not** edited to load or import the script. If it is mentioned
 at all, it is a documentation pointer only.
@@ -190,10 +192,12 @@ at all, it is a documentation pointer only.
 - **Topocentric Moon.** When lat/lon (and optional elevation) are supplied, call
   `swe_set_topo()` for parallax-corrected lunar position; note it in
   `source_notes`.
-- **Packaging model.** `tools/` is opt-in developer tooling installed by the
-  user into their own venv; it is **not** vendored into the skill package that
-  an agent loads. The shipped skill stays dependency-free and AGPL-free; AGPL
-  is confined to the `tools/` unit the user chooses to install.
+- **Packaging model.** `tools/birth_to_chart.py` and its README/NOTICE/license
+  files are bundled so installed agents can resolve the advertised calculator
+  path. Dependencies are not vendored; install them from
+  `tools/requirements.txt` or use a runner that honors the script metadata.
+  The shipped interpretive runtime stays dependency-free and MIT; AGPL is
+  confined to the separate `tools/` support-script unit.
 
 ### `birth_time_confidence` rules
 
