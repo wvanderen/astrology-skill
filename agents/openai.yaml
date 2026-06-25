@@ -1,7 +1,7 @@
 interface:
   display_name: "Astrology Reading"
   short_description: "Retrieval-first astrology reading workflow"
-  default_prompt: "Use $astrology-skill to interpret this already-calculated chart from structured placements and aspects."
+  default_prompt: "Use $astrology-skill to interpret supplied astrology data. If only raw birth data is supplied and the optional birth-data utility is available, preprocess it to chart JSON first; otherwise ask for calculated chart data."
   entry_commands:
     spec: docs/entry_commands.md
     enum_source: assets/schemas/chart_input_schema.json#/properties/reading_type/enum

@@ -1,14 +1,16 @@
 # Astrology Skill
 
 A retrieval-first astrology **interpretation** skill. It synthesizes a reading
-from chart data that has **already been calculated** — placements, houses,
-aspects, dignities, sect, rulerships, transits, synastry factors, lots, and
-timing factors. It does **not** calculate charts, rectify birth times, derive
-house cusps, assign dignities, compute aspects, or infer sect.
+from chart data — placements, houses, aspects, dignities, sect, rulerships,
+transits, synastry factors, lots, and timing factors. Preferred input is chart
+data that has already been calculated, but the repository also includes an
+opt-in raw-birth-data → chart JSON calculator for hosts that can run it.
 
 The skill package itself is **dependency-free** (Python standard library only).
 The bundled birth-data → chart calculator is an **opt-in, separate-process**
-developer utility that is never imported by the skill runtime.
+developer utility that is never imported by the skill runtime. The reading
+workflow consumes its output; it does not freehand-calculate or invent missing
+chart factors.
 
 > **Skill doctrine lives in [`SKILL.md`](SKILL.md).** That file defines the
 > input contract, the retrieval workflow, the weighting hierarchy, the output
@@ -18,7 +20,7 @@ developer utility that is never imported by the skill runtime.
 
 ## What it does
 
-- **Interprets** already-calculated chart data into a synthesized reading
+- **Interprets** structured chart JSON into a synthesized reading
   (natal, transit, synastry, solar return, annual profection, horary,
   electional, mundane).
 - **Routes** chart JSON through a single validation gate into the retrieval

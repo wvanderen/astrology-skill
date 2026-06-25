@@ -1,8 +1,11 @@
 # Astrology reading request — entry
 
-You are invoking the `astrology-skill`. Route the supplied **pre-calculated**
-chart data into the `SKILL.md` retrieval workflow. Do **not** calculate,
-rectify, or derive any chart factor — use only what is supplied.
+You are invoking the `astrology-skill`. Route supplied chart data into the
+`SKILL.md` retrieval workflow. If the user supplies raw birth data and the host
+has access to `tools/birth_to_chart.py`, run that separate opt-in preprocessor
+first and use its emitted chart JSON here. If that tool is unavailable, ask for
+calculated chart data. Do not rectify, freehand-calculate, or derive chart
+factors inside the interpretive workflow.
 
 This template is **enum-driven**: it works for every `reading_type` in
 `assets/schemas/chart_input_schema.json` without being rewritten. Per-type
@@ -17,6 +20,8 @@ Accept the chart in any of these forms and resolve it to one object:
    `assets/schemas/chart_input_schema.json`.
 3. **Birth-data script output** — the stdout of `tools/birth_to_chart.py`
    (already schema-conforming; produced by a separate, opt-in process).
+4. **Raw birth data** only when `tools/birth_to_chart.py` is available; run the
+   tool first, then continue with its chart JSON output.
 
 If the block contains a path that exists on disk, load that file. Otherwise
 treat the block contents as inline JSON.
@@ -52,8 +57,9 @@ fallback → name it in the reading plan" behavior).
 The caller or host fills these before the reading runs:
 
 - `{reading_type}` — the value of `reading_type` in the resolved object.
-- `{chart_input_or_path_or_script_output}` — inline JSON, a file path, or the
-  pre-processor's stdout.
+- `{chart_input_or_path_or_script_output}` — inline JSON, a file path, the
+  pre-processor's stdout, or raw birth data that must be preprocessed before
+  this route continues.
 
 --- BEGIN CHART INPUT ---
 {chart_input_or_path_or_script_output}

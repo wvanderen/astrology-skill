@@ -305,15 +305,16 @@ no second copy of the list, no calculation."
 **Sample `--list` output:**
 
 ```
-Astrology skill — entry functions (from assets/schemas/chart_input_schema.json)
-  natal              -> references/reading_types/natal.md           [fragment: yes]
-  transit            -> references/reading_types/transit.md         [fragment: yes]
-  synastry           -> references/reading_types/synastry.md        [fragment: yes]
-  solar_return       -> references/reading_types/solar_return.md    [fragment: yes]
-  annual_profection  -> references/reading_types/annual_profection.md [fragment: yes]
-  horary             -> references/reading_types/horary.md          [fragment: yes]
-  electional         -> references/reading_types/electional.md      [fragment: yes]
-Birth-data entry utility: tools/birth_to_chart.py (pre-processor; separate process)
+Astrology skill — entry functions (from assets/schemas/chart_input_schema.json → properties.reading_type.enum)
+  natal              -> references/reading_types/natal.md  [fragment: yes]
+  transit            -> references/reading_types/transit.md  [fragment: yes]
+  synastry           -> references/reading_types/synastry.md  [fragment: yes]
+  solar_return       -> references/reading_types/solar_return.md  [fragment: yes]
+  annual_profection  -> references/reading_types/annual_profection.md  [fragment: yes]
+  horary             -> references/reading_types/horary.md  [fragment: yes]
+  electional         -> references/reading_types/electional.md  [fragment: yes]
+  mundane            -> references/reading_types/mundane.md  [fragment: yes]
+Birth-data entry utility: tools/birth_to_chart.py (pre-processor; separate process, not imported by the skill runtime)
 ```
 
 ---
@@ -326,7 +327,7 @@ The current file is:
 interface:
   display_name: "Astrology Reading"
   short_description: "Retrieval-first astrology reading workflow"
-  default_prompt: "Use $astrology-skill to interpret this already-calculated chart from structured placements and aspects."
+  default_prompt: "Use $astrology-skill to interpret supplied astrology data. If only raw birth data is supplied and the optional birth-data utility is available, preprocess it to chart JSON first; otherwise ask for calculated chart data."
 ```
 
 Add an additive `entry_commands` block under `interface:` (existing keys
@@ -337,7 +338,7 @@ snippet in `ROADMAP.md` keeps passing):
 interface:
   display_name: "Astrology Reading"
   short_description: "Retrieval-first astrology reading workflow"
-  default_prompt: "Use $astrology-skill to interpret this already-calculated chart from structured placements and aspects."
+  default_prompt: "Use $astrology-skill to interpret supplied astrology data. If only raw birth data is supplied and the optional birth-data utility is available, preprocess it to chart JSON first; otherwise ask for calculated chart data."
   entry_commands:
     spec: docs/entry_commands.md
     enum_source: assets/schemas/chart_input_schema.json#/properties/reading_type/enum
@@ -354,8 +355,16 @@ interface:
     listing:
       command: python3 entry_commands.py --list
       check: python3 entry_commands.py --check
-      description: Enumerate available reading types from the schema enum; assert enum parity.
+      route: python3 entry_commands.py --route <chart-or-path-or-->
+      report: python3 entry_commands.py --report <report-or-path-or-->
+      description: Enumerate reading types; assert parity (enum/fragments/report enums); gate a chart into the workflow (--route); gate a report envelope and its embedded chart artefacts (--report).
+    end_to_end: docs/end_to_end.md
     no_calculation: true
+  output:
+    report_schema: assets/schemas/report_schema.json
+    report_template: references/templates/report_template.md
+    report_format_doc: docs/report_format.md
+    description: When the host or user asks to save, archive, export, or deliver a reading, wrap it in the standardized report envelope (client, reading type, date of reading, JSON chart artefacts). Quick chat answers need no envelope.
 ```
 
 Rationale for each key:

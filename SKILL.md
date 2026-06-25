@@ -1,12 +1,23 @@
 ---
 name: astrology-skill
-description: Retrieval-first astrological interpretation for already-calculated chart data. Use when the user provides placements, houses, aspects, dignities, sect, rulerships, transits, synastry factors, profections, solar returns, horary details, electional constraints, or a structured astrology reading request and wants a synthesized reading rather than chart calculation.
+description: Retrieval-first astrological interpretation for chart data, with an optional raw-birth-data calculator path when repo tooling is available. Use when the user provides placements, houses, aspects, dignities, sect, rulerships, transits, synastry factors, profections, solar returns, horary details, electional constraints, raw birth data to preprocess, or a structured astrology reading request.
 license: MIT
 ---
 
 # Astrology Skill
 
-Use this skill to interpret astrological data that has already been calculated. This skill does not calculate charts, rectify birth times, derive house cusps, determine house systems, compute aspects, assign dignities, calculate lots, infer sect, generate timing factors, or fill in missing birth data.
+Use this skill to interpret astrological data. The preferred input is
+structured chart JSON. When the user supplies raw birth data and the
+host has access to this repository's tooling, first run the separate-process
+calculator path in `tools/birth_to_chart.py` (see `docs/end_to_end.md`), then
+route the emitted chart JSON back into this skill. If that calculator is not
+available in the loaded skill bundle or host environment, ask for calculated
+chart data or explain how to generate it from the development checkout.
+
+The interpretive workflow itself does not rectify birth times, invent missing
+birth data, derive unprovided house systems, or silently fill in chart factors.
+It may consume calculator output, but it must not freehand-calculate or assume
+missing placements, houses, aspects, dignities, lots, sect, or timing factors.
 
 ## Core Rule
 
@@ -20,6 +31,9 @@ Expect any mix of:
 - `tradition_mode`: `classical`, `modern`, or `blended`
 - `tone`: `practical`, `poetic`, `psychological`, `technical`, or `beginner-friendly`
 - `chart_data`: ascendant, MC, sect, house system, placements, houses, aspects, dignities, lots, rulerships, timing factors, and source notes
+- Raw birth data (date, time, timezone, latitude/longitude, house system, and
+  reading type) only when the separate calculator path is available; preprocess
+  it before interpretation rather than interpreting from raw birth data.
 - `user_question`: the user's explicit focus
 
 If chart data is incomplete, interpret only the factors that are explicitly provided and state which judgments cannot be made from the source data. Do not invent, assume, derive, or "fill in" missing placements, house systems, houses, aspects, dignities, debilities, lots, birth times, sect, rulership conditions, profections, directions, transits, returns, horary significators, electional constraints, or other timing factors.
@@ -35,7 +49,13 @@ Use `assets/schemas/chart_input_schema.json` as the preferred structured input s
 
 When the host or user asks to **save, archive, export, or deliver** the reading as a report artefact, produce a standardized report per `assets/schemas/report_schema.json` and render it with `references/templates/report_template.md` (see [Report Output](#report-output) below and `docs/report_format.md`). Quick chat answers need no envelope.
 
-Entry commands — one prompt template per `reading_type`, plus a canonical generic template — live under `prompts/entry/`. They resolve, validate, and hand a chart to Workflow step 1 without calculating. See `docs/entry_commands.md` for the surface and run `python3 entry_commands.py --list` to enumerate the current functions. For the wired path from raw birth data through `tools/birth_to_chart.py` to a reading, see `docs/end_to_end.md`.
+Entry commands — one prompt template per `reading_type`, plus a canonical
+generic template — live under `prompts/entry/`. They resolve, validate, and
+hand a chart to Workflow step 1 without calculating inside the interpretive
+workflow. See `docs/entry_commands.md` for the surface and run
+`python3 entry_commands.py --list` to enumerate the current functions. For the
+wired path from raw birth data through `tools/birth_to_chart.py` to a reading,
+see `docs/end_to_end.md`.
 
 ## Workflow
 

@@ -191,15 +191,17 @@ def test_canonical_template() -> None:
            "canonical template routes to SKILL.md step 1")
     _check("properties.reading_type.enum" in text,
            "canonical template references the schema enum")
-    _check("Calculate" not in text.replace("Do **not** calculate", ""),
-           "canonical template forbids calculation")
+    _check("tools/birth_to_chart.py" in text,
+           "canonical template points raw birth data to the calculator path")
+    _check("freehand-calculate" in text and "interpretive workflow" in text,
+           "canonical template keeps calculation outside interpretation")
 
 
 def test_agents_yaml() -> None:
     text = AGENTS.read_text(encoding="utf-8")
     for needle in ("entry_commands:", "enum_source:", "canonical_template:",
                    "input_modes:", "python3 entry_commands.py --list",
-                   "python3 entry_commands.py --route"):
+                   "python3 entry_commands.py --route", "raw birth data"):
         _check(needle in text, f"agents/openai.yaml declares {needle!r}")
     try:
         import yaml  # type: ignore  # noqa: PLC0415
