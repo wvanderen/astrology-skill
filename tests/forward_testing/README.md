@@ -11,6 +11,7 @@ alone.
 |------|------|
 | `structured_reading_prompts.md` | The prompt set — raw chart-data JSON, no expected answers. |
 | `run_blind_forward_test.py` | Harness. Builds a sanitized mirror, runs each prompt in its own isolated cwd, extracts readings + retrieval sets. |
+| `benchmark_summary.py` | Provider-free benchmark summary. Uses the current clean findings table by default, or a future `--runs-dir` artifact set when supplied. |
 | `forward_test_findings_td-*.md` | Per-run findings (historical records; one per pass). |
 
 ## Why isolation by construction
@@ -158,6 +159,33 @@ Evaluate each extracted reading on the five axes used by the prior passes (see
 event certainty, or astrology-only advice for high-stakes decisions). Cross-check
 each blind retrieval set against the deterministic walkthrough's predicted chain
 (`forward_test_findings_td-2a1b24.md`) to detect single-walkthrough-blind drift.
+
+## Retrieval/output benchmark
+
+The clean `td-846f9a` pass is now the lightweight benchmark for future
+enrichment. It records, per prompt, approximate output words, de-duplicated read
+counts, and pass/fail rubric verdicts. The benchmark is intentionally an amber
+warning system, not a hard stop: useful readings may grow when a new reference
+category is added, but unexpected retrieval or length jumps should be visible.
+
+```bash
+# Provider-free baseline check used by the deterministic validation matrix.
+python3 tests/forward_testing/benchmark_summary.py --check
+
+# Human-readable current baseline summary.
+python3 tests/forward_testing/benchmark_summary.py
+
+# Compare a fresh blind-run artifact directory without re-running providers.
+python3 tests/forward_testing/benchmark_summary.py \
+    --runs-dir /tmp/astrology_blind_forward/td-846f9a_run
+```
+
+Warning thresholds are established from the current clean run: reads warn above
+`max(baseline + 8, baseline * 1.25)`, and output length warns above
+`max(baseline + 350 words, baseline * 1.30)`. Artifact mode also reports
+retrieval totals by reference category (`reading_types`, `foundations`,
+`synthesis_patterns`, etc.) and identifies the highest-read/highest-word prompt
+within each reading type.
 
 ## Scope
 

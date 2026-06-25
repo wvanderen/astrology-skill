@@ -27,6 +27,8 @@ A.1 deterministic suite (must be green before B–D proceed):
   7. tests/entry/report_test.py   (system python3; report gate --report)
   8. tools/timing_smoke_test.py   (.venv; solar_return/annual_profection/transit)
   9. tests/trigger/run_trigger_eval.py (system python3; trigger eval fixtures)
+ 10. tests/forward_testing/benchmark_summary.py --check
+      (system python3; provider-free forward-test benchmark baseline)
 
 A.2 structural-drift guards (new in td-3b7112):
   7. tests/structure/gap_matrix_drift.py        (system python3)
@@ -95,6 +97,9 @@ CHECKS: list[Check] = [
     Check("A.1.9", "A.1", "tests/trigger/run_trigger_eval.py",
           "system", ["tests/trigger/run_trigger_eval.py"],
           "SKILL.md trigger eval fixture structure (td-4aea8b)"),
+    Check("A.1.10", "A.1", "tests/forward_testing/benchmark_summary.py --check",
+          "system", ["tests/forward_testing/benchmark_summary.py", "--check"],
+          "provider-free blind forward-test retrieval/output benchmark"),
     Check("A.2.1", "A.2", "tests/structure/gap_matrix_drift.py",
           "system", ["tests/structure/gap_matrix_drift.py"],
           "gap matrix vs on-disk modules (regression guard)"),
