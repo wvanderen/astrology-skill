@@ -1,14 +1,14 @@
 # Design Note: Entry-Command Surface
 
 **Task:** `td-78486e` (parent epic `td-9b20e3`)
-**Status:** Design (blocks implementation task `td-13e366`)
+**Status:** Implemented
 **Scope:** Decide and document how users invoke each skill function through
 explicit entry commands that route **pre-calculated** chart data into the
 `SKILL.md` retrieval workflow.
 
-This is a *design note*, not the implementation. It locks decisions before
-`td-13e366` writes prompt templates, the listing helper, and the
-`agents/openai.yaml` metadata.
+This began as a design note for `td-13e366`; it now documents the implemented
+entry surface, prompt templates, listing helper, and `agents/openai.yaml`
+metadata.
 
 ---
 
@@ -67,8 +67,7 @@ This mirrors the boundary table in `docs/birth_to_chart_design.md` §5.
 Every supported `reading_type` in the schema enum is a function. The list is
 **not** hardcoded in the surface; it is derived from
 `assets/schemas/chart_input_schema.json` → `properties.reading_type.enum`. The
-table below is descriptive only (current enum + the planned `mundane` addition
-from `td-bd5aa7`).
+table below is descriptive only and reflects the current enum.
 
 | Function (`reading_type`) | Retrieval module loaded by `SKILL.md` | Optional entry fragment (`prompts/entry/{type}.md`) | Chart-data emphasis for this type |
 |---|---|---|---|
@@ -79,24 +78,18 @@ from `td-bd5aa7`).
 | `annual_profection` | `references/reading_types/annual_profection.md` | `prompts/entry/annual_profection.md` | Activated house, Lord of the Year, age/profection `timing_factors`. |
 | `horary` | `references/reading_types/horary.md` | `prompts/entry/horary.md` | Querent's question, significators, radicality data; `user_question` is primary. |
 | `electional` | `references/reading_types/electional.md` | `prompts/entry/electional.md` | Two or more candidate start charts + the goal in `user_question`. |
-| `mundane` *(planned, `td-bd5aa7`)* | `references/reading_types/mundane.md` *(to be created)* | `prompts/entry/mundane.md` *(optional)* | Collective/political/market ingress or lunation chart; scope guardrails apply. |
+| `mundane` | `references/reading_types/mundane.md` (+ `mundane_examples.md` when triggered) | `prompts/entry/mundane.md` | Collective/political/market ingress, lunation, or great-conjunction chart; scope guardrails apply. |
 
 **Birth-data entry utility.** Not a reading type; an *input* function. Exposed
 as `tools/birth_to_chart.py` (already implemented). Its output is a
 schema-conforming chart object, consumed by Mode 3 below. See
 `docs/birth_to_chart_design.md`.
 
-**Forward path for `mundane` (`td-bd5aa7`).** When that epic adds `mundane` to
-the schema enum, the entry surface picks it up automatically:
-
-- `--list` enumerates it with no code change.
-- The canonical generic template (§7) routes it immediately, falling back to
-  the generic retrieval path until `references/reading_types/mundane.md` exists.
-- An optional `prompts/entry/mundane.md` fragment may be added for per-type UX
-  niceties, but is **not** required for the type to be invocable.
-
-No entry command is rewritten when a new type lands. That is the enum-driven
-guarantee.
+**Enum-driven guarantee.** When a future reading type is added to the schema
+enum, the entry surface picks it up automatically: `--list` enumerates it, the
+canonical generic template (§7) routes it, and an exact per-type fragment can
+be added for UX framing without rewriting the command surface. `mundane` is
+the landed example of this path.
 
 **Output-side companion: `--report`.** The same surface gates *output*
 artefacts. `python3 entry_commands.py --report <report-or-path-or-->`
@@ -383,7 +376,7 @@ degrades gracefully.
 
 ---
 
-## 10. File layout (created by `td-13e366`)
+## 10. File layout
 
 ```
 prompts/
@@ -396,16 +389,14 @@ prompts/
     annual_profection.md
     horary.md
     electional.md
-    (mundane.md)           # optional; added with td-bd5aa7
+    mundane.md
 entry_commands.py          # --list / --check (§8), dependency-free, root
 agents/openai.yaml         # + interface.entry_commands block (§9)
 docs/entry_commands.md     # this spec (already exists)
 ```
 
-`SKILL.md` is **not** edited to load or import any of these at runtime. It may
-gain a one-line documentation pointer to `docs/entry_commands.md` (analogous to
-how `SKILL.md` already points to the schema), but no behavioral change is
-required — the entry surface hands control to `SKILL.md` step 1 unchanged.
+`SKILL.md` does **not** load or import any of these at runtime. The entry
+surface hands control to `SKILL.md` step 1 unchanged.
 
 ---
 
@@ -413,10 +404,10 @@ required — the entry surface hands control to `SKILL.md` step 1 unchanged.
 
 | Acceptance criterion (from `td-78486e`) | Where addressed |
 |---|---|
-| Enumerate the functions (natal, transit, synastry, solar_return, annual_profection, horary, electional, mundane-fwd) + birth-data utility | §3 (functions table); §8 (`--list`) |
+| Enumerate the functions (natal, transit, synastry, solar_return, annual_profection, horary, electional, mundane) + birth-data utility | §3 (functions table); §8 (`--list`) |
 | Decide the command mechanism and justify against `agents/openai.yaml` | §4 (prompt templates chosen; rejects slash commands + wrapper-as-primary, with evidence) |
 | Specify how each command accepts chart data (inline JSON, file path, script output) and routes to `reading_type` | §6 (input modes); §7 (template route) |
-| Enum-driven off `chart_input_schema.json`; new types picked up without rewriting commands | §5 (single source of truth); §3 (mundane forward path) |
+| Enum-driven off `chart_input_schema.json`; new types picked up without rewriting commands | §5 (single source of truth); §3 (enum-driven guarantee) |
 | Produce a spec describing the surface and metadata changes | This document; §9 (`agents/openai.yaml` block) |
 | Preserve the no-calculation boundary | §2 (boundary table); §4 (why-not-wrapper); §9 (`no_calculation: true`, `birth_data_utility.boundary`) |
 
@@ -425,20 +416,15 @@ Implementation-task (`td-13e366`) acceptance is covered by the file layout
 
 ---
 
-## 12. Open items deferred to implementation (`td-13e366`)
+## 12. Implementation disposition
 
-- Exact wording of each per-type fragment (`prompts/entry/{type}.md`). Each
-  should add framing only (e.g. horary: "state the question and
-  significators"; electional: "list candidate start charts and the goal");
-  never calculation.
-- Whether `entry_commands.py --check` is a standalone script or folded into
-  `quick_validate.py` as an additional check (recommend: standalone `--list`
-  + a `--check` also invoked by the validation command).
-- Whether the host fills template placeholders automatically or the user
-  pastes the resolved object into the fenced block. Both are supported by
-  Mode 1; the template is host-agnostic.
-- Concrete smoke test: invoke the generic template with a conforming sample
-  chart (reuse `tests/forward_testing/structured_reading_prompts.md`) and
-  assert it reaches `SKILL.md` step 1 without calculating — already required
-  by `td-13e366` AC ("Smoke test: invoking a command with a conforming sample
-  chart reaches the retrieval workflow").
+- Per-type fragments exist for all eight current reading types. Each adds
+  framing only and never calculation.
+- `entry_commands.py` remains the standalone dependency-free helper for
+  `--list`, `--check`, `--route`, and `--report`; `quick_validate.py` keeps a
+  folded parity check for quick local validation.
+- Host-filled placeholders and user-pasted fenced JSON are both supported by
+  Mode 1; the templates remain host-agnostic.
+- The concrete smoke and parity coverage lives in
+  `tests/entry/smoke_test.py`, `tests/entry/end_to_end_test.py`, and the
+  top-level `python3 tests/run_validation_matrix.py`.

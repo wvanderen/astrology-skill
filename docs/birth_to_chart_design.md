@@ -127,7 +127,8 @@ Emitted object uses the schema's top-level shape
 | `aspects` | always | Major Ptolemaic (conjunction, opposition, trine, square, sextile) plus optional semisextile/quincunx, between planets (and to Asc/MC when known). Each carries `orb_degrees`, `applying`/`separating` (from velocity comparison), and `exact`. Orb table is documented and configurable. |
 | `lots` | default on | Lot of Fortune: day formula `Asc + Moon − Sun`, night formula `Asc + Sun − Moon` (sect-aware). `{name, sign, degree, absolute_degree, house, formula}`. |
 | `sect` | when time known | Object form: `{status: day|night, luminary_of_sect, sect_mate_planets, notes}`. Day if the Sun is above the horizon at birth (altitude > 0). |
-| `timing_factors` | omitted / empty | The pre-processor is natal-focused. Transits, profections, returns are separate concerns and out of scope here. |
+| `timing_factors` | timing readings only | For `annual_profection`, emits the activated house/sign and Lord of the Year. For `solar_return`, emits the return moment and return-chart summary. For `transit`, emits transit-to-natal contacts. Omitted or empty for ordinary natal charts. |
+| `solar_return` / `transit_chart` (extra props) | timing readings only | `solar_return` carries the computed return chart; `transit_chart` carries transiting placements in natal houses plus natal contacts. Allowed because `chart_data` is `additionalProperties: true`. |
 
 ### Calculation vs. interpretation boundary (audit table)
 
@@ -225,14 +226,14 @@ python tools/birth_to_chart.py \
 
 ---
 
-## 9. Open items deferred to implementation (`td-2e2cd9`)
+## 9. Implementation disposition
 
-- Exact default orb table (luminary vs. inferiors vs. superiors) and whether to
-  include minor aspects by default.
-- Whether to emit planet-to-angle aspects by default or behind a flag.
-- Precise set of bodies beyond the classical 10 + True Node (e.g. Chiron, Lilith)
-  — keep behind flags; default off.
-- Smoke-test fixture: a public, well-documented birth dataset with an
-  independently verifiable Asc/MC (e.g. an astro.com example chart) and an
-  acceptance tolerance (suggested ±0.05° for `.se1`, ±0.001° laxity acceptable
-  under Moshier).
+- The default orb table and supported aspect set are implemented in
+  `tools/birth_to_chart.py` and regression-tested by `tools/smoke_test.py` and
+  `tools/timing_smoke_test.py`.
+- Planet-to-angle aspects are emitted for timed charts when they meet the
+  configured aspect rules; untimed charts do not invent angle contacts.
+- Default bodies remain the ten planets plus True Node. Additional points such
+  as Chiron or Lilith stay out of the default output.
+- Smoke fixtures now assert Asc/MC tolerance on three charts plus timing-type
+  self-consistency for solar returns, annual profections, and transits.

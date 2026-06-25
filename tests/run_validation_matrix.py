@@ -29,6 +29,7 @@ A.1 deterministic suite (must be green before B–D proceed):
   9. tests/trigger/run_trigger_eval.py (system python3; trigger eval fixtures)
  10. tests/forward_testing/benchmark_summary.py --check
       (system python3; provider-free forward-test benchmark baseline)
+ 11. install.sh --smoke-test      (direct; staged published bundle)
 
 A.2 structural-drift guards (new in td-3b7112):
   7. tests/structure/gap_matrix_drift.py        (system python3)
@@ -61,7 +62,7 @@ class Check:
     cid: str
     group: str
     label: str
-    interpreter: str  # "system" or "venv"
+    interpreter: str  # "system", "venv", or "direct"
     argv: list[str]
     note: str
     required: bool = True
@@ -101,6 +102,9 @@ CHECKS: list[Check] = [
     Check("A.1.10", "A.1", "tests/forward_testing/benchmark_summary.py --check",
           "system", ["tests/forward_testing/benchmark_summary.py", "--check"],
           "provider-free blind forward-test retrieval/output benchmark"),
+    Check("A.1.11", "A.1", "install.sh --smoke-test",
+          "direct", ["./install.sh", "--smoke-test"],
+          "staged published bundle profile passes entry parity"),
     Check("A.2.1", "A.2", "tests/structure/gap_matrix_drift.py",
           "system", ["tests/structure/gap_matrix_drift.py"],
           "gap matrix vs on-disk modules (regression guard)"),
@@ -121,6 +125,8 @@ def _resolve_interpreter(kind: str) -> str | None:
         if VENV_PY.is_file():
             return str(VENV_PY)
         return None
+    if kind == "direct":
+        return ""
     raise ValueError(f"unknown interpreter kind: {kind!r}")
 
 
@@ -146,7 +152,7 @@ def run_check(check: Check) -> None:
         check.status = "SKIP"
         check.detail = ".venv absent (venv-only check)"
         return
-    argv = [py, *check.argv]
+    argv = check.argv if check.interpreter == "direct" else [py, *check.argv]
     try:
         proc = subprocess.run(
             argv, capture_output=True, text=True, cwd=str(ROOT), timeout=120,
