@@ -16,6 +16,7 @@ separate opt-in calculator script advertised by the skill metadata.
 - `prompts/entry/`
 - `references/`
 - `tools/birth_to_chart.py`
+- `tools/chart_diagram.py`
 - `tools/README.md`
 - `tools/NOTICE.md`
 - `tools/LICENSE`
@@ -29,8 +30,9 @@ separate opt-in calculator script advertised by the skill metadata.
 
 These paths cover the files referenced by `SKILL.md`, the entry-command
 metadata consumed by agent hosts, the schemas used by the entry/report gates,
-the report template under `references/templates/`, and the bundled support
-script path named by `agents/openai.yaml`.
+the report template under `references/templates/`, the bundled calculator
+support script path named by `agents/openai.yaml`, and the dependency-free
+chart diagram renderer.
 
 ## Excluded
 
@@ -46,6 +48,10 @@ vendored; install them from `tools/requirements.txt`, or run the script with a
 runner that honors its inline metadata. The MIT interpretive runtime does not
 import the calculator. The calculator remains AGPL-3.0 unless the user has a
 Swiss Ephemeris Professional License; see `tools/NOTICE.md`.
+
+The chart diagram renderer (`tools/chart_diagram.py`) is dependency-free and
+does not calculate chart factors. It only renders supplied chart JSON geometry
+as SVG or a small standalone HTML page.
 
 ## Verification
 

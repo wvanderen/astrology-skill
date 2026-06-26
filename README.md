@@ -25,6 +25,8 @@ invent missing chart factors.
   electional, mundane).
 - **Routes** chart JSON through a single validation gate into the retrieval
   workflow described in `SKILL.md`.
+- **Renders** already-calculated chart JSON as an SVG or standalone HTML chart
+  wheel with [`tools/chart_diagram.py`](tools/chart_diagram.py).
 - **Loads only the relevant references** (137 interpretive modules under
   [`references/`](references)) rather than free-associating from general
   knowledge.

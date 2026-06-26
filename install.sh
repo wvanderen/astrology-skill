@@ -61,6 +61,7 @@ BUNDLE_ENTRIES=(
   'prompts/entry'
   'references'
   'tools/birth_to_chart.py'
+  'tools/chart_diagram.py'
   'tools/README.md'
   'tools/NOTICE.md'
   'tools/LICENSE'
@@ -174,6 +175,7 @@ smoke_check_bundle() {
   local bundle_dir="$1"
   [ -f "$bundle_dir/entry_commands.py" ] || { err "entry_commands.py missing from bundle"; return 1; }
   [ -f "$bundle_dir/tools/birth_to_chart.py" ] || { err "tools/birth_to_chart.py missing from bundle"; return 1; }
+  [ -f "$bundle_dir/tools/chart_diagram.py" ] || { err "tools/chart_diagram.py missing from bundle"; return 1; }
   [ -f "$bundle_dir/tools/NOTICE.md" ] || { err "tools/NOTICE.md missing from bundle"; return 1; }
   [ -f "$bundle_dir/tools/requirements.txt" ] || { err "tools/requirements.txt missing from bundle"; return 1; }
   python3 "$bundle_dir/entry_commands.py" --check >/dev/null

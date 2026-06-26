@@ -313,10 +313,31 @@ python3 tools/birth_to_chart.py --date 1990-05-21 --time 14:32 \
 See [`docs/end_to_end.md`](../docs/end_to_end.md) for the full walkthrough
 (including external-tool charts and failure-mode messages).
 
+## Render a chart diagram
+
+`tools/chart_diagram.py` turns already-calculated chart JSON into a chart-wheel
+diagram. It is dependency-free and only renders supplied geometry: placements,
+aspects, angles, and house cusps must already be present in the JSON.
+
+```bash
+python3 tools/chart_diagram.py chart.json --output chart.svg
+python3 tools/chart_diagram.py chart.json --format html --output chart.html
+python3 tools/birth_to_chart.py --date 1990-05-21 --time 14:32 \
+    --lat 40.7128 --lon -74.0060 --tz "America/New_York" \
+  | python3 tools/chart_diagram.py - --output chart.svg
+```
+
+The renderer accepts the canonical `chart_input_schema.json` shape
+(`{reading_type, chart_data}`) and the legacy browser-demo shape used by
+`docs/chart_diagram_example.html` (`planets`, `houses`, `longitude`). Use
+`--format html` for a quick browser preview, `--theme light`, or `--no-aspects`
+when a simpler wheel is wanted.
+
 ## Smoke test
 
 ```bash
 python tools/smoke_test.py          # natal Asc/MC vs independent stdlib recomputation
+python tests/entry/chart_diagram_test.py  # dependency-free SVG renderer
 python tools/timing_smoke_test.py   # solar_return / annual_profection / transit
 python tools/tz_smoke_test.py       # IANA zone resolution + tz fallback / error copy
 python tools/dignity_smoke_test.py  # major essential dignity (domicile/exalt/detriment/fall)
